@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.icons {
+  width: 32px;
+  height: 32px;
+  filter: invert(80%) sepia(2%) saturate(1625%) hue-rotate(179deg) brightness(81%) contrast(89%);
+}
+
+.navbar-popup {
+  animation: pop-in 0.3s forwards;
+}
+
+.navbar-popout {
+  animation: pop-out 0.3s forwards;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.active {
+  color: #F87171;
+}
+
+.input {
+  background: none;
+  border: none;
+  border-bottom: solid 1px gray;
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
