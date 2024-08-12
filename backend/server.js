@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://fitracker-app.netlify.app/",
+    origin: "https://fitracker-app.netlify.app",
     credentials: true,
   })
 );
@@ -55,11 +55,6 @@ app.use(
     store: store,
   })
 ); */
-
-// Landing Route
-app.get("/", (req, res) => {
-  res.json({ message: "Landing Page!" });
-});
 
 // Workout Routes
 app.use("/api/workouts", workoutRoutes);
