@@ -1,7 +1,10 @@
 // Dependencies
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import "./index.css";
 
 // Pages
@@ -17,68 +20,64 @@ import Features from "./pages/Features";
 // Provider
 import Providers from "./utils/context/Providers";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import useAuthContext from "./utils/hooks/useAuthContext";
 import CreateWorkout from "./pages/CreateWorkout";
+import NotForAuth from "./utils/NotForAuth";
 
-const Router = () => {
-  const { isAuth } = useAuthContext();
-
-  const router = createBrowserRouter([
-    {
-      // Landing Page
-      path: "/",
-      element: <Layout />, // Element to render
-      errorElement: <ErrorPage />, // Error element
-      children: [
-        // If you want to render something inside the "element:"
-        {
-          path: "/", // Path where it will render
-          element: !isAuth ? <LandingPage /> : <Home />,
-        },
-        {
-          path: "home",
-          element: (
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "create",
-          element: (
-            <ProtectedRoute>
-              <CreateWorkout />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "programs",
-          element: <Programs />,
-        },
-        {
-          path: "features",
-          element: <Features />,
-        },
-        {
-          path: "about",
-          element: <About />,
-        },
-        {
-          path: "workout/:workout_id",
-          element: <ViewWorkout />,
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
-};
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <NotForAuth>
+            <LandingPage />
+          </NotForAuth>
+        ),
+      },
+      {
+        path: "home",
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "workout/:workout_id",
+        element: <ViewWorkout />,
+      },
+      {
+        path: "create",
+        element: (
+          <ProtectedRoute>
+            <CreateWorkout />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "programs",
+        element: <Programs />,
+      },
+      {
+        path: "features",
+        element: <Features />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Providers>
-      <Router />
+      <RouterProvider router={router} />
     </Providers>
   </React.StrictMode>
 );

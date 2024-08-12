@@ -6,6 +6,7 @@ import useModalContext from "../../utils/hooks/useModalContext";
 import LoginForm from "../LoginForm";
 import Button from "../Button";
 import useLogout from "../../utils/hooks/useLogout";
+import { useNavigate } from "react-router-dom";
 
 const MainNav = () => {
   const logout = useLogout();

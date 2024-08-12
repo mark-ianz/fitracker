@@ -7,11 +7,8 @@ const Button = ({
   buttonType,
   toSubmit,
   isDisabled,
-  redirect,
 }) => {
-  const navigate = useNavigate();
   const handleClick = () => {
-    if (redirect) navigate(redirect);
     if (onClick) onClick();
   };
 

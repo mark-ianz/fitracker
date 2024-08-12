@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 const SortButton = () => {
+  const navigate = useNavigate();
+
   const [sort, setSort] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
 
@@ -43,7 +46,13 @@ const SortButton = () => {
             </li>
           </ul>
         </div>
-        <Button buttonType={"primary"} className={"ml-2"} redirect={"/create"}>Log workout</Button>
+        <Button
+          buttonType={"primary"}
+          className={"ml-2"}
+          onClick={() => navigate ("/create")}
+        >
+          Log workout
+        </Button>
       </div>
     </div>
   );
