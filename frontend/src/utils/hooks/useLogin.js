@@ -11,7 +11,7 @@ const useLogin = () => {
       // Set loading to true and clear errors
       setLoading(true);
       setError("");
-      const response = await fetch("https://fitracker.onrender.com/api/users/login", {
+      const response = await fetch("http://localhost:8080/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

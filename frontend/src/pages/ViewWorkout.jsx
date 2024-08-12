@@ -26,7 +26,7 @@ const ViewWorkout = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://fitracker.onrender.com/api/workouts/${workout_id}`,
+          `http://localhost:8080/api/workouts/${workout_id}`,
           {
             method: "get",
             headers: {
@@ -53,7 +53,7 @@ const ViewWorkout = () => {
 
   const handleDeleteClick = async () => {
     const response = await fetch(
-      `https://fitracker.onrender.com/api/workouts/${workout_id}`,
+      `http://localhost:8080/api/workouts/${workout_id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

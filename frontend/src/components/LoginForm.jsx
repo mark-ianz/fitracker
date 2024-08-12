@@ -1,4 +1,5 @@
 // Dependencies
+import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 // Components
@@ -8,13 +9,16 @@ import Spinner from "./Spinner";
 // Hooks
 import useModalContext from "../utils/hooks/useModalContext";
 import useLogin from "../utils/hooks/useLogin";
+import Signup from "./SignupForm";
 
 const LoginForm = () => {
   const { login, error, loading } = useLogin();
-  const { closeModal } = useModalContext();
+  const { closeModal, openModal } = useModalContext();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  console.log(showPassword);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -36,7 +40,7 @@ const LoginForm = () => {
     <form
       onSubmit={handleFormSubmit}
       action="/"
-      className="border-2 border-black p-8 rounded-lg flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
+      className="shadow-md p-8 pb-6 rounded-lg flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
     >
       <h1 className="text-3xl mb-10">Login</h1>
       <div className="flex flex-col w-full mb-6">
@@ -55,7 +59,7 @@ const LoginForm = () => {
         <input
           onChange={handlePasswordChange}
           value={password}
-          type="password"
+          type={!showPassword ? "password" : "text"}
           name="password"
           id="password"
           className="input"
@@ -63,15 +67,33 @@ const LoginForm = () => {
       </div>
       <div className="text-sm mt-2 w-full flex flex-row">
         {error && <p className="text-red-400">{error}</p>}
-        <a href="/forgot" className="text-gray-400 items-end ml-auto">
-          Forgot Password?
-        </a>
+        <div className="ml-auto text-gray-400 flex gap-1 items-center justify-center">
+          <p>Show Password</p>
+          <input
+            type="checkbox"
+            name="showPassword"
+            onChange={(e)=> setShowPassword((s) => !s)}
+            className="cursor-pointer"
+          />
+        </div>
       </div>
       {loading ? (
         <Spinner />
       ) : (
-        <Button buttonType="primary" className={"w-full mt-10"} toSubmit={true}>Login</Button>
+        <Button buttonType="primary" className={"w-full mt-10"} toSubmit={true}>
+          Login
+        </Button>
       )}
+      <div className="text-gray-400 items-center text-sm mt-4 flex flex-col">
+        <a href="/forgot">Forgot Password?</a>
+        <button
+          onClick={() => {
+            openModal(<Signup />);
+          }}
+        >
+          Already have an account?
+        </button>
+      </div>
     </form>
   );
 };

@@ -19,7 +19,7 @@ const Preview = () => {
       try {
         setError("");
         setLoading(true);
-        const response = await fetch("https://fitracker.onrender.com/api/workouts/all", {
+        const response = await fetch("http://localhost:8080/api/workouts/all", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
