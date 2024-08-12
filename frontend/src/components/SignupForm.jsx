@@ -2,15 +2,16 @@ import { useState } from "react";
 import Button from "./Button";
 import Spinner from "./Spinner";
 import useSignup from "../utils/hooks/useSignup";
-import { useNavigate } from "react-router-dom";
 import useModalContext from "../utils/hooks/useModalContext";
+import LoginForm from "./LoginForm";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { closeModal } = useModalContext();
+  const [showPassword, setShowPassword] = useState(false);
+  const { closeModal, openModal } = useModalContext();
 
   const { signup, loading, error } = useSignup();
 
@@ -20,13 +21,15 @@ const Signup = () => {
     const credentials = { username, email, password, confirmPassword };
 
     await signup(credentials);
-    closeModal();
+    if (!error) {
+      closeModal();
+    }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-2 border-black p-8 rounded-lg flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
+      className="shadow-md p-6 rounded-lg flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
     >
       <h1 className="text-3xl mb-10">Signup</h1>
       <div className="flex flex-col w-full mb-6">
@@ -54,7 +57,7 @@ const Signup = () => {
       <div className="flex flex-col w-full mb-6">
         <label htmlFor="password">Password</label>
         <input
-          type="password"
+          type={!showPassword ? "password" : "text"}
           name="password"
           id="password"
           className="input"
@@ -65,7 +68,7 @@ const Signup = () => {
       <div className="flex flex-col w-full">
         <label htmlFor="confirmPassword">Confirm Password</label>
         <input
-          type="password"
+          type={!showPassword ? "password" : "text"}
           name="confirmPassword"
           id="confirmPassword"
           className="input"
@@ -73,8 +76,17 @@ const Signup = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
-      <div className="text-sm mt-2 w-full flex flex-row">
-        {error && <p className="text-red-400">{error}</p>}
+      <div className="text-sm mt-2 w-full flex flex-row items-start">
+        {error && <p className="text-red-400 max-w-[65%]">{error}</p>}
+        <div className="ml-auto text-gray-400 flex gap-1 items-center justify-center">
+          <p>Show Password</p>
+          <input
+            type="checkbox"
+            name="showPassword"
+            onChange={(e) => setShowPassword((s) => !s)}
+            className="cursor-pointer"
+          />
+        </div>
       </div>
       {loading ? (
         <Spinner />
@@ -83,6 +95,14 @@ const Signup = () => {
           Signup
         </Button>
       )}
+      <button
+        className="text-gray-400 items-center text-sm mt-4"
+        onClick={() => {
+          openModal(<LoginForm />);
+        }}
+      >
+        Already have an account?
+      </button>
     </form>
   );
 };

@@ -1,6 +1,6 @@
 // Dependencies
 import { Link, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import Button from "./Button";
@@ -18,7 +18,6 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  console.log(showPassword);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,7 +32,10 @@ const LoginForm = () => {
 
     const credentials = { email, password };
     await login(credentials);
-    closeModal();
+
+    if (!error) {
+      closeModal();
+    }
   };
 
   return (
@@ -65,14 +67,14 @@ const LoginForm = () => {
           className="input"
         />
       </div>
-      <div className="text-sm mt-2 w-full flex flex-row">
-        {error && <p className="text-red-400">{error}</p>}
+      <div className="text-sm mt-2 w-full flex flex-row items-start">
+        {error && <p className="text-red-400 max-w-[65%]">{error}</p>}
         <div className="ml-auto text-gray-400 flex gap-1 items-center justify-center">
           <p>Show Password</p>
           <input
             type="checkbox"
             name="showPassword"
-            onChange={(e)=> setShowPassword((s) => !s)}
+            onChange={(e) => setShowPassword((s) => !s)}
             className="cursor-pointer"
           />
         </div>
@@ -91,7 +93,7 @@ const LoginForm = () => {
             openModal(<Signup />);
           }}
         >
-          Already have an account?
+          Doesn't have an account?
         </button>
       </div>
     </form>
