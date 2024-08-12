@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../Buttons/Button";
+import Button from "../Button";
 
 const SortButton = () => {
   const [sort, setSort] = useState("");

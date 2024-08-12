@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./Buttons/Button";
+import Button from "./Button";
 import Spinner from "./Spinner";
 import useSignup from "../utils/hooks/useSignup";
 import { useNavigate } from "react-router-dom";

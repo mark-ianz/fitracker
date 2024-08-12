@@ -1,7 +1,7 @@
 // Dependencies
 
 // Components
-import Button from "../components/Buttons/Button";
+import Button from "../components/Button";
 import SignupForm from "../components/SignupForm";
 
 // Hooks

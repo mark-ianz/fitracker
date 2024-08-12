@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // Components
-import Button from "./Buttons/Button";
+import Button from "./Button";
 import Spinner from "./Spinner";
 
 // Hooks

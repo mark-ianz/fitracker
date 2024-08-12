@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
-import Button from "../../Buttons/Button";
+import Button from "../../Button";
 import { v4 } from "uuid";
 
 const SubmitExerciseForm = ({ exerciseId }) => {

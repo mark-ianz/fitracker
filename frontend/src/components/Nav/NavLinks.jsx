@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import useModalContext from "../../utils/hooks/useModalContext";
 
 // Components
-import Button from "../Buttons/Button";
+import Button from "../Button";
 import Signup from "../SignupForm";
 import LoginForm from "../LoginForm";
 import useSidebarContext from "../../utils/hooks/useSidebarContext";

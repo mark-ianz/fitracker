@@ -4,7 +4,7 @@ import NavLinks from "./NavLinks";
 import useAuthContext from "../../utils/hooks/useAuthContext";
 import useModalContext from "../../utils/hooks/useModalContext";
 import LoginForm from "../LoginForm";
-import Button from "../Buttons/Button";
+import Button from "../Button";
 import useLogout from "../../utils/hooks/useLogout";
 
 const MainNav = () => {

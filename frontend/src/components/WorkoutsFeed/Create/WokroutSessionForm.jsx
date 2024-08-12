@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
-import Button from "../../Buttons/Button";
+import Button from "../../Button";
 
 const WokroutSessionForm = () => {
   // Dependencies
