@@ -37,7 +37,7 @@ const WokroutSessionForm = () => {
     };
 
 
-    const response = await fetch("http://localhost:8080/api/workouts/new", {
+    const response = await fetch("https://fitracker.onrender.com/api/workouts/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
