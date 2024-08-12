@@ -21,9 +21,6 @@ const Signup = () => {
     const credentials = { username, email, password, confirmPassword };
 
     await signup(credentials);
-    if (!error) {
-      closeModal();
-    }
   };
 
   return (

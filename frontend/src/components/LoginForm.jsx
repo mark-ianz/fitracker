@@ -32,10 +32,6 @@ const LoginForm = () => {
 
     const credentials = { email, password };
     await login(credentials);
-
-    if (!error) {
-      closeModal();
-    }
   };
 
   return (

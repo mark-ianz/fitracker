@@ -1,8 +1,10 @@
 import { useState } from "react";
 import useAuthContext from "./useAuthContext";
+import useModalContext from "./useModalContext";
 
 const useSignup = () => {
   const { dispatch } = useAuthContext();
+  const { closeModal } = useModalContext();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,7 +35,7 @@ const useSignup = () => {
       // Set user data in the context and localStorage
       dispatch({ type: "LOGIN", payload: result });
       localStorage.setItem("user", JSON.stringify(result));
-      
+      closeModal();
     } catch (error) {
       setError(error.message);
     } finally {
