@@ -8,11 +8,13 @@ import Signup from "../SignupForm";
 import LoginForm from "../LoginForm";
 import useSidebarContext from "../../utils/hooks/useSidebarContext";
 import useAuthContext from "../../utils/hooks/useAuthContext";
+import useLogout from "../../utils/hooks/useLogout";
 
 const NavLinks = ({ className }) => {
   const { openModal } = useModalContext();
   const { closeSidebar } = useSidebarContext();
   const { isAuth } = useAuthContext();
+  const logout = useLogout();
 
   return (
     <ul
@@ -72,7 +74,7 @@ const NavLinks = ({ className }) => {
             }
             onClick={() => {
               closeSidebar();
-              console.log("Logged out!");
+              logout();
             }}
           >
             Logout
