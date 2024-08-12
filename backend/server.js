@@ -31,24 +31,12 @@ startServer();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const allowedOrigins = [
-  "https://fitracker-app.netlify.app/",
-  "http://localhost:3000",
-];
-const corsOptions = {
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://fitracker-app.netlify.app/",
+    credentials: true,
+  })
+);
 
 // Cookies and Session
 app.use(cookieParser());
