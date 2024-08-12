@@ -4,8 +4,8 @@ import useModalContext from "../../utils/hooks/useModalContext";
 
 // Components
 import Button from "../Button";
-import Signup from "../SignupForm";
-import LoginForm from "../LoginForm";
+import Signup from "../Forms/SignupForm";
+import LoginForm from "../Forms/LoginForm";
 import useSidebarContext from "../../utils/hooks/useSidebarContext";
 import useAuthContext from "../../utils/hooks/useAuthContext";
 import useLogout from "../../utils/hooks/useLogout";

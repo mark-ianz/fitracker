@@ -2,7 +2,7 @@
 
 // Components
 import Button from "../components/Button";
-import SignupForm from "../components/SignupForm";
+import SignupForm from "../components/Forms/SignupForm";
 
 // Hooks
 import useModalContext from "../utils/hooks/useModalContext";

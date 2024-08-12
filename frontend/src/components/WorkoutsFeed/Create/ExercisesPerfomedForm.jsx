@@ -1,6 +1,6 @@
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
-import ExercisesPerformed from "../ExercisesPerformed";
 import AddMoreButton from "./AddMoreButton";
+import ExercisesPerformed from "../ViewWorkout/ExercisesPerformed";
 import SubmitExerciseForm from "./SubmitExerciseForm";
 
 const ExercisesPerfomedForm = () => {

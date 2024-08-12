@@ -1,5 +1,5 @@
-import useExercisesFormContext from "../../utils/hooks/useExercisesFormContext.js";
-import SubmitExerciseForm from "./Create/SubmitExerciseForm";
+import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext.js";
+import SubmitExerciseForm from "../Create/SubmitExerciseForm.jsx"
 
 const ExercisesPerformed = ({ canEdit, editClickFunction, exercisesPerformed }) => {
   const { editing, isEditing, isAddingExercise } = useExercisesFormContext();

@@ -5,7 +5,7 @@ import { format } from "date-fns";
 // Hooks
 
 // Components
-import ExercisesPerformed from "../components/WorkoutsFeed/ExercisesPerformed";
+import ExercisesPerformed from "../components/WorkoutsFeed/ViewWorkout/ExercisesPerformed";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import useWorkoutContext from "../utils/hooks/useWorkoutContext";
 import { useEffect, useState } from "react";

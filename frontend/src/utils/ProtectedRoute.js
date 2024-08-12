@@ -7,7 +7,7 @@ import useAuthContext from "./hooks/useAuthContext";
 import useModalContext from "./hooks/useModalContext";
 
 // Components
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/Forms/LoginForm";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@
 
 // Components
 import AddMoreButton from "../components/WorkoutsFeed/Create/AddMoreButton";
-import Preview from "../components/WorkoutsFeed/Preview";
+import Preview from "../components/WorkoutsFeed/ViewWorkout/Preview";
 
 // Provider
 import useAuthContext from "../utils/hooks/useAuthContext";

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "./Button";
-import Spinner from "./Spinner";
-import useSignup from "../utils/hooks/useSignup";
-import useModalContext from "../utils/hooks/useModalContext";
+import Button from "../Button";
+import Spinner from "../Spinner";
+import useSignup from "../../utils/hooks/useSignup";
+import useModalContext from "../../utils/hooks/useModalContext";
 import LoginForm from "./LoginForm";
 
 const Signup = () => {

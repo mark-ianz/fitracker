@@ -3,12 +3,12 @@ import { Link, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // Components
-import Button from "./Button";
-import Spinner from "./Spinner";
+import Button from "../Button";
+import Spinner from "../Spinner";
 
 // Hooks
-import useModalContext from "../utils/hooks/useModalContext";
-import useLogin from "../utils/hooks/useLogin";
+import useModalContext from "../../utils/hooks/useModalContext";
+import useLogin from "../../utils/hooks/useLogin";
 import Signup from "./SignupForm";
 
 const LoginForm = () => {

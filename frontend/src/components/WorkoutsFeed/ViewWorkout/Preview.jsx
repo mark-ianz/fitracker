@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useWorkoutContext from "../../utils/hooks/useWorkoutContext";
+import useWorkoutContext from "../../../utils/hooks/useWorkoutContext";
 import { format } from "date-fns";
-import useAuthContext from "../../utils/hooks/useAuthContext";
+import useAuthContext from "../../../utils/hooks/useAuthContext";
 import SortButton from "./SortButton";
-import AddMoreButton from "./Create/AddMoreButton";
+import AddMoreButton from "../Create/AddMoreButton";
 
 // Hooks
 

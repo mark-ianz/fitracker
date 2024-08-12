@@ -1,12 +1,10 @@
-import React from "react";
 import LeftContainer from "./LeftContainer";
 import NavLinks from "./NavLinks";
 import useAuthContext from "../../utils/hooks/useAuthContext";
 import useModalContext from "../../utils/hooks/useModalContext";
-import LoginForm from "../LoginForm";
 import Button from "../Button";
+import LoginForm from "../Forms/LoginForm";
 import useLogout from "../../utils/hooks/useLogout";
-import { useNavigate } from "react-router-dom";
 
 const MainNav = () => {
   const logout = useLogout();
