@@ -4,7 +4,7 @@ import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
 import Button from "../../Button";
 
-const WokroutSessionForm = () => {
+const WorkoutSessionForm = () => {
   // Dependencies
   const navigate = useNavigate();
   const { token, _id } = useAuthContext();
@@ -133,4 +133,4 @@ const WokroutSessionForm = () => {
   );
 };
 
-export default WokroutSessionForm;
+export default WorkoutSessionForm;
