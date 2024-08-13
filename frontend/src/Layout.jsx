@@ -9,12 +9,10 @@ import Header from "./components/Header";
 
 const Layout = () => {
   return (
-    <div className="bg-gray-200 flex-col flex px-[5vh] py-[5vh] grow container-desktop max-sm:px-4 max-sm:py-4">
-      <div className="bg-gray-50 flex flex-col px-[5vh] py-[3vh] grow max-lg:px-6">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
+    <div className="bg-gray-50 flex-col flex px-[3vh] py-[3vh] grow container-desktop max-sm:px-4 max-sm:py-4">
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

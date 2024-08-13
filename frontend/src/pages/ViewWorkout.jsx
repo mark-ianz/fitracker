@@ -80,7 +80,7 @@ const ViewWorkout = () => {
                 {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
               </p>
             </span>
-            <button className="w-8 h-8 ml-auto">
+            <button className="w-8 h-8 ml-auto" onClick={handleDeleteClick}>
               <svg
                 viewBox="0 0 24 24"
                 width="36px"

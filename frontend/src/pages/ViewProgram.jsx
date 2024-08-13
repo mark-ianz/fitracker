@@ -57,7 +57,7 @@ const ViewProgram = () => {
               return (
                 <li
                   key={workout._id}
-                  className="push shadow-md p-4 border-solid border-[1px]"
+                  className="push shadow-md p-4 border-solid border-[1px] rounded-md"
                 >
                   <p className="font-bold text-xl text-red-400">{workout.workoutName}</p>
                   <p className="text-sm text-gray-600">

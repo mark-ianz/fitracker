@@ -1,10 +1,7 @@
 // Dependencies
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
 
 // Pages
@@ -23,6 +20,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateWorkout from "./pages/CreateWorkout";
 import NotForAuth from "./utils/NotForAuth";
 import ViewProgram from "./pages/ViewProgram";
+import Test from "./pages/Test";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +73,10 @@ const router = createBrowserRouter([
         element: <About />,
       },
     ],
+  },
+  {
+    path: "/test",
+    element: <Test />,
   },
 ]);
 

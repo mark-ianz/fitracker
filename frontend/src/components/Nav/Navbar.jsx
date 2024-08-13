@@ -5,23 +5,21 @@ import { useEffect } from "react";
 import Sidebar from "./Sidebar";
 
 // Providers
-import useSidebarContext from "../../utils/hooks/useSidebarContext";
 import MainNav from "./MainNav";
 
 const Navbar = () => {
-  const { closeSidebar } = useSidebarContext();
 
-  useEffect(() => {
+  /* useEffect(() => {
     window.addEventListener("resize", closeSidebar);
 
     return () => {
       window.removeEventListener("resize", closeSidebar);
     };
-  }, []);
+  }, []); */
 
   return (
     <>
-      <nav className="nav-container flex flex-row justify-between align-middle text-gray-600">
+      <nav className="nav-container flex flex-row justify-between align-middle text-gray-600 shadow-md p-4 bg-white max-[575px]:flex-col max-[575px]:gap-2">
         <MainNav/>
         <Sidebar />
       </nav>
