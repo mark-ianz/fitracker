@@ -1,15 +1,38 @@
 const { matchedData, validationResult } = require("express-validator");
+const Program = require("../models/programModel");
 
-const new_program = (req, res) => {
+const new_program = async (req, res) => {
   const error = validationResult(req);
 
-  if (error) {
+  if (!error.isEmpty()) {
     return res.status(422).json({ error: error.array()[0].msg });
   }
 
-  const program = matchedData(req);
+  try {
+    const result = matchedData(req);
+    const program = new Program(result);
+    const test = await program.save();
+
+    return res.status(202).json({ test });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: "Server error. Please try again later" });
+  }
+};
+
+const get_all_programs = async (req, res) => {
+  try {
+    const programs = await Program.find();
+    return res.status(200).json({ programs });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: "Server error. Please try again later" });
+  }
 };
 
 module.exports = {
   new_program,
+  get_all_programs,
 };

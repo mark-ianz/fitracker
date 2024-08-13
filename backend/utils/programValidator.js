@@ -13,7 +13,18 @@ const programValidator = [
     .trim()
     .escape(),
 
-  body("workouts").notEmpty().withMessage("Workouts list is required"),
+  body("workouts")
+    .notEmpty()
+    .withMessage("Workouts list is required")
+    .isArray()
+    .withMessage("Workouts list should be an array")
+    .custom((workouts) => {
+      if (workouts.length <= 0) {
+        throw new Error("Workouts list cannot be empty");
+      }
+
+      return true;
+    }),
 
   body("workouts.*.workoutName")
     .notEmpty()
@@ -21,7 +32,7 @@ const programValidator = [
     .trim()
     .escape(),
 
-  body("workouts.*.target")
+  body("workouts.*.muscleTargets")
     .notEmpty()
     .withMessage("Muscle targets are required")
     .trim()
@@ -30,14 +41,19 @@ const programValidator = [
   body("workouts.*.workoutDescription")
     .notEmpty()
     .withMessage("Workout description is required")
-    .trim()
-    .escape(),
+    .trim(),
 
   body("workouts.*.exercises")
-    .isArray ()
-    .withMessage ("Exercises should be an array")
+    .isArray()
+    .withMessage("Exercises should be an array")
     .notEmpty()
-    .withMessage ("Exercises are required"),
+    .withMessage("Exercises are required")
+    .custom((exercises) => {
+      if (exercises.length <= 0) {
+        throw new Error("Exercises cannot be empty");
+      }
+      return true;
+    }),
 
   body("workouts.*.exercises.*.exerciseName")
     .notEmpty()
