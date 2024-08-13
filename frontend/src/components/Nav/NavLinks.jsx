@@ -43,7 +43,7 @@ const NavLinks = ({ className }) => {
       </li>
       {!isAuth ? (
         <Button
-          buttonType="primary"
+          buttonType="plain"
           className={"grow"}
           onClick={() => {
             openModal(<LoginForm />);

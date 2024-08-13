@@ -63,7 +63,7 @@ const Preview = () => {
                 <li key={workout._id} className="border-2 rounded-lg">
                   <Link
                     to={`/workout/${workout._id}`}
-                    className="flex flex-row items-center gap-4 justify-start p-6 max-[520px]:flex-col"
+                    className="flex flex-row items-center gap-4 justify-start p-6"
                   >
                     <div className="flex flex-col flex-grow">
                       <span className="flex flex-row items-center mb-4 flex-wrap">
