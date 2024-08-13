@@ -18,15 +18,12 @@ const Footer = () => {
           <img src="/logo192.png" alt="logo" className="w-7" />
         </Link>
       </div>
-      <ul className="flex flex-row justify-between w-full max-w-sm max-xsm:flex-col max-xsm:items-center max-xsm:gap-2">
+      <ul className="flex flex-row justify-between w-full max-w-[300px] max-xsm:flex-col max-xsm:items-center max-xsm:gap-2">
         <li>
           <Link to={"/home"}>Home</Link>
         </li>
         <li>
           <Link to={"/programs"}>Programs</Link>
-        </li>
-        <li>
-          <Link to={"/features"}>Features</Link>
         </li>
         <li>
           <Link to={"/about"}>About</Link>

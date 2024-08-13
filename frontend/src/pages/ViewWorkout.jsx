@@ -74,12 +74,7 @@ const ViewWorkout = () => {
             <div className="flex items-center">
               <BackButton />
             </div>
-            <span>
-              <p className="font-bold text-xl">{workout.name}</p>
-              <p className="text-gray-600 text-sm">
-                {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
-              </p>
-            </span>
+            <p className="font-bold text-xl text-red-400">{workout.name}</p>
             <button className="w-8 h-8 ml-auto" onClick={handleDeleteClick}>
               <svg
                 viewBox="0 0 24 24"
@@ -107,6 +102,9 @@ const ViewWorkout = () => {
             </button>
           </div>
           <div className="text-gray-600 text-sm mb-4">
+            <p className="text-gray-600 text-sm">
+              {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
+            </p>
             <p>Location: {workout.location}</p>
             <p>Tags: {workout.tags}</p>
           </div>

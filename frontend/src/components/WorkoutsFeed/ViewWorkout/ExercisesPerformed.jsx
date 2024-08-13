@@ -1,7 +1,11 @@
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext.js";
-import SubmitExerciseForm from "../Create/SubmitExerciseForm.jsx"
+import SubmitExerciseForm from "../Create/SubmitExerciseForm.jsx";
 
-const ExercisesPerformed = ({ canEdit, editClickFunction, exercisesPerformed }) => {
+const ExercisesPerformed = ({
+  canEdit,
+  editClickFunction,
+  exercisesPerformed,
+}) => {
   const { editing, isEditing, isAddingExercise } = useExercisesFormContext();
 
   return exercisesPerformed.map((exercise, index) => {
@@ -26,7 +30,9 @@ const ExercisesPerformed = ({ canEdit, editClickFunction, exercisesPerformed }) 
         className="border-solid border-[1px] shadow-sm py-4 rounded-md relative pb-20"
       >
         <div className="flex flex-row justify-between px-6">
-          <p className="font-bold text-lg break-words max-w-[65%]">{exercise.exerciseName}</p>
+          <p className="font-bold text-lg break-words max-w-[65%]">
+            {exercise.exerciseName}
+          </p>
           <p className=" text-gray-600 text-sm text-center">
             {exercise.sets.length} set/s
           </p>
@@ -57,12 +63,12 @@ const ExercisesPerformed = ({ canEdit, editClickFunction, exercisesPerformed }) 
             })}
           </tbody>
         </table>
-        <p className="text-sm text-gray-600 absolute bottom-2 left-2">
-          Total Volume: {total.volume} lb
+        <p className="text-sm absolute bottom-2 left-2 text-red-400">
+          Total volume: {total.volume} lb
         </p>
 
         {/* If can edit, currently not editing and not adding exercise, show the Edit button */}
-        {(canEdit && !isEditing && !isAddingExercise) && (
+        {canEdit && !isEditing && !isAddingExercise && (
           <div className="absolute bottom-2 right-2 ">
             <button
               onClick={editClickFunction}
