@@ -22,6 +22,7 @@ import Providers from "./utils/context/Providers";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateWorkout from "./pages/CreateWorkout";
 import NotForAuth from "./utils/NotForAuth";
+import ViewProgram from "./pages/ViewProgram";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "programs",
         element: <Programs />,
+      },
+      {
+        path: "programs/:id",
+        element: <ViewProgram />,
       },
       {
         path: "features",

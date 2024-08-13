@@ -11,6 +11,7 @@ require("dotenv").config();
 // Routes
 const workoutRoutes = require("./routes/workoutRoute.js");
 const userRoutes = require("./routes/userRoutes.js");
+const programRoutes = require ("./routes/programRoutes.js")
 
 // Start server
 async function startServer() {
@@ -33,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://fitracker-app.netlify.app",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -61,6 +62,9 @@ app.use("/api/workouts", workoutRoutes);
 
 // User Routes
 app.use("/api/users", userRoutes);
+
+// Program Routes
+app.use ("/api/programs", programRoutes)
 
 // Errors
 app.use((req, res) => {

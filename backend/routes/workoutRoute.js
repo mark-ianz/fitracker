@@ -22,6 +22,7 @@ router.get("/:id", get_one_workout);
 // Post a new workout
 router.post("/new", workoutValidator, post_workout);
 
+
 // Delete a workout
 router.delete("/:id", delete_one_workout);
 

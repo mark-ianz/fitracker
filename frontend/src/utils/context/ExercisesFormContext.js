@@ -51,6 +51,8 @@ const ExercisesFormContextProvider = ({ children }) => {
     editing: null, // Editing object value
   });
 
+  console.log(state);
+
   return (
     <ExercisesFormContext.Provider value={{ ...state, dispatch }}>
       {children}
