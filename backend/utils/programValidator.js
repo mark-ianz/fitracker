@@ -4,14 +4,12 @@ const programValidator = [
   body("title")
     .notEmpty()
     .withMessage("Program title cannot be empty")
-    .trim()
-    .escape(),
+    .trim(),
 
   body("description")
     .notEmpty()
     .withMessage("Description is required")
-    .trim()
-    .escape(),
+    .trim(),
 
   body("workouts")
     .notEmpty()
@@ -29,14 +27,12 @@ const programValidator = [
   body("workouts.*.workoutName")
     .notEmpty()
     .withMessage("Workout name is required")
-    .trim()
-    .escape(),
+    .trim(),
 
   body("workouts.*.muscleTargets")
     .notEmpty()
     .withMessage("Muscle targets are required")
-    .trim()
-    .escape(),
+    .trim(),
 
   body("workouts.*.workoutDescription")
     .notEmpty()

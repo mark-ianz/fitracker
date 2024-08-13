@@ -4,6 +4,8 @@ const Programs = () => {
   // List of Splits
   // Every card has a "view button"
 
+ 
+
   return (
     <div>
       <h1 className="text-xl font-bold">Recommended Programs</h1>
