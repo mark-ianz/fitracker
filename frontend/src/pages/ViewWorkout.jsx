@@ -9,6 +9,7 @@ import ExercisesPerformed from "../components/WorkoutsFeed/ViewWorkout/Exercises
 import useAuthContext from "../utils/hooks/useAuthContext";
 import useWorkoutContext from "../utils/hooks/useWorkoutContext";
 import { useEffect, useState } from "react";
+import BackButton from "../components/BackButton";
 
 const ViewWorkout = () => {
   const navigate = useNavigate();
@@ -71,14 +72,7 @@ const ViewWorkout = () => {
         <>
           <div className="flex flex-row items-center justify-center mb-4 gap-2">
             <div className="flex items-center">
-              <button
-                className="border-solid border-[1px] border-gray-500 rounded-full p-1"
-                onClick={() => {
-                  navigate(-1);
-                }}
-              >
-                <img src="/arrow-left.svg" alt="back button" className="w-7" />
-              </button>
+              <BackButton />
             </div>
             <span>
               <p className="font-bold text-xl">{workout.name}</p>
@@ -86,7 +80,7 @@ const ViewWorkout = () => {
                 {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
               </p>
             </span>
-            <button onClick={handleDeleteClick} className="w-8 h-8 ml-auto">
+            <button className="w-8 h-8 ml-auto">
               <svg
                 viewBox="0 0 24 24"
                 width="36px"

@@ -1,5 +1,5 @@
 import ExercisesPerfomedForm from "../components/WorkoutsFeed/Create/ExercisesPerfomedForm";
-import WorkoutSessionForm from "../components/WorkoutsFeed/Create/WorkoutSessionForm";
+import WorkoutSessionForm from "../components/WorkoutsFeed/Create/WokroutSessionForm";
 
 const CreateWorkout = () => {
   return (

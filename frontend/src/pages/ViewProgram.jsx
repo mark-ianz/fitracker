@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAuthContext from "../utils/hooks/useAuthContext";
+import BackButton from "../components/BackButton";
 
 const ViewProgram = () => {
   // If clicked it will be redirected to /programs/:id and inside is program's full details
@@ -46,7 +47,10 @@ const ViewProgram = () => {
       {error && <p>{error}</p>}
       {program && (
         <>
-          <h1>{program.title}</h1>
+          <div>
+            <BackButton />
+            <h1>{program.title}</h1>
+          </div>
           <p>{program.description}</p>
           <ul className="set-of-programs grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
             {program.workouts.map((workout) => {
