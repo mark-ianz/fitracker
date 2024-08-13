@@ -118,7 +118,7 @@ const WorkoutSessionForm = () => {
           </div>
         </div>
         <div className="flex flex-col items-end mt-4 gap-4">
-          <p className="text-gray-400 text-sm">{error}</p>
+          <p className="text-gray-600 text-sm">{error}</p>
           <div className="flex flex-row items-center gap-2">
             <Button buttonType="secondary" onClick={() => navigate(-1)}>
               Cancel

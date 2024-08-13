@@ -21,7 +21,7 @@ const SortButton = () => {
       <p className="text-2xl mb-2">Workout History</p>
       <div className="flex content-center">
         <div className="w-fit py-2 px-4 rounded-md cursor-pointer bg-gray-200 relative">
-          <button className="text-gray-400" onClick={openSort}>
+          <button className="text-gray-600" onClick={openSort}>
             Sort By: {sort} ▼
           </button>
           <ul

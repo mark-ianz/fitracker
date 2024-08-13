@@ -5,7 +5,7 @@ const BackButton = ({ className }) => {
   const navigate = useNavigate();
   return (
     <button
-      className={`border-solid border-[1px] border-gray-500 rounded-full p-1 ${className}`}
+      className={`${className}`}
       onClick={() => {
         navigate(-1);
       }}

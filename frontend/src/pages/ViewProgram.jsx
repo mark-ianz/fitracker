@@ -43,15 +43,15 @@ const ViewProgram = () => {
   // As of now the program input can only be added on the database or postman
 
   return (
-    <div>
+    <main>
       {error && <p>{error}</p>}
       {program && (
         <>
-          <div>
+          <div className="flex items-center gap-2 mb-4">
             <BackButton />
-            <h1>{program.title}</h1>
+            <h1 className="text-2xl font-bold">{program.title}</h1>
           </div>
-          <p>{program.description}</p>
+          <p className="mb-4">{program.description}</p>
           <ul className="set-of-programs grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
             {program.workouts.map((workout) => {
               return (
@@ -59,13 +59,15 @@ const ViewProgram = () => {
                   key={workout._id}
                   className="push shadow-md p-4 border-solid border-[1px]"
                 >
-                  <p className="font-bold text-xl text-red-400">Push Day</p>
-                  <p>Target: {workout.muscleTargets}</p>
-                  <p className="text-gray-400 my-4">
+                  <p className="font-bold text-xl text-red-400">{workout.workoutName}</p>
+                  <p className="text-sm text-gray-600">
+                    Target: {workout.muscleTargets}
+                  </p>
+                  <p className="text-gray-600 my-4">
                     {workout.workoutDescription}
                   </p>
-                  <p>Exercises:</p>
-                  <ul>
+                  <p className="font-bold">Exercises:</p>
+                  <ul className="list-disc list-inside text-gray-600">
                     {workout.exercises.map((exercise) => {
                       return <li key={exercise.id}>{exercise.exerciseName}</li>;
                     })}
@@ -76,7 +78,7 @@ const ViewProgram = () => {
           </ul>
         </>
       )}
-    </div>
+    </main>
   );
 };
 

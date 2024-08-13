@@ -18,7 +18,7 @@ const NavLinks = ({ className }) => {
 
   return (
     <ul
-      className={`nav-links flex items-center min-w-fit ${className} text-xl text-gray-400`}
+      className={`nav-links flex items-center min-w-fit ${className} text-xl text-gray-600`}
     >
       <li className="min-w-fit w-full flex align-middle justify-center">
         <NavLink to="/home" className="w-full px-4 py-2 text-center">
@@ -70,7 +70,7 @@ const NavLinks = ({ className }) => {
           <Button
             buttonType="primary"
             className={
-              "text-xl py-2 rounded bg-opacity-0 text-inherit !text-gray-400 lg:hidden"
+              "text-xl py-2 rounded bg-opacity-0 text-inherit !text-gray-600 lg:hidden"
             }
             onClick={() => {
               closeSidebar();

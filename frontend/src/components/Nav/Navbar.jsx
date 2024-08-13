@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="nav-container flex flex-row justify-between align-middle text-gray-400">
+      <nav className="nav-container flex flex-row justify-between align-middle text-gray-600">
         <MainNav/>
         <Sidebar />
       </nav>

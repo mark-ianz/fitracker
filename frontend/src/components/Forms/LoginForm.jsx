@@ -65,7 +65,7 @@ const LoginForm = () => {
       </div>
       <div className="text-sm mt-2 w-full flex flex-row items-start">
         {error && <p className="text-red-400 max-w-[65%]">{error}</p>}
-        <div className="ml-auto text-gray-400 flex gap-1 items-center justify-center">
+        <div className="ml-auto text-gray-600 flex gap-1 items-center justify-center">
           <p>Show Password</p>
           <input
             type="checkbox"
@@ -82,7 +82,7 @@ const LoginForm = () => {
           Login
         </Button>
       )}
-      <div className="text-gray-400 items-center text-sm mt-4 flex flex-col">
+      <div className="text-gray-600 items-center text-sm mt-4 flex flex-col">
         <a href="/forgot">Forgot Password?</a>
         <button
           onClick={() => {

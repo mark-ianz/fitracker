@@ -67,7 +67,7 @@ const ViewWorkout = () => {
   };
 
   return (
-    <div>
+    <main>
       {workout && (
         <>
           <div className="flex flex-row items-center justify-center mb-4 gap-2">
@@ -76,7 +76,7 @@ const ViewWorkout = () => {
             </div>
             <span>
               <p className="font-bold text-xl">{workout.name}</p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-600 text-sm">
                 {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
               </p>
             </span>
@@ -106,7 +106,7 @@ const ViewWorkout = () => {
               </svg>
             </button>
           </div>
-          <div className="text-gray-400 text-sm mb-4">
+          <div className="text-gray-600 text-sm mb-4">
             <p>Location: {workout.location}</p>
             <p>Tags: {workout.tags}</p>
           </div>
@@ -130,7 +130,7 @@ const ViewWorkout = () => {
           </Link>{" "}
         </p>
       )}
-    </div>
+    </main>
   );
 };
 

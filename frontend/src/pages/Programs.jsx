@@ -7,11 +7,11 @@ const Programs = () => {
  
 
   return (
-    <div>
-      <h1 className="text-xl font-bold">Recommended Programs</h1>
+    <main>
+      <h1 className="text-3xl font-bold">Recommended Programs</h1>
       <div className="border-b-[1px] my-4"></div>
       <ProgramsList />
-    </div>
+    </main>
   );
 };
 

@@ -27,20 +27,20 @@ const ExercisesPerformed = ({ canEdit, editClickFunction, exercisesPerformed }) 
       >
         <div className="flex flex-row justify-between px-6">
           <p className="font-bold text-lg break-words max-w-[65%]">{exercise.exerciseName}</p>
-          <p className=" text-gray-500 text-sm text-center">
+          <p className=" text-gray-600 text-sm text-center">
             {exercise.sets.length} set/s
           </p>
         </div>
         <table className="w-full min-w-fit">
           <thead className="w-full">
             <tr className="flex flex-row justify-between">
-              <th className="w-1/3 text-center font-normal text-sm text-gray-500">
+              <th className="w-1/3 text-center font-normal text-sm text-gray-600">
                 Set
               </th>
-              <th className="w-1/3 text-center font-normal text-sm text-gray-500">
+              <th className="w-1/3 text-center font-normal text-sm text-gray-600">
                 Reps
               </th>
-              <th className="w-1/3 text-center font-normal text-sm text-gray-500">
+              <th className="w-1/3 text-center font-normal text-sm text-gray-600">
                 Weight
               </th>
             </tr>
@@ -57,7 +57,7 @@ const ExercisesPerformed = ({ canEdit, editClickFunction, exercisesPerformed }) 
             })}
           </tbody>
         </table>
-        <p className="text-sm text-gray-500 absolute bottom-2 left-2">
+        <p className="text-sm text-gray-600 absolute bottom-2 left-2">
           Total Volume: {total.volume} lb
         </p>
 

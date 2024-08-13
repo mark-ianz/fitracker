@@ -68,7 +68,7 @@ const Preview = () => {
                     <div className="flex flex-col flex-grow">
                       <span className="flex flex-row items-center mb-4 flex-wrap">
                         <p className="text-2xl mr-auto">{workout.name}</p>
-                        <p className="text-gray-500">
+                        <p className="text-gray-600">
                           {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
                         </p>
                       </span>
