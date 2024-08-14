@@ -7,6 +7,7 @@ import Button from "../Button";
 import LoginForm from "../Forms/LoginForm";
 import useAuthContext from "../../utils/hooks/useAuthContext";
 import useLogout from "../../utils/hooks/useLogout";
+import Signup from "../Forms/SignupForm";
 
 const NavLinks = ({ className }) => {
   const { openModal } = useModalContext();
@@ -15,7 +16,7 @@ const NavLinks = ({ className }) => {
 
   return (
     <ul
-      className={`nav-links flex items-center min-w-fit ${className} text-gray-600 gap-4 min-w-fit max-[345px]:gap-0`}
+      className={`nav-links grid grid-cols-6 max-sm:grid-cols-3  items-center min-w-fit ${className} text-gray-600 gap-4 min-w-fit max-[345px]:gap-0`}
     >
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
@@ -25,12 +26,30 @@ const NavLinks = ({ className }) => {
           Home
         </NavLink>
       </li>
+      {isAuth && (
+        <li className="min-w-fit flex align-middle justify-center grow">
+          <NavLink
+            to="/create"
+            className="p-1 text-center hover:text-red-400 transition-all"
+          >
+            Create
+          </NavLink>
+        </li>
+      )}
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
           to="/programs"
           className="p-1 text-center hover:text-red-400 transition-all"
         >
           Programs
+        </NavLink>
+      </li>
+      <li className="min-w-fit flex align-middle justify-center grow">
+        <NavLink
+          to="/features"
+          className="p-1 text-center hover:text-red-400 transition-all"
+        >
+          Features
         </NavLink>
       </li>
       <li className="min-w-fit flex align-middle justify-center grow">
@@ -42,15 +61,26 @@ const NavLinks = ({ className }) => {
         </NavLink>
       </li>
       {!isAuth ? (
-        <Button
-          buttonType="plain"
-          className={"grow"}
-          onClick={() => {
-            openModal(<LoginForm />);
-          }}
-        >
-          Login
-        </Button>
+        <>
+          <Button
+            buttonType="plain"
+            className={"grow"}
+            onClick={() => {
+              openModal(<LoginForm />);
+            }}
+          >
+            Login
+          </Button>
+          <Button
+            buttonType="plain"
+            className={"grow"}
+            onClick={() => {
+              openModal(<Signup />);
+            }}
+          >
+            Signup
+          </Button>
+        </>
       ) : (
         <Button buttonType="plain" className={"grow"} onClick={logout}>
           Logout

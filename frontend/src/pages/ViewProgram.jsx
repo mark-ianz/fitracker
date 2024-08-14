@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import BackButton from "../components/BackButton";
+import Button from "../components/Button";
 
 const ViewProgram = () => {
   // If clicked it will be redirected to /programs/:id and inside is program's full details
@@ -52,14 +53,16 @@ const ViewProgram = () => {
             <h1 className="text-2xl font-bold">{program.title}</h1>
           </div>
           <p className="mb-4">{program.description}</p>
-          <ul className="set-of-programs grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+          <ul className="grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
             {program.workouts.map((workout) => {
               return (
                 <li
                   key={workout._id}
-                  className="push shadow-md p-4 border-solid border-[1px] rounded-md"
+                  className="push shadow-md p-4 border-solid border-[1px] rounded-md relative pb-24"
                 >
-                  <p className="font-bold text-xl text-red-400">{workout.workoutName}</p>
+                  <p className="font-bold text-xl text-red-400">
+                    {workout.workoutName}
+                  </p>
                   <p className="text-sm text-gray-600">
                     Target: {workout.muscleTargets}
                   </p>
@@ -72,6 +75,7 @@ const ViewProgram = () => {
                       return <li key={exercise.id}>{exercise.exerciseName}</li>;
                     })}
                   </ul>
+                  <Button className={"absolute bottom-4 right-4"} buttonType={"primary"}>Log</Button>
                 </li>
               );
             })}

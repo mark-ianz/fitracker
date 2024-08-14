@@ -8,7 +8,6 @@ import Sidebar from "./Sidebar";
 import MainNav from "./MainNav";
 
 const Navbar = () => {
-
   /* useEffect(() => {
     window.addEventListener("resize", closeSidebar);
 
@@ -19,8 +18,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="nav-container flex flex-row justify-between align-middle text-gray-600 shadow-md p-4 bg-white max-[575px]:flex-col max-[575px]:gap-2">
-        <MainNav/>
+      <nav className="nav-container flex flex-row justify-between align-middle text-gray-600 shadow-md p-4 bg-white max-[845px]:flex-col max-[845px]:gap-2">
+        <MainNav />
         <Sidebar />
       </nav>
     </>
