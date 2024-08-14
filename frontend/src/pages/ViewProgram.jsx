@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import BackButton from "../components/BackButton";
 import Button from "../components/Button";
@@ -8,6 +8,7 @@ const ViewProgram = () => {
   // If clicked it will be redirected to /programs/:id and inside is program's full details
   // Fetch the data with the id parameter
   const { id } = useParams();
+  const navigate = useNavigate();
   const { token } = useAuthContext();
   const [error, setError] = useState("");
   const [program, setProgram] = useState(null);
@@ -75,7 +76,15 @@ const ViewProgram = () => {
                       return <li key={exercise.id}>{exercise.exerciseName}</li>;
                     })}
                   </ul>
-                  <Button className={"absolute bottom-4 right-4"} buttonType={"primary"}>Log</Button>
+                  <Button
+                    className={"absolute bottom-4 right-4"}
+                    buttonType={"primary"}
+                    onClick={() => {
+                      navigate (`/create/${workout._id}`)
+                    }}
+                  >
+                    Log
+                  </Button>
                 </li>
               );
             })}

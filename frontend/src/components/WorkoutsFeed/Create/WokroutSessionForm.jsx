@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
 import Button from "../../Button";
 
 const WorkoutSessionForm = () => {
   // Dependencies
+  const { id } = useParams();
   const navigate = useNavigate();
   const { token, _id } = useAuthContext();
   const { exercises } = useExercisesFormContext();
   const [error, setError] = useState("");
-
   // Form states
   const [sessionName, setSessionName] = useState("");
   const [description, setDescription] = useState("");
@@ -36,7 +36,6 @@ const WorkoutSessionForm = () => {
       date: dateTime,
     };
 
-
     const response = await fetch("http://localhost:8080/api/workouts/new", {
       method: "POST",
       headers: {
@@ -53,7 +52,24 @@ const WorkoutSessionForm = () => {
       navigate("/");
     }
   };
-  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`http://localhost:8080/api/programs/exercise/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const result = await response.json ();
+      console.log(result);
+    };
+
+    fetchData();
+  }, [id]);
+
   return (
     <>
       <h1 className="text-xl mb-4">Log workout session</h1>

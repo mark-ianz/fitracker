@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <ViewWorkout />,
       },
       {
-        path: "create",
+        path: "create/:id?",
         element: (
           <ProtectedRoute>
             <CreateWorkout />
