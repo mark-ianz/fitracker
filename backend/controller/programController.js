@@ -1,47 +1,17 @@
-const { matchedData, validationResult } = require("express-validator");
+const { ObjectId } = require("mongodb");
 const Program = require("../models/programModel");
-const { isValidObjectId } = require("mongoose");
-
-const new_program = async (req, res) => {
-  const error = validationResult(req);
-
-  if (!error.isEmpty()) {
-    return res.status(422).json({ error: error.array()[0].msg });
-  }
-
-  try {
-    const result = matchedData(req);
-    const program = new Program(result);
-    const test = await program.save();
-
-    return res.status(202).json({ test });
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ error: "Server error. Please try again later" });
-  }
-};
-
-const get_all_programs = async (req, res) => {
-  try {
-    const programs = await Program.find();
-    return res.status(200).json({ programs });
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ error: "Server error. Please try again later" });
-  }
-};
 
 const get_one_program = async (req, res) => {
   const { id } = req.params;
-  if (!isValidObjectId(id)) {
-    return res.status(400).json({ error: "Program not found" });
+
+  if (!ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Program not found" });
   }
+
   try {
     const program = await Program.findById(id);
     if (!program) {
-      return res.status(400).json({ error: "Program not found" });
+      return res.status(404).json({ error: "Program not found" });
     }
     return res.status(200).json({ program });
   } catch (error) {
@@ -51,33 +21,11 @@ const get_one_program = async (req, res) => {
   }
 };
 
-const get_exercise_from_program = async (req, res) => {
-  /* const { id } = req.params;
-  if (!isValidObjectId(id)) {
-    return res.status(400).json({ error: "Program not found" });
-  }
-  try {
-    const exercises = await Program.aggregate([
-      { $unwind: "$description" },
-    ]);
+const post_program = async (req,res)=> {
 
-    if (!exercises) {
-      return res.status(400).json({ error: "Exercises not found" });
-    }
-    return res.status(200).json({ exercises });
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ error: "Server error. Please try again later" });
-  } */
-
-  const response = await Program.saveAll();
-  return res.json(response);
-};
+}
 
 module.exports = {
-  new_program,
-  get_all_programs,
   get_one_program,
-  get_exercise_from_program,
-};
+  post_program
+}

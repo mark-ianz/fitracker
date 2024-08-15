@@ -11,6 +11,7 @@ require("dotenv").config();
 // Routes
 const workoutRoutes = require("./routes/workoutRoute.js");
 const userRoutes = require("./routes/userRoutes.js");
+const splitRoutes = require ("./routes/splitRoutes.js")
 const programRoutes = require ("./routes/programRoutes.js")
 
 // Start server
@@ -62,6 +63,9 @@ app.use("/api/workouts", workoutRoutes);
 
 // User Routes
 app.use("/api/users", userRoutes);
+
+// Split Routes
+app.use ("/api/splits", splitRoutes)
 
 // Program Routes
 app.use ("/api/programs", programRoutes)
