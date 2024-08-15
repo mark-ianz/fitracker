@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { ObjectId } = require("mongodb");
+const Program = require("./programModel");
 
 const splitSchema = new Schema(
   {
@@ -12,14 +13,7 @@ const splitSchema = new Schema(
       type: String,
       required: true,
     },
-    programs: {
-      type: [
-        {
-          _id: { type: ObjectId, required: true },
-        },
-      ], // Array of programID
-      required: true,
-    },
+    programs: [{ type: ObjectId, required: true }], // Array of programID
   },
   { timeStamps: true }
 );
@@ -31,8 +25,12 @@ const splitSchema = new Schema(
 // 4. Upload the whole program on the database and send the response
 // This method allows the /exercises to be more flexible, it also allows the users to create their own /exercises
 // Statics
-splitSchema.statics.saveAll = async () => {
-  return { message: "Save All!" };
+
+splitSchema.statics.saveProgramsAndGetIds = async (programs) => {
+  const result = await Program.insertMany(programs);
+  const ids = result.map((program) => program._id);
+
+  return ids;
 };
 
 module.exports = mongoose.model("Split", splitSchema);

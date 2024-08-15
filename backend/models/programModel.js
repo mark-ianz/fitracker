@@ -54,4 +54,9 @@ const programSchema = new Schema({
   exercises: [exercisesSchema],
 }, {timestamps: true});
 
+/* programSchema.statics.saveProgramsAndGetIds = async (programs, user)=> {
+  const result = await programSchema.insertMany (programs);
+  return ["id1", "id2", "id3"]
+} */
+
 module.exports = mongoose.model("Program", programSchema);

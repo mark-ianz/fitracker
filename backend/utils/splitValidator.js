@@ -17,12 +17,11 @@ const splitValidator = [
 
       return true;
     }),
-  
-  body ("programs.*._id")
-    .notEmpty ()
-    .withMessage("Program id is required")
-    .isMongoId ()
-    .withMessage ("Program ID is not a valid Mongo ID"),
+
+  body("programs.*._id")
+    .optional()
+    .isMongoId()
+    .withMessage("Program ID is not a valid Mongo ID"),
 ];
 
 module.exports = splitValidator;

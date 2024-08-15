@@ -11,7 +11,7 @@ const {
 router.use(requireAuth);
 
 router.get("/", get_all_splits);
-router.post("/new", splitValidator, new_split);
 router.get("/:id", get_one_split);
+router.post("/", splitValidator, new_split);
 
 module.exports = router;
