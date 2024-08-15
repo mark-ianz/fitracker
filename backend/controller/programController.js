@@ -1,5 +1,6 @@
 const { ObjectId } = require("mongodb");
 const Program = require("../models/programModel");
+const { validationResult, matchedData } = require("express-validator");
 
 const get_one_program = async (req, res) => {
   const { id } = req.params;
@@ -22,7 +23,17 @@ const get_one_program = async (req, res) => {
 };
 
 const post_program = async (req,res)=> {
+  const error = validationResult (req);
 
+  if (!error.isEmpty ()) {
+    return res.status (422).json ({error: error.array ()[0].msg});
+  }
+
+  const data = matchedData (req);
+
+  const program = await new Program (data).save ();
+
+  res.status(201).json (program);
 }
 
 module.exports = {

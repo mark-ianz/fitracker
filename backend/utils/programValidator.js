@@ -1,40 +1,43 @@
 const { body } = require("express-validator");
 
 const programValidator = [
-  body("programs.*.workoutName")
+  body ("user")
+    .isMongoId ()
+    .withMessage ("User ID is not valid")
+    .trim (),
+
+  body("programName")
     .notEmpty()
-    .withMessage("Workout name is required")
+    .withMessage("Program name cannot be empty")
     .trim(),
 
-  body("programs.*.muscleTargets")
+  body("muscleTargets")
     .notEmpty()
     .withMessage("Muscle targets are required")
     .trim(),
 
-  body("programs.*.workoutDescription")
+  body("programDescription")
     .notEmpty()
-    .withMessage("Workout description is required")
+    .withMessage("Program description is required")
     .trim(),
 
-  body("programs.*.exercises")
+  body("exercises")
     .isArray()
-    .withMessage("Exercises should be an array")
-    .notEmpty()
-    .withMessage("Exercises are required")
+    .withMessage("Exercises is not an array")
     .custom((exercises) => {
       if (exercises.length <= 0) {
-        throw new Error("Exercises cannot be empty");
+        throw Error("Program exercises cannot be empty");
       }
       return true;
     }),
 
-  body("workouts.*.exercises.*.exerciseName")
+  body("exercises.*.exerciseName")
     .notEmpty()
     .withMessage("Exercise name is required"),
-    
-  body("workouts.*.exercises.*.id").optional (),
 
-  body("workouts.*.exercises.*.sets").default({ reps: 0, weight: 0 }),
-]
+  body("exercises.*.sets").default({ reps: 0, weight: 0 }),
+
+  body("exercises.*.id").optional(),
+];
 
 module.exports = programValidator;

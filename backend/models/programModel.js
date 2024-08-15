@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -34,7 +35,11 @@ const exercisesSchema = new Schema(
 );
 
 const programSchema = new Schema({
-  workoutName: {
+  user: {
+    type: ObjectId,
+    required: true
+  },
+  programName: {
     type: String,
     required: true,
   },
@@ -42,11 +47,11 @@ const programSchema = new Schema({
     type: String,
     required: true,
   },
-  workoutDescription: {
+  programDescription: {
     type: String,
     required: true,
   },
   exercises: [exercisesSchema],
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model("Program", programSchema);

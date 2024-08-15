@@ -43,7 +43,6 @@ const get_one_workout = async (req, res) => {
 };
 
 const post_workout = async (req, res) => {
-  console.log(req.body);
   const data = matchedData(req);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

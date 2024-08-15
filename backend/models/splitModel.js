@@ -2,24 +2,27 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { ObjectId } = require("mongodb");
 
-const splitSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
+const splitSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    programs: {
+      type: [
+        {
+          _id: { type: ObjectId, required: true },
+        },
+      ], // Array of programID
+      required: true,
+    },
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  programs: {
-    type: [
-      {
-        _id: { type: ObjectId, required: true },
-      },
-    ], // Array of programID
-    required: true,
-  },
-});
+  { timeStamps: true }
+);
 
 // Steps for saving programs:
 // 1. Itterate to all program workouts e.g: Itterating to push day, back day and leg day

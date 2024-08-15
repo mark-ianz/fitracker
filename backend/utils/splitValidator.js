@@ -18,7 +18,7 @@ const splitValidator = [
       return true;
     }),
   
-  body ("programs.*")
+  body ("programs.*._id")
     .notEmpty ()
     .withMessage("Program id is required")
     .isMongoId ()
