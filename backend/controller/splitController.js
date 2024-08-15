@@ -26,7 +26,7 @@ const new_split = async (req, res) => {
 
   // Spread the data and replace the program of exercises with the programs ids.
   const split = new Split({ ...data, programs: [...ids] });
-  await split.save(); 
+  await split.save();
 
   return res.status(202).json(split);
 
