@@ -9,7 +9,7 @@ const WorkoutSessionForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { token, _id } = useAuthContext();
-  const { exercises } = useExercisesFormContext();
+  const { exercises, dispatch } = useExercisesFormContext();
   const [error, setError] = useState("");
   // Form states
   const [sessionName, setSessionName] = useState("");
@@ -52,22 +52,27 @@ const WorkoutSessionForm = () => {
       navigate("/");
     }
   };
-
+  console.log(exercises);
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`http://localhost:8080/api/programs/exercise/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    if (id) {
+      const setData = async () => {
+        const response = await fetch(
+          `http://localhost:8080/api/programs/exercise/${id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-      const result = await response.json ();
-      console.log(result);
-    };
+        const result = await response.json();
+        /* dispatch({ type: "ADD_EXERCISE", payload: program.workouts }); */
+        console.log(result);
+      };
 
-    fetchData();
+      setData();
+    }
   }, [id]);
 
   return (

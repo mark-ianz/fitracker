@@ -1,15 +1,9 @@
 const { body } = require("express-validator");
 
 const programValidator = [
-  body("title")
-    .notEmpty()
-    .withMessage("Program title cannot be empty")
-    .trim(),
+  body("title").notEmpty().withMessage("Program title cannot be empty").trim(),
 
-  body("description")
-    .notEmpty()
-    .withMessage("Description is required")
-    .trim(),
+  body("description").notEmpty().withMessage("Description is required").trim(),
 
   body("workouts")
     .notEmpty()
@@ -54,6 +48,8 @@ const programValidator = [
   body("workouts.*.exercises.*.exerciseName")
     .notEmpty()
     .withMessage("Exercise name is required"),
+
+  body("workouts.*.exercises.*.sets").default({ reps: 0, weight: 0 }),
 ];
 
 module.exports = programValidator;

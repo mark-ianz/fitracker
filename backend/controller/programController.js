@@ -52,26 +52,32 @@ const get_one_program = async (req, res) => {
 };
 
 const get_exercise_from_program = async (req, res) => {
-  const { id } = req.params;
+  /* const { id } = req.params;
   if (!isValidObjectId(id)) {
     return res.status(400).json({ error: "Program not found" });
   }
   try {
-    const program = await Program.findOne({ "workouts._id": id });
-    if (!program) {
-      return res.status(400).json({ error: "Program not found" });
+    const exercises = await Program.aggregate([
+      { $unwind: "$description" },
+    ]);
+
+    if (!exercises) {
+      return res.status(400).json({ error: "Exercises not found" });
     }
-    return res.status(200).json({ program });
+    return res.status(200).json({ exercises });
   } catch (error) {
     return res
       .status(500)
       .json({ error: "Server error. Please try again later" });
-  }
+  } */
+
+  const response = await Program.saveAll();
+  return res.json(response);
 };
 
 module.exports = {
   new_program,
   get_all_programs,
   get_one_program,
-  get_exercise_from_program
+  get_exercise_from_program,
 };
