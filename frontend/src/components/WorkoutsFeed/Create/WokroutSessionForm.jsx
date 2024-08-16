@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
 import Button from "../../Button";
+import axios from "axios";
 
 const WorkoutSessionForm = () => {
   // Dependencies
-  const { id } = useParams();
   const navigate = useNavigate();
   const { token, _id } = useAuthContext();
   const { exercises, dispatch } = useExercisesFormContext();
@@ -36,44 +36,22 @@ const WorkoutSessionForm = () => {
       date: dateTime,
     };
 
-    const response = await fetch("http://localhost:8080/api/workouts/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(workout),
-    });
+    try {
+      await axios.post("http://localhost:8080/api/workouts/new", workout, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    const result = await response.json();
-    if (!response.ok) {
-      setError(result.error);
-    } else {
       navigate("/");
+    } catch (error) {
+      if (error.response) {
+        setError(error.response.data.error);
+      } else {
+        setError(error.message);
+      }
     }
   };
-  console.log(exercises);
-  useEffect(() => {
-    if (id) {
-      const setData = async () => {
-        const response = await fetch(
-          `http://localhost:8080/api/programs/exercise/${id}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const result = await response.json();
-        /* dispatch({ type: "ADD_EXERCISE", payload: program.workouts }); */
-        console.log(result);
-      };
-
-      setData();
-    }
-  }, [id]);
 
   return (
     <>
