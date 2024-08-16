@@ -11,7 +11,7 @@ import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import ErrorPage from "./pages/ErrorPage";
 import ViewWorkout from "./pages/ViewWorkout";
-import Programs from "./pages/Programs";
+import Splits from "./pages/Splits";
 import Features from "./pages/Features";
 
 // Provider
@@ -19,7 +19,7 @@ import Providers from "./utils/context/Providers";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateWorkout from "./pages/CreateWorkout";
 import NotForAuth from "./utils/NotForAuth";
-import ViewProgram from "./pages/ViewProgram";
+import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
 
 const router = createBrowserRouter([
@@ -57,12 +57,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "programs",
-        element: <Programs />,
+        path: "splits",
+        element: <Splits />,
       },
       {
-        path: "programs/:id",
-        element: <ViewProgram />,
+        path: "splits/:id",
+        element: <ViewSplit />,
       },
       {
         path: "features",

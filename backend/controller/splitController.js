@@ -28,7 +28,7 @@ const new_split = async (req, res) => {
   const split = new Split({ ...data, programs: [...ids] });
   await split.save();
 
-  return res.status(202).json(split);
+  return res.status(202).json({split});
 
   /* try {
     const result = matchedData(req);
@@ -45,8 +45,8 @@ const new_split = async (req, res) => {
 
 const get_all_splits = async (req, res) => {
   try {
-    const programs = await Split.find();
-    return res.status(200).json({ programs });
+    const splits = await Split.find();
+    return res.status(200).json({ splits });
   } catch (error) {
     return res
       .status(500)
@@ -60,11 +60,11 @@ const get_one_split = async (req, res) => {
     return res.status(400).json({ error: "Split not found" });
   }
   try {
-    const program = await Split.findById(id);
-    if (!program) {
+    const split = await Split.findById(id);
+    if (!split) {
       return res.status(400).json({ error: "Split not found" });
     }
-    return res.status(200).json({ program });
+    return res.status(200).json({ split });
   } catch (error) {
     return res
       .status(500)

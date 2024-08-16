@@ -1,7 +1,7 @@
-import ProgramsList from "../components/Programs/ProgramsList";
+import SplitsList from "../components/Splits/SplitsList";
 import BackButton from "../components/BackButton"
 
-const Programs = () => {
+const Splits = () => {
   // List of Splits
   // Every card has a "view button"
 
@@ -9,12 +9,12 @@ const Programs = () => {
     <main>
       <div className="flex gap-2">
         <BackButton />
-        <h1 className="text-3xl font-bold">Recommended Programs</h1>
+        <h1 className="text-3xl font-bold">Recommended Splits</h1>
       </div>
       <div className="border-b-[1px] my-4"></div>
-      <ProgramsList />
+      <SplitsList />
     </main>
   );
 };
 
-export default Programs;
+export default Splits;

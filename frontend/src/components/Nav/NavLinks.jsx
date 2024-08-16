@@ -38,10 +38,10 @@ const NavLinks = ({ className }) => {
       )}
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
-          to="/programs"
+          to="/splits"
           className="p-1 text-center hover:text-red-400 transition-all"
         >
-          Programs
+          Splits
         </NavLink>
       </li>
       <li className="min-w-fit flex align-middle justify-center grow">
