@@ -4,7 +4,7 @@ import useWorkoutContext from "../../../utils/hooks/useWorkoutContext";
 import { format } from "date-fns";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import SortButton from "./SortButton";
-import AddMoreButton from "../Create/AddMoreButton";
+import axios from "axios";
 
 // Hooks
 
@@ -19,17 +19,15 @@ const Preview = () => {
       try {
         setError("");
         setLoading(true);
-        const response = await fetch("http://localhost:8080/api/workouts/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const result = await response.json();
-        if (!response.ok) {
-          throw Error(result.error);
-        }
-
-        dispatch({ type: "SET_WORKOUTS", payload: result });
+        const { data } = await axios.get(
+          "http://localhost:8080/api/workouts/all",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        dispatch({ type: "SET_WORKOUTS", payload: data });
       } catch (error) {
         setError("Server error. Please try again later.");
       } finally {
