@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuthContext from "./useAuthContext";
 import useModalContext from "./useModalContext";
+import axios from "axios";
 
 const useLogin = () => {
   const { dispatch } = useAuthContext();
@@ -13,28 +14,27 @@ const useLogin = () => {
       // Set loading to true and clear errors
       setLoading(true);
       setError("");
-      const response = await fetch("http://localhost:8080/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const { data: user } = await axios.post(
+        "http://localhost:8080/api/users/login",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
           email,
           password,
-        }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) {
-        throw Error(result.error);
-      }
+        }
+      );
 
       // Set user data in the context and localStorage
-      dispatch({ type: "LOGIN", payload: result });
-      localStorage.setItem("user", JSON.stringify(result));
+      dispatch({ type: "LOGIN", payload: user });
+      localStorage.setItem("user", JSON.stringify(user));
       closeModal();
     } catch (error) {
-      setError(error.message);
+      if (error.response) {
+        setError(error.response.data.error);
+      } else {
+        setError(error.message);
+      }
     } finally {
       setLoading(false);
     }
