@@ -10,6 +10,7 @@ import useAuthContext from "../utils/hooks/useAuthContext";
 import useWorkoutContext from "../utils/hooks/useWorkoutContext";
 import { useEffect, useState } from "react";
 import BackButton from "../components/BackButton";
+import axios from "axios";
 
 const ViewWorkout = () => {
   const navigate = useNavigate();
@@ -26,25 +27,21 @@ const ViewWorkout = () => {
     const fetchWorkout = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
+        const { data: fetchedWorkout } = await axios.get(
           `http://localhost:8080/api/workouts/${workout_id}`,
           {
-            method: "get",
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-
-        const result = await response.json();
-
-        if (!response.ok) {
-          throw Error(result.error);
-        }
-
-        setWorkout(result);
+        setWorkout(fetchedWorkout);
       } catch (error) {
-        setError(error.message);
+        if (error.response) {
+          setError(error.response.data.error);
+        } else {
+          setError(error.message);
+        }
       } finally {
         setLoading(false);
       }
@@ -53,15 +50,11 @@ const ViewWorkout = () => {
   }, [workout_id, token]);
 
   const handleDeleteClick = async () => {
-    const response = await fetch(
-      `http://localhost:8080/api/workouts/${workout_id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        method: "DELETE",
-      }
-    );
+    await axios.delete(`http://localhost:8080/api/workouts/${workout_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     dispatch({ type: "CLEAR_WOROKUTS" });
     navigate("/");
   };
