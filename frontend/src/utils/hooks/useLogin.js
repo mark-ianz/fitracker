@@ -16,12 +16,11 @@ const useLogin = () => {
       setError("");
       const { data: user } = await axios.post(
         "http://localhost:8080/api/users/login",
+        { email, password },
         {
           headers: {
             "Content-Type": "application/json",
           },
-          email,
-          password,
         }
       );
 

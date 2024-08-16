@@ -17,13 +17,15 @@ const useSignup = () => {
       const { data: user } = await axios.post(
         "http://localhost:8080/api/users/signup",
         {
-          headers: {
-            "Content-Type": "application/json",
-          },
           username,
           email,
           password,
           confirmPassword,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
