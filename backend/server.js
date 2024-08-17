@@ -13,6 +13,7 @@ const workoutRoutes = require("./routes/workoutRoute.js");
 const userRoutes = require("./routes/userRoutes.js");
 const splitRoutes = require ("./routes/splitRoutes.js")
 const programRoutes = require ("./routes/programRoutes.js")
+const featuresRoutes = require ("./routes/featuresRoutes.js")
 
 // Start server
 async function startServer() {
@@ -69,6 +70,8 @@ app.use ("/api/splits", splitRoutes)
 
 // Program Routes
 app.use ("/api/programs", programRoutes)
+
+app.use ("/api/features", featuresRoutes)
 
 // Errors
 app.use((req, res) => {
