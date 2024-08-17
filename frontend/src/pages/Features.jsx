@@ -8,7 +8,7 @@ const Features = () => {
   useEffect(() => {
     const fetchFeatures = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8080/api/features/");
+        const { data } = await axios.get("https://fitracker.onrender.com/api/features/");
         setFeatures(data);
       } catch (error) {
         setError(error.message);
