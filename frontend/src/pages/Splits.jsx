@@ -5,7 +5,7 @@ import BackButton from "../components/BackButton";
 const Splits = () => {
   return (
     <main className="flex items-center justify-center">
-      <section className="flex flex-col justify-center items-center gap-4 mb-10 max-w-xl">
+      <section className="flex flex-col justify-center items-center gap-4 mb-10 max-w-screen-lg">
         <div className="flex items-center justify-center mr-auto gap-2 mb-4">
           <BackButton />
           <p className="text-lg">Go Back</p>

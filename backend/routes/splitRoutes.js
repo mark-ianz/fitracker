@@ -8,10 +8,10 @@ const {
   get_one_split,
 } = require("../controller/splitController");
 
-router.use(requireAuth);
 
 router.get("/", get_all_splits);
 router.get("/:id", get_one_split);
+router.use(requireAuth);
 router.post("/", splitValidator, new_split);
 
 module.exports = router;
