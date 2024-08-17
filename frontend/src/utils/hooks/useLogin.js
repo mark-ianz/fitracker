@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuthContext from "./useAuthContext";
 import useModalContext from "./useModalContext";
-import axios from "axios";
+import usersAPI from "../api/users";
 
 const useLogin = () => {
   const { dispatch } = useAuthContext();
@@ -14,8 +14,8 @@ const useLogin = () => {
       // Set loading to true and clear errors
       setLoading(true);
       setError("");
-      const { data: user } = await axios.post(
-        "http://localhost:8080/api/users/login",
+      const { data: user } = await usersAPI.post(
+        "/login",
         { email, password },
         {
           headers: {

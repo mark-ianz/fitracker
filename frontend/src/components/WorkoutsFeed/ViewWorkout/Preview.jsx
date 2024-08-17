@@ -4,7 +4,7 @@ import useWorkoutContext from "../../../utils/hooks/useWorkoutContext";
 import { format } from "date-fns";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import SortButton from "./SortButton";
-import axios from "axios";
+import workoutsAPI from "../../../utils/api/workouts";
 
 // Hooks
 
@@ -19,8 +19,8 @@ const Preview = () => {
       try {
         setError("");
         setLoading(true);
-        const { data } = await axios.get(
-          "http://localhost:8080/api/workouts/all",
+        const { data } = await workoutsAPI.get(
+          "/all",
           {
             headers: {
               Authorization: `Bearer ${token}`,

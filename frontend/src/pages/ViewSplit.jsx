@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import BackButton from "../components/BackButton";
-import Button from "../components/Button";
-import axios from "axios";
+import splitsAPI from "../utils/api/splits";
 
 const ViewProgram = () => {
   // If clicked it will be redirected to /splits/:id and inside is split's full details
@@ -16,14 +15,11 @@ const ViewProgram = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:8080/api/splits/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const { data } = await splitsAPI.get(`/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         setSplit(data.split);
       } catch (error) {

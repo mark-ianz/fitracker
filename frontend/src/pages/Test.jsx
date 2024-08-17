@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import axios from "axios";
+import usersAPI from "../utils/api/users";
 
 const Test = () => {
   const { token } = useAuthContext();
@@ -8,7 +9,7 @@ const Test = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.post("http://localhost:8080/api/users/login");
+        const data = await usersAPI.post("/login");
         console.log("Using Axios:", data);
       } catch (error) {
         // If the error came from the server and is in the response, the error.response will be available
@@ -22,22 +23,6 @@ const Test = () => {
     fetchData();
   }, []);
 
-  /* useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/splitss", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const result = await response.json();
-        console.log("Using Fetch:", result);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []); */
 
   return <div>Hello!</div>;
 };

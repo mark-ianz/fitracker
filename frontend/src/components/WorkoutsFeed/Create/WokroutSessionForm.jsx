@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
 import Button from "../../Button";
-import axios from "axios";
+import workoutsAPI from "../../../utils/api/workouts";
 
 const WorkoutSessionForm = () => {
   // Dependencies
@@ -37,7 +37,7 @@ const WorkoutSessionForm = () => {
     };
 
     try {
-      await axios.post("http://localhost:8080/api/workouts/new", workout, {
+      await workoutsAPI.post("/new", workout, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuthContext from "../../utils/hooks/useAuthContext";
 import SplitCard from "./SplitCard";
-import axios from "axios";
+import splitsAPI from "../../utils/api/splits";
 
 const SplitsList = () => {
   const { token } = useAuthContext();
@@ -11,7 +11,7 @@ const SplitsList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8080/api/splits/", {
+        const { data } = await splitsAPI.get("/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
