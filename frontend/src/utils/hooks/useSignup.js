@@ -29,7 +29,6 @@ const useSignup = () => {
         }
       );
 
-      console.log(user);
 
       // Set user data in the context and localStorage
       dispatch({ type: "LOGIN", payload: user });
