@@ -13,6 +13,7 @@ const Preview = () => {
   const { token } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [sort, setSort] = useState("");
 
   useEffect(() => {
     const fetchWorkout = async () => {
@@ -23,7 +24,11 @@ const Preview = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          params: {
+            sort,
+          },
         });
+        console.log(data);
         dispatch({ type: "SET_WORKOUTS", payload: data });
       } catch (error) {
         setError("Server error. Please try again later.");
@@ -32,7 +37,7 @@ const Preview = () => {
       }
     };
     fetchWorkout();
-  }, [token, dispatch]);
+  }, [token, dispatch, sort]);
 
   if (workouts && workouts.length <= 0) {
     return (
@@ -47,11 +52,9 @@ const Preview = () => {
 
   return (
     <>
-      {loading && <p>Loading..</p>}
-      {error && <p>{error}</p>}
       {workouts && (
         <>
-          <SortButton />
+          <SortButton setSort={setSort} />
           <ul className="history-list flex flex-col gap-4">
             {workouts.map((workout) => {
               return (
@@ -89,6 +92,8 @@ const Preview = () => {
           </ul>
         </>
       )}
+      {loading && <p>Loading..</p>}
+      {error && <p>{error}</p>}
     </>
   );
 };

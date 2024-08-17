@@ -5,8 +5,50 @@ const { matchedData, validationResult } = require("express-validator");
 const get_all_workout = async (req, res) => {
   // Get all workouts
   const userId = req.user._id;
+  const sort = req.query.sort;
+
+  let sortCriteria;
+  switch (sort) {
+    case "exercisesPerformed":
+      sortCriteria = [
+        {
+          $addFields: {
+            exercisesCount: {
+              $size: "$exercisesPerformed",
+            },
+          },
+        },
+        { $sort: { exercisesCount: -1 } },
+      ];
+      break;
+    case "date":
+      sortCriteria = [
+        {
+          $sort: { createdAt: -1 },
+        },
+      ];
+      break;
+    default: {
+      sortCriteria = [
+        {
+          $sort: { createdAt: -1 },
+        },
+      ];
+    }
+  }
 
   try {
+    if (sort) {
+      const workouts = await Workout.aggregate([
+        {
+          $match: { user: new mongoose.Types.ObjectId(userId) },
+        },
+        ...sortCriteria,
+      ]);
+
+      return res.json(workouts);
+    }
+
     const workouts = await Workout.find({ user: userId }).sort({
       createdAt: -1,
     });
@@ -66,7 +108,7 @@ const delete_one_workout = async (req, res) => {
   const { id } = req.params;
   try {
     await Workout.findByIdAndDelete(id);
-    return res.json ({message: "Successfully deleted."});
+    return res.json({ message: "Successfully deleted." });
   } catch (error) {}
   res.json({ message: "Delete a workout" });
 };
