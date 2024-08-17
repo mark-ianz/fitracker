@@ -1,4 +1,5 @@
 import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext.js";
+import Button from "../../Button.jsx";
 import SubmitExerciseForm from "../Create/SubmitExerciseForm.jsx";
 
 const ExercisesPerformed = ({
@@ -6,7 +7,8 @@ const ExercisesPerformed = ({
   editClickFunction,
   exercisesPerformed,
 }) => {
-  const { editing, isEditing, isAddingExercise } = useExercisesFormContext();
+  const { editing, isEditing, isAddingExercise, dispatch } =
+    useExercisesFormContext();
 
   return exercisesPerformed.map((exercise, index) => {
     // Get the total reps, weight and volume.
@@ -69,7 +71,15 @@ const ExercisesPerformed = ({
 
         {/* If can edit, currently not editing and not adding exercise, show the Edit button */}
         {canEdit && !isEditing && !isAddingExercise && (
-          <div className="absolute bottom-2 right-2 ">
+          <div className="absolute bottom-2 right-2 flex gap-2">
+            <Button
+              buttonType="primarySm"
+              onClick={() =>
+                dispatch({ type: "DELETE_EXERCISE", payload: exercise.id })
+              }
+            >
+              Delete
+            </Button>
             <button
               onClick={editClickFunction}
               data-id={exercise.id}
