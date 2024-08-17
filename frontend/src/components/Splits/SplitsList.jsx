@@ -31,13 +31,15 @@ const SplitsList = () => {
   }, [token]);
 
   return (
-    <ul className="grid grid-cols-5 gap-4 max-2xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-[470px]:grid-cols-1">
-      <p>{error}</p>
-      {splits.length > 0 &&
-        splits.map((split) => {
-          return <SplitCard key={split._id} split={split} />;
-        })}
-    </ul>
+    <>
+      <ul className="grid grid-cols-5 gap-4 max-2xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-[470px]:grid-cols-1">
+        {splits.length > 0 &&
+          splits.map((split) => {
+            return <SplitCard key={split._id} split={split} />;
+          })}
+      </ul>
+      {error && <p>{error}</p>}
+    </>
   );
 };
 
