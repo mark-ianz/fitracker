@@ -10,7 +10,7 @@ import useAuthContext from "../utils/hooks/useAuthContext";
 import useWorkoutContext from "../utils/hooks/useWorkoutContext";
 import { useEffect, useState } from "react";
 import BackButton from "../components/BackButton";
-import axios from "axios";
+import workoutsAPI from "../utils/api/workouts";
 
 const ViewWorkout = () => {
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ const ViewWorkout = () => {
     const fetchWorkout = async () => {
       try {
         setLoading(true);
-        const { data: fetchedWorkout } = await axios.get(
-          `http://localhost:8080/api/workouts/${workout_id}`,
+        const { data: fetchedWorkout } = await workoutsAPI.get(
+          `/${workout_id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const ViewWorkout = () => {
   }, [workout_id, token]);
 
   const handleDeleteClick = async () => {
-    await axios.delete(`http://localhost:8080/api/workouts/${workout_id}`, {
+    await workoutsAPI.delete(`/${workout_id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -60,67 +60,69 @@ const ViewWorkout = () => {
   };
 
   return (
-    <main>
-      {workout && (
-        <>
-          <div className="flex flex-row items-center justify-center mb-4 gap-2">
-            <div className="flex items-center">
-              <BackButton />
-            </div>
-            <p className="font-bold text-xl text-red-400">{workout.name}</p>
-            <button className="w-8 h-8 ml-auto" onClick={handleDeleteClick}>
-              <svg
-                viewBox="0 0 24 24"
-                width="36px"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <path
-                    d="M6 5H18M9 5V5C10.5769 3.16026 13.4231 3.16026 15 5V5M9 20H15C16.1046 20 17 19.1046 17 18V9C17 8.44772 16.5523 8 16 8H8C7.44772 8 7 8.44772 7 9V18C7 19.1046 7.89543 20 9 20Z"
-                    stroke="#f87171"
-                    strokeWidth="2"
+    <main className="w-full flex items-center justify-center">
+      <section className="w-full max-w-screen-md">
+        {workout && (
+          <>
+            <div className="flex flex-row items-center justify-center mb-4 gap-2">
+              <div className="flex items-center">
+                <BackButton />
+              </div>
+              <p className="font-bold text-xl text-red-400">{workout.name}</p>
+              <button className="w-8 h-8 ml-auto" onClick={handleDeleteClick}>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  ></path>{" "}
-                </g>
-              </svg>
-            </button>
-          </div>
-          <div className="text-gray-600 text-sm mb-4">
-            <p className="text-gray-600 text-sm">
-              {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
-            </p>
-            <p>Location: {workout.location}</p>
-            <p>Tags: {workout.tags}</p>
-          </div>
-          <p className="mb-2">{workout.description}</p>
-          <div className="mt-4">
-            <p className="font-bold text-xl">Exercises Performed</p>
-            <ul className="grid grid-cols-5 gap-4 max-2xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-[470px]:grid-cols-1">
-              <ExercisesPerformed
-                exercisesPerformed={workout.exercisesPerformed}
-              />
-            </ul>
-          </div>
-        </>
-      )}
-      {loading && <p>Loading...</p>}
-      {error && (
-        <p>
-          {error}.{" "}
-          <Link className="text-red-400 underline" to={"/"}>
-            Go back home
-          </Link>{" "}
-        </p>
-      )}
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M6 5H18M9 5V5C10.5769 3.16026 13.4231 3.16026 15 5V5M9 20H15C16.1046 20 17 19.1046 17 18V9C17 8.44772 16.5523 8 16 8H8C7.44772 8 7 8.44772 7 9V18C7 19.1046 7.89543 20 9 20Z"
+                      stroke="#f87171"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div className="text-gray-600 text-sm mb-4">
+              <p className="text-gray-600 text-sm">
+                {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
+              </p>
+              <p>Location: {workout.location}</p>
+              <p>Tags: {workout.tags}</p>
+            </div>
+            <p className="mb-2">{workout.description}</p>
+            <div className="mt-4">
+              <p className="font-bold text-xl">Exercises Performed</p>
+              <ul className="grid grid-cols-3 gap-4 max-md:grid-cols-2 max-[470px]:grid-cols-1">
+                <ExercisesPerformed
+                  exercisesPerformed={workout.exercisesPerformed}
+                />
+              </ul>
+            </div>
+          </>
+        )}
+        {loading && <p>Loading...</p>}
+        {error && (
+          <p>
+            {error}.{" "}
+            <Link className="text-red-400 underline" to={"/"}>
+              Go back home
+            </Link>{" "}
+          </p>
+        )}
+      </section>
     </main>
   );
 };
