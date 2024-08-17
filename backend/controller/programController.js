@@ -22,21 +22,32 @@ const get_one_program = async (req, res) => {
   }
 };
 
-const post_program = async (req,res)=> {
-  const error = validationResult (req);
-
-  if (!error.isEmpty ()) {
-    return res.status (422).json ({error: error.array ()[0].msg});
+const get_array_program = async (req, res) => {
+  const ids = req.query.ids;
+  if (!ids) {
+    return res.status(404).json({ error: "Invalid ID" });
   }
 
-  const data = matchedData (req);
+  const programs = await Program.find({ _id: { $in: ids } });
+  res.json ({programs})
+};
 
-  const program = await new Program (data).save ();
+const post_program = async (req, res) => {
+  const error = validationResult(req);
 
-  res.status(201).json (program);
-}
+  if (!error.isEmpty()) {
+    return res.status(422).json({ error: error.array()[0].msg });
+  }
+
+  const data = matchedData(req);
+
+  const program = await new Program(data).save();
+
+  res.status(201).json(program);
+};
 
 module.exports = {
   get_one_program,
-  post_program
-}
+  post_program,
+  get_array_program,
+};

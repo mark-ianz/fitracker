@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import BackButton from "../components/BackButton";
+import Button from "../components/Button";
 import splitsAPI from "../utils/api/splits";
+import programsAPI from "../utils/api/programs";
 
-const ViewProgram = () => {
+const ViewSplit = () => {
   // If clicked it will be redirected to /splits/:id and inside is split's full details
   // Fetch the data with the id parameter
   const { id } = useParams();
@@ -12,14 +14,17 @@ const ViewProgram = () => {
   const { token } = useAuthContext();
   const [error, setError] = useState("");
   const [split, setSplit] = useState(null);
+  const [programs, setPrograms] = useState(null);
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchSplit = async () => {
       try {
         const { data } = await splitsAPI.get(`/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
+        fetchPrograms(data.split.programs);
 
         setSplit(data.split);
       } catch (error) {
@@ -31,7 +36,24 @@ const ViewProgram = () => {
       }
     };
 
-    fetchData();
+    const fetchPrograms = async (ids) => {
+      try {
+        const { data } = await programsAPI.get("/", {
+          params: {
+            ids,
+          },
+        });
+        setPrograms(data.programs);
+      } catch (error) {
+        if (error.response) {
+          setError(error.response.data.error);
+        } else {
+          setError(error.message);
+        }
+      }
+    };
+
+    fetchSplit();
   }, []);
 
   // Inside view program there is a "do" button
@@ -53,45 +75,49 @@ const ViewProgram = () => {
           <p className="mb-4">{split.description}</p>
 
           {/* Fetch the array of ids */}
-          {/* <ul className="grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
-            {split.programs.map((program) => {
-              return (
-                <li
-                  key={program._id}
-                  className="push shadow-md p-4 border-solid border-[1px] rounded-md relative pb-24"
-                >
-                  <p className="font-bold text-xl text-red-400">
-                    {program.programName}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Target: {program.muscleTargets}
-                  </p>
-                  <p className="text-gray-600 my-4">
-                    {program.programDescription}
-                  </p>
-                  <p className="font-bold">Exercises:</p>
-                  <ul className="list-disc list-inside text-gray-600">
-                    {program.exercises.map((exercise) => {
-                      return <li key={exercise.id}>{exercise.exerciseName}</li>;
-                    })}
-                  </ul>
-                  <Button
-                    className={"absolute bottom-4 right-4"}
-                    buttonType={"primary"}
-                    onClick={() => {
-                      navigate (`/create/${program._id}`)
-                    }}
+          {programs && (
+            <ul className="grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+              {programs.map((program) => {
+                return (
+                  <li
+                    key={program._id}
+                    className="push shadow-md p-4 border-solid border-[1px] rounded-md relative pb-24"
                   >
-                    Log
-                  </Button>
-                </li>
-              );
-            })}
-          </ul> */}
+                    <p className="font-bold text-xl text-red-400">
+                      {program.programName}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Target: {program.muscleTargets}
+                    </p>
+                    <p className="text-gray-600 my-4">
+                      {program.programDescription}
+                    </p>
+                    <p className="font-bold">Exercises:</p>
+                    <ul className="list-disc list-inside text-gray-600">
+                      {program.exercises.map((exercise) => {
+                        return (
+                          <li key={exercise.id}>{exercise.exerciseName}</li>
+                        );
+                      })}
+                    </ul>
+                    <Button
+                      className={"absolute bottom-4 right-4"}
+                      buttonType={"primary"}
+                      onClick={() => {
+                        navigate(`/create/${program._id}`);
+                      }}
+                    >
+                      Log
+                    </Button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </>
       )}
     </main>
   );
 };
 
-export default ViewProgram;
+export default ViewSplit;
