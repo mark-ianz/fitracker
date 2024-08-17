@@ -3,7 +3,7 @@ import Navbar from "./Nav/Navbar";
 
 const Header = () => {
   return (
-    <header className="mb-[8vh] max-lg:mb-[3vh]">
+    <header className="mb-[8vh]">
       <Navbar />
     </header>
   );
