@@ -1,10 +1,7 @@
 import { useEffect } from "react";
-import useAuthContext from "../utils/hooks/useAuthContext";
-import axios from "axios";
 import usersAPI from "../utils/api/users";
 
 const Test = () => {
-  const { token } = useAuthContext();
 
   useEffect(() => {
     const fetchData = async () => {

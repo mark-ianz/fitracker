@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
 import Button from "../../Button";
@@ -9,7 +9,7 @@ const WorkoutSessionForm = () => {
   // Dependencies
   const navigate = useNavigate();
   const { token, _id } = useAuthContext();
-  const { exercises, dispatch } = useExercisesFormContext();
+  const { exercises } = useExercisesFormContext();
   const [error, setError] = useState("");
   // Form states
   const [sessionName, setSessionName] = useState("");

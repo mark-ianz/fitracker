@@ -1,7 +1,6 @@
 // Protected Page!!!!!!!!!!!!
 
 // Components
-import AddMoreButton from "../components/WorkoutsFeed/Create/AddMoreButton";
 import Preview from "../components/WorkoutsFeed/ViewWorkout/Preview";
 
 // Provider

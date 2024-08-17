@@ -1,6 +1,5 @@
 // Dependencies
-import { Link, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // Components
 import Button from "../Button";
@@ -13,7 +12,7 @@ import Signup from "./SignupForm";
 
 const LoginForm = () => {
   const { login, error, loading } = useLogin();
-  const { closeModal, openModal } = useModalContext();
+  const { openModal } = useModalContext();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

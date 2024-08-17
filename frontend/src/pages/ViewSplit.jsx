@@ -54,7 +54,7 @@ const ViewSplit = () => {
     };
 
     fetchSplit();
-  }, []);
+  }, [id, token]);
 
   // Inside view program there is a "do" button
   // If clicked it will be redirected to /create with a _id of the program

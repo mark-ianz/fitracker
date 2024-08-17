@@ -1,20 +1,8 @@
-import { useState } from "react";
 import Button from "../../Button";
 import { useNavigate } from "react-router-dom";
 
 const SortButton = () => {
   const navigate = useNavigate();
-
-  const [sort, setSort] = useState("");
-  const [isSortOpen, setIsSortOpen] = useState(false);
-
-  const openSort = () => {
-    setIsSortOpen(!isSortOpen);
-  };
-
-  const handleSortClick = (sort) => {
-    setSort(sort);
-  };
 
   return (
     <div className="mb-4 flex justify-between items-center max-[550px]:flex-col  max-[550px]:items-start gap-2">

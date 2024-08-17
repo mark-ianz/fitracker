@@ -11,7 +11,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { closeModal, openModal } = useModalContext();
+  const { openModal } = useModalContext();
 
   const { signup, loading, error } = useSignup();
 

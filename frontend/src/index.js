@@ -21,7 +21,6 @@ import CreateWorkout from "./pages/CreateWorkout";
 import NotForAuth from "./utils/NotForAuth";
 import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
-import axios from "axios";
 
 const router = createBrowserRouter([
   {
