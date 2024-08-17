@@ -21,7 +21,7 @@ const NavLinks = ({ className }) => {
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
           to="/home"
-          className="p-1 text-center hover:text-red-400 transition-all"
+          className="px-3 py-1 text-center hover:text-red-400 transition-all max-[320px]:p-1"
         >
           Home
         </NavLink>
@@ -30,7 +30,7 @@ const NavLinks = ({ className }) => {
         <li className="min-w-fit flex align-middle justify-center grow">
           <NavLink
             to="/create"
-            className="p-1 text-center hover:text-red-400 transition-all"
+            className="px-3 py-1 text-center hover:text-red-400 transition-all max-[320px]:p-1"
           >
             Create
           </NavLink>
@@ -39,7 +39,7 @@ const NavLinks = ({ className }) => {
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
           to="/splits"
-          className="p-1 text-center hover:text-red-400 transition-all"
+          className="px-3 py-1 text-center hover:text-red-400 transition-all max-[320px]:p-1"
         >
           Splits
         </NavLink>
@@ -47,7 +47,7 @@ const NavLinks = ({ className }) => {
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
           to="/features"
-          className="p-1 text-center hover:text-red-400 transition-all"
+          className="px-3 py-1 text-center hover:text-red-400 transition-all max-[320px]:p-1"
         >
           Features
         </NavLink>
@@ -55,7 +55,7 @@ const NavLinks = ({ className }) => {
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
           to="/about"
-          className="p-1 text-center hover:text-red-400 transition-all"
+          className="px-3 py-1 text-center hover:text-red-400 transition-all max-[320px]:p-1"
         >
           About
         </NavLink>

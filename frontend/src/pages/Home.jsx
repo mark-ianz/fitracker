@@ -10,8 +10,8 @@ const Home = () => {
   const { username } = useAuthContext();
   return (
     <main className="mx-auto max-w-3xl w-full">
-      <h1 className="font-bold text-4xl text-center mb-12">
-        Welcome {username}!
+      <h1 className="text-3xl mb-8 text-center">
+        Welcome <span className="font-bold">{username}</span>!
       </h1>
       <section>
         <Preview />

@@ -11,8 +11,9 @@ import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import ErrorPage from "./pages/ErrorPage";
 import ViewWorkout from "./pages/ViewWorkout";
-import Splits from "./pages/Splits";
+import RecommendedSplits from "./pages/RecommendedSplits";
 import Features from "./pages/Features";
+import Splits from "./pages/Splits";
 
 // Provider
 import Providers from "./utils/context/Providers";
@@ -21,6 +22,7 @@ import CreateWorkout from "./pages/CreateWorkout";
 import NotForAuth from "./utils/NotForAuth";
 import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
+import CustomSplits from "./pages/CustomSplits";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
         element: <Splits />,
       },
       {
+        path: "splits/recommended",
+        element: <RecommendedSplits />,
+      },
+      {
+        path: "splits/custom",
+        element: <CustomSplits />,
+      },
+      {
         path: "splits/:id",
         element: <ViewSplit />,
       },
@@ -79,7 +89,6 @@ const router = createBrowserRouter([
     element: <Test />,
   },
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

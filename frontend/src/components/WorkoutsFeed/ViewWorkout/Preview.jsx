@@ -19,14 +19,11 @@ const Preview = () => {
       try {
         setError("");
         setLoading(true);
-        const { data } = await workoutsAPI.get(
-          "/all",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const { data } = await workoutsAPI.get("/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         dispatch({ type: "SET_WORKOUTS", payload: data });
       } catch (error) {
         setError("Server error. Please try again later.");
@@ -55,10 +52,13 @@ const Preview = () => {
       {workouts && (
         <>
           <SortButton />
-          <ul className="history-list flex flex-col gap-4 mt-4">
+          <ul className="history-list flex flex-col gap-4">
             {workouts.map((workout) => {
               return (
-                <li key={workout._id} className="border-2 rounded-lg">
+                <li
+                  key={workout._id}
+                  className="shadow-md rounded-md border-gray border-solid border-[1px] hover:scale-105 transition-all"
+                >
                   <Link
                     to={`/workout/${workout._id}`}
                     className="flex flex-row items-center gap-4 justify-start p-6"

@@ -37,7 +37,7 @@ const LoginForm = () => {
     <form
       onSubmit={handleFormSubmit}
       action="/"
-      className="shadow-md p-8 pb-6 rounded-lg flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
+      className="shadow-md p-8 pb-6 rounded-md flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
     >
       <h1 className="text-3xl mb-10">Login</h1>
       <div className="flex flex-col w-full mb-6">

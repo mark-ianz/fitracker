@@ -5,10 +5,10 @@ const SortButton = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mb-4 flex justify-between items-center max-[550px]:flex-col  max-[550px]:items-start gap-2">
-      <p className="text-2xl font-bold">Workout History</p>
+    <div className="mb-4 flex justify-between items-center max-[550px]:flex-col max-[550px]:items-start gap-2">
+      <p className="text-2xl">Workout History</p>
       <div className="flex content-center gap-2 max-[330px]:flex-col ">
-        <select className="border rounded-lg px-4 py-2">
+        <select className="border rounded-md px-4 py-2">
           <option>Sort By</option>
           <option>Date</option>
           <option>Workout Type</option>
