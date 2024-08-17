@@ -1,4 +1,4 @@
-import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
+import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext";
 import AddMoreButton from "./AddMoreButton";
 import ExercisesPerformed from "../ViewWorkout/ExercisesPerformed";
 import SubmitExerciseForm from "./SubmitExerciseForm";

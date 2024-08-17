@@ -8,6 +8,7 @@ const ExerciseFormReducer = (state, action) => {
       return {
         ...state,
         isAddingExercise: action.payload,
+        fromSplit: false,
       };
     }
     case "ADD_EXERCISE":
@@ -15,18 +16,27 @@ const ExerciseFormReducer = (state, action) => {
         ...state,
         exercises: [...state.exercises, action.payload],
         isAddingExercise: false,
+        fromSplit: false,
+      };
+    case "ADD_EXERCISES_FROM_SPLIT":
+      return {
+        ...state,
+        ...action.payload,
+        fromSplit: true,
       };
     case "SET_EDITING":
       return {
         ...state,
         editing: { ...action.payload },
         isEditing: true,
+        fromSplit: false,
       };
     case "DISCARD_EDITING":
       return {
         ...state,
         isEditing: false,
         editing: null,
+        fromSplit: false,
       };
     case "SAVE_EDIT":
       return {
@@ -37,6 +47,7 @@ const ExerciseFormReducer = (state, action) => {
         isAddingExercise: false,
         isEditing: false,
         editing: null,
+        fromSplit: false,
       };
     default:
       return state;
@@ -45,13 +56,14 @@ const ExerciseFormReducer = (state, action) => {
 
 const ExercisesFormContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ExerciseFormReducer, {
+    fromSplit: false,
+    programName: "",
+    programDescription: "",
     exercises: [],
     isAddingExercise: false,
     isEditing: false,
     editing: null, // Editing object value
   });
-
-  console.log(state);
 
   return (
     <ExercisesFormContext.Provider value={{ ...state, dispatch }}>

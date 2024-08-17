@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ExercisesFormContext } from "../context/ExercisesFormContext"
+import { ExercisesFormContext } from "../../context/createSession/ExercisesFormContext"
 
 const useExercisesFormContext = () => {
   const context =  useContext (ExercisesFormContext);

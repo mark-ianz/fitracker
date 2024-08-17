@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
-import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext";
+import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext";
 import Button from "../../Button";
 import workoutsAPI from "../../../utils/api/workouts";
+import useWorkoutSessionFormContext from "../../../utils/hooks/createSession/useWorkoutSessionFormContext";
 
 const WorkoutSessionForm = () => {
+  // Form states
+  const {
+    state: { sessionName, description, tags, location, dateTime },
+    dispatch,
+  } = useWorkoutSessionFormContext();
+
+  // Check if current workout session is from split
+  const { fromSplit, programName, programDescription } = useExercisesFormContext();
+
+  // If true, set the name and description to the split info
+  useEffect (()=> {
+    if (fromSplit) {
+      dispatch({ type: "SET_SESSION_NAME", payload: programName });
+      dispatch({ type: "SET_DESCRIPTION", payload: programDescription });
+    }
+  }, [fromSplit])
+
   // Dependencies
   const navigate = useNavigate();
   const { token, _id } = useAuthContext();
   const { exercises } = useExercisesFormContext();
   const [error, setError] = useState("");
-  // Form states
-  const [sessionName, setSessionName] = useState("");
-  const [description, setDescription] = useState("");
-  const [tags, setTags] = useState("Workout");
-  const [location, setLocation] = useState("Gym");
-  const [dateTime, setDateTime] = useState(() => {
-    const now = new Date();
-    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-    const formattedDate = now.toISOString().slice(0, 16);
-    return formattedDate;
-  });
 
   const handleFormSubmit = async (e) => {
     // Add validations
@@ -63,7 +70,9 @@ const WorkoutSessionForm = () => {
             <input
               type="text"
               value={sessionName}
-              onChange={(e) => setSessionName(e.target.value)}
+              onChange={(e) =>
+                dispatch({ type: "SET_SESSION_NAME", payload: e.target.value })
+              }
               name="sessionName"
               id="sessionName"
               className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
@@ -75,7 +84,9 @@ const WorkoutSessionForm = () => {
               type="text"
               value={description}
               placeholder="(Optional)"
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) =>
+                dispatch({ type: "SET_DESCRIPTION", payload: e.target.value })
+              }
               name="description"
               id="description"
               className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
@@ -87,7 +98,9 @@ const WorkoutSessionForm = () => {
             <input
               type="text"
               value={tags}
-              onChange={(e) => setTags(e.target.value)}
+              onChange={(e) =>
+                dispatch({ type: "SET_TAGS", payload: e.target.value })
+              }
               name="tags"
               id="tags"
               className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
@@ -98,7 +111,9 @@ const WorkoutSessionForm = () => {
             <input
               type="text"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) =>
+                dispatch({ type: "SET_LOCATION", payload: e.target.value })
+              }
               name="location"
               id="location"
               className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
@@ -109,7 +124,9 @@ const WorkoutSessionForm = () => {
             <input
               type="datetime-local"
               value={dateTime}
-              onChange={(e) => setDateTime(e.target.value)}
+              onChange={(e) =>
+                dispatch({ type: "SET_DATE_TIME", payload: e.target.value })
+              }
               name="date"
               id="date"
               className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"

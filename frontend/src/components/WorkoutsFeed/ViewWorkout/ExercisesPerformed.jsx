@@ -1,4 +1,4 @@
-import useExercisesFormContext from "../../../utils/hooks/useExercisesFormContext.js";
+import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext.js";
 import SubmitExerciseForm from "../Create/SubmitExerciseForm.jsx";
 
 const ExercisesPerformed = ({

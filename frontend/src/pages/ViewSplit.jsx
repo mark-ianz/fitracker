@@ -5,13 +5,17 @@ import BackButton from "../components/BackButton";
 import Button from "../components/Button";
 import splitsAPI from "../utils/api/splits";
 import programsAPI from "../utils/api/programs";
+import useExercisesFormContext from "../utils/hooks/createSession/useExercisesFormContext";
 
 const ViewSplit = () => {
-  // If clicked it will be redirected to /splits/:id and inside is split's full details
-  // Fetch the data with the id parameter
-  const { id } = useParams();
+  // Dependencies
   const navigate = useNavigate();
   const { token } = useAuthContext();
+  const { dispatch } = useExercisesFormContext();
+  /* const { dispatch } = useProgramUsingContext(); */
+
+  // Fetch the split data with the id parameter
+  const { id } = useParams();
   const [error, setError] = useState("");
   const [split, setSplit] = useState(null);
   const [programs, setPrograms] = useState(null);
@@ -56,13 +60,6 @@ const ViewSplit = () => {
     fetchSplit();
   }, [id, token]);
 
-  // Inside view program there is a "do" button
-  // If clicked it will be redirected to /create with a _id of the program
-  // Wen at /create it will check if it's come from the program and if it is
-  // Fetch to the API /programs/program/:id
-  // Get the exercises afrom the API and dispatch it to local exercises
-  // As of now the program input can only be added on the database or postman
-
   return (
     <main>
       {error && <p>{error}</p>}
@@ -74,7 +71,6 @@ const ViewSplit = () => {
           </div>
           <p className="mb-4">{split.description}</p>
 
-          {/* Fetch the array of ids */}
           {programs && (
             <ul className="grid grid-cols-4 gap-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
               {programs.map((program) => {
@@ -104,7 +100,13 @@ const ViewSplit = () => {
                       className={"absolute bottom-4 right-4"}
                       buttonType={"primary"}
                       onClick={() => {
-                        navigate(`/create/${program._id}`);
+                        const payload = {
+                          exercises: [...program.exercises],
+                          programName: program.programName,
+                          programDescription: program.programDescription,
+                        };
+                        dispatch({ type: "ADD_EXERCISES_FROM_SPLIT", payload });
+                        navigate("/create");
                       }}
                     >
                       Log
