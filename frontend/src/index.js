@@ -23,6 +23,7 @@ import NotForAuth from "./utils/NotForAuth";
 import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
+import UnderConstruction from "./pages/UnderConstruction";
 
 const router = createBrowserRouter([
   {
@@ -68,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: "splits/custom",
-        element: <CustomSplits />,
+        element: <UnderConstruction />,
       },
       {
         path: "splits/:id",

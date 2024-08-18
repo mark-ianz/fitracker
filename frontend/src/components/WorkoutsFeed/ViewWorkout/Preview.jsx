@@ -28,7 +28,6 @@ const Preview = () => {
             sort,
           },
         });
-        console.log(data);
         dispatch({ type: "SET_WORKOUTS", payload: data });
       } catch (error) {
         setError("Server error. Please try again later.");
