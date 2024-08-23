@@ -1,5 +1,7 @@
 import axios from "axios"
+import { BACKEND_BASE_URL } from "../config";
+
 
 export default axios.create({
-  baseURL: "https://fitracker.onrender.com/api/splits"
+  baseURL: BACKEND_BASE_URL + "/api/splits"
 })
