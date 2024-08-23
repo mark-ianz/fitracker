@@ -1,8 +1,6 @@
 const { matchedData, validationResult } = require("express-validator");
-const Program = require("../models/programModel");
 const Split = require("../models/splitModel");
 const { isValidObjectId } = require("mongoose");
-const splitModel = require("../models/splitModel");
 
 const new_split = async (req, res) => {
   const error = validationResult(req);
@@ -28,19 +26,19 @@ const new_split = async (req, res) => {
   const split = new Split({ ...data, programs: [...ids] });
   await split.save();
 
-  return res.status(202).json({split});
+  return res.status(202).json({ split });
+};
 
-  /* try {
-    const result = matchedData(req);
-    const program = new Program(result);
-    const test = await program.save();
-
-    return res.status(202).json({ test });
+const get_user_splits = async (req, res) => {
+  const user = req.user._id;
+  try {
+    const split = await Split.find({ user });
+    return res.status(200).json({ split });
   } catch (error) {
     return res
       .status(500)
       .json({ error: "Server error. Please try again later" });
-  } */
+  }
 };
 
 const get_all_splits = async (req, res) => {
@@ -76,4 +74,5 @@ module.exports = {
   new_split,
   get_all_splits,
   get_one_split,
+  get_user_splits,
 };

@@ -14,6 +14,10 @@ const splitSchema = new Schema(
       required: true,
     },
     programs: [{ type: ObjectId, required: true }], // Array of programID
+    user: {
+      type: ObjectId,
+      required: true,
+    },
   },
   { timeStamps: true }
 );
