@@ -3,6 +3,7 @@ import BackButton from "../components/BackButton";
 import SplitsList from "../components/Splits/SplitsList";
 import splitsAPI from "../utils/api/splits";
 import useAuthContext from "../utils/hooks/useAuthContext";
+import LineSeperator from "../components/LineSeperator";
 
 const CustomSplits = () => {
   const { token } = useAuthContext();
@@ -38,7 +39,7 @@ const CustomSplits = () => {
           <BackButton />
           <h1 className="text-2xl font-bold">Custom Splits</h1>
         </div>
-        <div className="border-b-[1px] my-4"></div>
+        <LineSeperator className={"my-4"} />
         {splits && <SplitsList splits={splits} canAddSplits={true} />}
         {error && <p>{error}</p>}
       </section>

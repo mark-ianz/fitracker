@@ -1,6 +1,8 @@
 const { body } = require("express-validator");
 
 const splitValidator = [
+  body("user").isEmpty(),
+
   body("title").notEmpty().withMessage("Split title cannot be empty").trim(),
 
   body("description").notEmpty().withMessage("Description is required").trim(),

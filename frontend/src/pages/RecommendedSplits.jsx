@@ -3,6 +3,7 @@ import BackButton from "../components/BackButton";
 import { useEffect, useState } from "react";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import splitsAPI from "../utils/api/splits";
+import LineSeperator from "../components/LineSeperator";
 
 const RecommendedSplits = () => {
   const { token } = useAuthContext();
@@ -37,7 +38,7 @@ const RecommendedSplits = () => {
         <BackButton />
         <h1 className="text-2xl font-bold">Recommended Splits</h1>
       </div>
-      <div className="border-b-[1px] my-4"></div>
+      <LineSeperator className={"my-4"}/>
       {splits && <SplitsList splits={splits} />}
       {error && <p>{error}</p>}
     </section>

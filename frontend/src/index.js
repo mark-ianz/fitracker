@@ -24,6 +24,7 @@ import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
 import UnderConstruction from "./pages/UnderConstruction";
+import CreateSplit from "./pages/CreateSplit";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "splits/custom",
         element: <CustomSplits />,
+      },
+      {
+        path: "splits/create",
+        element: <CreateSplit />,
       },
       {
         path: "splits/:id",

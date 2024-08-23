@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import splitsAPI from "../utils/api/splits";
 import programsAPI from "../utils/api/programs";
 import useExercisesFormContext from "../utils/hooks/createSession/useExercisesFormContext";
+import LineSeperator from "../components/LineSeperator";
 
 const ViewSplit = () => {
   // Dependencies
@@ -62,7 +63,16 @@ const ViewSplit = () => {
 
   return (
     <main>
-      {error && <p>{error}</p>}
+      {error && (
+        <>
+          <div className="flex items-center gap-2">
+            <BackButton />
+            Go Back
+          </div>
+          <LineSeperator className={"my-4"}/>
+          <p>{error}</p>
+        </>
+      )}
       {split && (
         <>
           <div className="flex items-center gap-2 mb-4">
