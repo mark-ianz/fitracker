@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const AddMoreButton = ({ onClick, content, redirect, className }) => {
+const AddMoreButton = ({ onClick, children, redirect, className }) => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
@@ -42,7 +42,7 @@ const AddMoreButton = ({ onClick, content, redirect, className }) => {
           ></path>{" "}
         </g>
       </svg>
-      <p className="mt-2">{content}</p>
+      <p className="mt-2">{children}</p>
     </button>
   );
 };

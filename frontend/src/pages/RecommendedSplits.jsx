@@ -1,7 +1,36 @@
 import SplitsList from "../components/Splits/SplitsList";
-import BackButton from "../components/BackButton"
+import BackButton from "../components/BackButton";
+import { useEffect, useState } from "react";
+import useAuthContext from "../utils/hooks/useAuthContext";
+import splitsAPI from "../utils/api/splits";
 
 const RecommendedSplits = () => {
+  const { token } = useAuthContext();
+  const [splits, setSplits] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchSplits = async () => {
+      try {
+        const { data } = await splitsAPI.get("/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setSplits(data.splits);
+      } catch (error) {
+        if (error.response) {
+          setError(error.response.data.error);
+        } else {
+          setError(error.message);
+        }
+      }
+    };
+
+    fetchSplits();
+  }, [token]);
+
   return (
     <section>
       <div className="flex gap-2">
@@ -9,7 +38,8 @@ const RecommendedSplits = () => {
         <h1 className="text-2xl font-bold">Recommended Splits</h1>
       </div>
       <div className="border-b-[1px] my-4"></div>
-      <SplitsList />
+      {splits && <SplitsList splits={splits} />}
+      {error && <p>{error}</p>}
     </section>
   );
 };

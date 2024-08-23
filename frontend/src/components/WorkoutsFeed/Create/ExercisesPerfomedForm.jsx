@@ -38,12 +38,13 @@ const ExercisesPerfomedForm = () => {
       {/* Add Exercises Button, show only if not adding exercise and not editing */}
       {!isAddingExercise && !isEditing && (
         <AddMoreButton
-        className={"w-full h-64"}
+          className={"w-full h-64"}
           onClick={() =>
             dispatch({ type: "SET_ADDING_EXERCISE", payload: true })
           }
-          content={"Add exercises"}
-        />
+        >
+          Add exercises
+        </AddMoreButton>
       )}
     </>
   );
