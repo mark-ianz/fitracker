@@ -12,13 +12,13 @@ const CustomSplits = () => {
   useEffect(() => {
     const fetchSplits = async () => {
       try {
-        const { data } = await splitsAPI.get("/all", {
+        const { data } = await splitsAPI.get("/user", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        /* setSplits(data.splits); */
+        setSplits(data.splits);
       } catch (error) {
         if (error.response) {
           setError(error.response.data.error);
@@ -39,7 +39,7 @@ const CustomSplits = () => {
           <h1 className="text-2xl font-bold">Custom Splits</h1>
         </div>
         <div className="border-b-[1px] my-4"></div>
-        {splits && <SplitsList splits={splits} canAddSplits={true}/>}
+        {splits && <SplitsList splits={splits} canAddSplits={true} />}
         {error && <p>{error}</p>}
       </section>
     </>

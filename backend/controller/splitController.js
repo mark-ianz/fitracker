@@ -32,8 +32,8 @@ const new_split = async (req, res) => {
 const get_user_splits = async (req, res) => {
   const user = req.user._id;
   try {
-    const split = await Split.find({ user });
-    return res.status(200).json({ split });
+    const splits = await Split.find({ user });
+    return res.status(200).json({ splits });
   } catch (error) {
     return res
       .status(500)
