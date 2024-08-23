@@ -12,7 +12,7 @@ const CustomSplits = () => {
   useEffect(() => {
     const fetchSplits = async () => {
       try {
-        const { data } = await splitsAPI.get("/", {
+        const { data } = await splitsAPI.get("/all", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

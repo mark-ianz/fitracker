@@ -22,7 +22,7 @@ const ViewSplit = () => {
   useEffect(() => {
     const fetchSplit = async () => {
       try {
-        const { data } = await splitsAPI.get(`/${id}`, {
+        const { data } = await splitsAPI.get(`/one/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
