@@ -10,9 +10,9 @@ const SortButton = ({ setSort }) => {
   };
 
   return (
-    <div className="mb-4 flex justify-between items-center max-[550px]:flex-col max-[550px]:items-start gap-2">
+    <div className="mb-4 flex justify-between items-center max-sm:flex-col max-sm:items-start gap-2">
       <p className="text-2xl">Workout History</p>
-      <div className="flex content-center gap-2 max-[330px]:flex-col ">
+      <div className="flex content-center gap-2 flex-wrap">
         <select
           className="border rounded-md px-4 py-2"
           onChange={handleSortChange}

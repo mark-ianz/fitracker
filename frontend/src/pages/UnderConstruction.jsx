@@ -5,8 +5,8 @@ import Button from "../components/Button";
 const UnderConstruction = () => {
   const navigate = useNavigate();
   return (
-    <main className="flex items-center justify-center flex-col text-gray-600">
-      <h1 className="text-4xl font-bold font-sans mb-6">
+    <main className="flex items-center justify-center flex-col text-gray-600 text-center">
+      <h1 className="text-4xl font-bold font-sans mb-6 max-[500px]:text-3xl max-[400px]:text-2xl">
         WEBPAGE UNDERCONSTRUCTION
       </h1>
       <p>
