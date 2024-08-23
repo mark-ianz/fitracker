@@ -1,3 +1,3 @@
-const BACKEND_BASE_URL = "https://fitracker.onrender.com";
+const BACKEND_BASE_URL = "http://localhost:8080";
 
 export { BACKEND_BASE_URL };
