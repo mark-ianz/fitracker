@@ -75,7 +75,7 @@ const WorkoutSessionForm = () => {
               }
               name="sessionName"
               id="sessionName"
-              className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
+              className="text-input"
             />
           </div>
           <div className="input-wrapper flex flex-col">
@@ -89,7 +89,7 @@ const WorkoutSessionForm = () => {
               }
               name="description"
               id="description"
-              className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
+              className="text-input"
               rows={4}
             />
           </div>
@@ -103,7 +103,7 @@ const WorkoutSessionForm = () => {
               }
               name="tags"
               id="tags"
-              className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
+              className="text-input"
             />
           </div>
           <div className="input-wrapper flex flex-col">
@@ -116,7 +116,7 @@ const WorkoutSessionForm = () => {
               }
               name="location"
               id="location"
-              className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
+              className="text-input"
             />
           </div>
           <div className="input-wrapper flex flex-col">
@@ -129,7 +129,7 @@ const WorkoutSessionForm = () => {
               }
               name="date"
               id="date"
-              className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
+              className="text-input"
             />
           </div>
         </div>

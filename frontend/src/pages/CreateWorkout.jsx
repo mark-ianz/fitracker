@@ -10,7 +10,7 @@ const CreateWorkout = () => {
         <div className="grow basis-1">
           <div className="flex gap-2 mb-4">
             <BackButton />
-            <h1 className="text-xl">Log workout session</h1>
+            <h1 className="text-xl font-bold">Log workout session</h1>
           </div>
           <LineSeperator className={"hidden max-sm:block my-4"} />
           <WorkoutSessionForm />

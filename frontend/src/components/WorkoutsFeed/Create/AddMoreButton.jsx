@@ -12,6 +12,7 @@ const AddMoreButton = ({ onClick, children, redirect, className }) => {
     <button
       className={`border-2 text-red-400 border-red-400 flex flex-col items-center justify-center rounded-xl border-dashed ${className}`}
       onClick={handleOnClick}
+      type="button"
     >
       <svg
         width="48px"

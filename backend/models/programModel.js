@@ -45,11 +45,11 @@ const programSchema = new Schema({
   },
   muscleTargets: {
     type: String,
-    required: true,
+    default: "No muscle targets provided"
   },
   programDescription: {
     type: String,
-    required: true,
+    default: "No program description provided"
   },
   exercises: [exercisesSchema],
 }, {timestamps: true});

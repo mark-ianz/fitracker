@@ -1,25 +1,16 @@
 const { body } = require("express-validator");
 
 const programValidator = [
-  body ("user")
-    .isMongoId ()
-    .withMessage ("User ID is not valid")
-    .trim (),
+  body("user").isMongoId().withMessage("User ID is not valid").trim(),
 
   body("programName")
     .notEmpty()
     .withMessage("Program name cannot be empty")
     .trim(),
 
-  body("muscleTargets")
-    .notEmpty()
-    .withMessage("Muscle targets are required")
-    .trim(),
+  body("muscleTargets").optional().trim(),
 
-  body("programDescription")
-    .notEmpty()
-    .withMessage("Program description is required")
-    .trim(),
+  body("programDescription").optional().trim(),
 
   body("exercises")
     .isArray()

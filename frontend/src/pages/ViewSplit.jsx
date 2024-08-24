@@ -69,7 +69,7 @@ const ViewSplit = () => {
             <BackButton />
             Go Back
           </div>
-          <LineSeperator className={"my-4"}/>
+          <LineSeperator className={"my-4"} />
           <p>{error}</p>
         </>
       )}

@@ -11,7 +11,7 @@ const splitSchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
+      default: "No split description provided"
     },
     programs: [{ type: ObjectId, required: true }], // Array of programID
     user: {
