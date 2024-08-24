@@ -29,7 +29,7 @@ const ExercisesPerformed = ({
     return (
       <li
         key={exercise.id || index}
-        className="border-solid border-[1px] shadow-sm py-4 rounded-md relative pb-20"
+        className="border-solid border-[1px] shadow-sm py-4 rounded-md relative pb-20 min-h-64"
       >
         <div className="flex flex-row justify-between px-6">
           <p className="font-bold text-lg break-words max-w-[65%]">
@@ -65,30 +65,35 @@ const ExercisesPerformed = ({
             })}
           </tbody>
         </table>
-        <p className="text-sm absolute bottom-2 left-2 text-red-400">
-          Total volume: {total.volume} lb
-        </p>
-
-        {/* If can edit, currently not editing and not adding exercise, show the Edit button */}
-        {canEdit && !isEditing && !isAddingExercise && (
-          <div className="absolute bottom-2 right-2 flex gap-2">
-            <Button
-              buttonType="primarySm"
-              onClick={() =>
-                dispatch({ type: "DELETE_EXERCISE", payload: exercise.id })
-              }
-            >
-              Delete
-            </Button>
-            <button
-              onClick={editClickFunction}
-              data-id={exercise.id}
-              className="border-solid border-[1px] border-red-400 text-red-400 rounded-md px-6 py-1"
-            >
-              Edit
-            </button>
-          </div>
-        )}
+        <div
+          className="absolute bottom-2 flex items-center justify-between w-full px-3 gap-1
+          expbtn:max-xmd:flex-col expbtn:max-xmd:items-end
+          max-[400px]:flex-col max-[400px]:items-end"
+        >
+          <p className="text-sm text-red-400">
+            Total volume: {total.volume} lb
+          </p>
+          {/* If can edit, currently not editing and not adding exercise, show the Edit button */}
+          {canEdit && !isEditing && !isAddingExercise && (
+            <div className="flex gap-2">
+              <Button
+                buttonType="primarySm"
+                onClick={() =>
+                  dispatch({ type: "DELETE_EXERCISE", payload: exercise.id })
+                }
+              >
+                Delete
+              </Button>
+              <button
+                onClick={editClickFunction}
+                data-id={exercise.id}
+                className="border-solid border-[1px] border-red-400 text-red-400 rounded-md px-6 py-1"
+              >
+                Edit
+              </button>
+            </div>
+          )}
+        </div>
       </li>
     );
   });

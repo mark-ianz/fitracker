@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3vh 3vw;
+  padding: 1vh 1vw;
 }
 
 html {
@@ -20,8 +20,8 @@ html {
 }
 
 .icons {
-  width: 32px;
-  height: 32px;
+  width: 1.5em;
+  height: 1.5em;
   filter: invert(80%) sepia(2%) saturate(1625%) hue-rotate(179deg)
     brightness(81%) contrast(89%);
 }
@@ -54,8 +54,7 @@ html {
 
 .active {
   color: #f87171;
-  border: solid 1px #f87171;
-  border-radius: 8px;
+  border-bottom: solid 1px #f87171;
 }
 
 .input {

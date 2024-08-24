@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       screens: {
         'xsm': '480px',
+        'expbtn': '550px',
+        'xmd': '850px',
       },
       fontFamily: {
         'lalezar': ['Lalezar', 'sans-serif']

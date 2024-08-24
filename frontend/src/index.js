@@ -70,7 +70,11 @@ const router = createBrowserRouter([
       },
       {
         path: "splits/custom",
-        element: <CustomSplits />,
+        element: (
+          <ProtectedRoute>
+            <CustomSplits />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "splits/create",
@@ -87,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "forgot",
+        element: <UnderConstruction />,
       },
     ],
   },

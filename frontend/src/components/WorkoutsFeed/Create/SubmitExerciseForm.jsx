@@ -117,7 +117,7 @@ const SubmitExerciseForm = ({ exerciseId }) => {
           className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
         />
       </div>
-      <table className="w-full mt-4">
+      <table className="grow mt-4">
         <thead>
           <tr>
             <th className="text-center">Set</th>

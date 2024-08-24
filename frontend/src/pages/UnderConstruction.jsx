@@ -13,7 +13,7 @@ const UnderConstruction = () => {
         This webpage feature is currently under construction. Stay tune for the
         update.
       </p>
-      <Button onClick={()=> navigate (-1)} className={"underline"}>
+      <Button onClick={()=> navigate (-1)} className={"underline mt-4"}>
         Go back
       </Button>
     </main>

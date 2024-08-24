@@ -37,7 +37,7 @@ const CustomSplits = () => {
       <section>
         <div className="flex gap-2">
           <BackButton />
-          <h1 className="text-2xl font-bold">Custom Splits</h1>
+          <h1 className="text-xl font-bold">Custom Splits</h1>
         </div>
         <LineSeperator className={"my-4"} />
         {splits && <SplitsList splits={splits} canAddSplits={true} />}

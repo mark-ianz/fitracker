@@ -38,23 +38,25 @@ const Preview = () => {
     fetchWorkout();
   }, [token, dispatch, sort]);
 
-  if (workouts && workouts.length <= 0) {
-    return (
-      <p className="mt-6">
-        No workout session yet.{" "}
-        <Link className="underline text-[#f87171]" to="/create">
-          Upload now.
-        </Link>
-      </p>
-    );
-  }
+  useEffect(() => {
+    if (workouts && workouts.length <= 0) {
+      return (
+        <p className="mt-6">
+          No workout session yet.{" "}
+          <Link className="underline text-[#f87171]" to="/create">
+            Upload now.
+          </Link>
+        </p>
+      );
+    }
+  }, [workouts]);
 
   return (
-    <>
+    <section className="max-w-screen-md w-full">
       {workouts && (
         <>
           <SortButton setSort={setSort} />
-          <ul className="history-list flex flex-col gap-4">
+          <ul className="flex flex-col gap-4">
             {workouts.map((workout) => {
               return (
                 <li
@@ -65,7 +67,7 @@ const Preview = () => {
                     to={`/workout/${workout._id}`}
                     className="flex flex-row items-center gap-4 justify-start p-6"
                   >
-                    <div className="flex flex-col flex-grow">
+                    <div className="flex flex-col flex-grow w-full">
                       <span className="flex flex-row items-center mb-4 flex-wrap">
                         <p className="text-2xl mr-auto">{workout.name}</p>
                         <p className="text-gray-600">
@@ -74,7 +76,9 @@ const Preview = () => {
                       </span>
                       <div className="flex flex-col">
                         {workout.description && (
-                          <p>Description: {workout.description}</p>
+                          <p className="line-clamp-2">
+                            Description: {workout.description}
+                          </p>
                         )}
                         <p>Tags: {workout.tags}</p>
                         <p>Location: {workout.location}</p>
@@ -93,7 +97,7 @@ const Preview = () => {
       )}
       {loading && <p>Loading..</p>}
       {error && <p>{error}</p>}
-    </>
+    </section>
   );
 };
 export default Preview;

@@ -23,7 +23,7 @@ const ExercisesPerfomedForm = () => {
       <h2 className="text-xl mb-4">Exercises Performed</h2>
       {/* If exercises has a value v */}
       {exercises.length > 0 && (
-        <ul className="mb-4 flex flex-col gap-4">
+        <ul className="mb-4 grid gap-4 max-md:grid-cols-2 max-[550px]:grid-cols-1">
           <ExercisesPerformed
             exercisesPerformed={exercises}
             canEdit={true}

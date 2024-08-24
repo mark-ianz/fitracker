@@ -4,6 +4,7 @@ import Spinner from "../Spinner";
 import useSignup from "../../utils/hooks/useSignup";
 import useModalContext from "../../utils/hooks/useModalContext";
 import LoginForm from "./LoginForm";
+import CloseModalButton from "../CloseModalButton";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -26,8 +27,9 @@ const Signup = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="shadow-md p-6 rounded-md flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
+      className="relative shadow-md p-6 pt-12 rounded-md flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
     >
+      <CloseModalButton className={"absolute right-4 top-4"} />
       <h1 className="text-3xl mb-10">Signup</h1>
       <div className="flex flex-col w-full mb-6">
         <label htmlFor="username">Username</label>
@@ -73,9 +75,13 @@ const Signup = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
-      <div className="text-sm mt-2 w-full flex flex-row items-start">
-        {error && <p className="text-red-400 max-w-[65%]">{error}</p>}
-        <div className="ml-auto text-gray-600 flex gap-1 items-center justify-center">
+      <div
+        className={`text-sm mt-2 w-full flex flex-row items-center flex-wrap gap-1 ${
+          error ? "justify-between" : "justify-end"
+        }`}
+      >
+        {error && <p className="text-red-400">{error}</p>}
+        <div className="text-gray-600 flex gap-1 items-center justify-end">
           <p>Show Password</p>
           <input
             type="checkbox"

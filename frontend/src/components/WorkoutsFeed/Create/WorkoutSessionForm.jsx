@@ -14,15 +14,16 @@ const WorkoutSessionForm = () => {
   } = useWorkoutSessionFormContext();
 
   // Check if current workout session is from split
-  const { fromSplit, programName, programDescription } = useExercisesFormContext();
+  const { fromSplit, programName, programDescription } =
+    useExercisesFormContext();
 
   // If true, set the name and description to the split info
-  useEffect (()=> {
+  useEffect(() => {
     if (fromSplit) {
       dispatch({ type: "SET_SESSION_NAME", payload: programName });
       dispatch({ type: "SET_DESCRIPTION", payload: programDescription });
     }
-  }, [fromSplit])
+  }, [fromSplit]);
 
   // Dependencies
   const navigate = useNavigate();
@@ -62,7 +63,6 @@ const WorkoutSessionForm = () => {
 
   return (
     <>
-      <h1 className="text-xl mb-4">Log workout session</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="input-container gap-4 flex flex-col">
           <div className="input-wrapper flex flex-col">

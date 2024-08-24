@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BackButton from "../components/BackButton";
+import LineSeperator from "../components/LineSeperator";
 
 const Splits = () => {
   return (
     <main className="flex items-center justify-center">
-      <section className="flex flex-col justify-center items-center gap-4 mb-10 max-w-screen-lg">
-        <div className="flex items-center justify-center mr-auto gap-2 mb-4">
-          <BackButton />
-          <p className="text-lg">Go Back</p>
+      <section className="w-full flex flex-col justify-center items-center mb-10 max-w-screen-md gap-4">
+        <div className="w-full justify-start">
+          <div className="flex gap-2 mb-4">
+            <BackButton />
+            <p className="text-lg">Go Back</p>
+          </div>
+          <LineSeperator className={"mt-4"} />
         </div>
         <Link
           to={"recommended"}
