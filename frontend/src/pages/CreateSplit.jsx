@@ -50,6 +50,7 @@ const CreateSplit = () => {
 };
 
 export default CreateSplit;
+
 /* {
   "title": "PPL x Arnold Split",
   "description": "A hybrid of the Push/Pull/Legs split and Arnold Schwarzenegger's high-volume training principles. This split focuses on comprehensive muscle development with high volume and intensity.",
