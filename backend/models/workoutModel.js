@@ -41,7 +41,8 @@ const workoutSchema = new Schema(
       required: true,
     },
     description: {
-      type: String
+      type: String,
+      default: "No workout description provided.",
     },
     user: {
       type: ObjectId,

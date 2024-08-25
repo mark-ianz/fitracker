@@ -20,7 +20,7 @@ const workoutValidator = [
       return true;
     }),
 
-    body("exercisesPerformed.*.id") // Exercise performed id
+  body("exercisesPerformed.*.id") // Exercise performed id
     .trim()
     .notEmpty(),
 
@@ -80,7 +80,11 @@ const workoutValidator = [
     .isString()
     .withMessage("Location must be a string"),
 
-  body("description").trim().escape().optional(),
+  body("description")
+    .default("No workout description provided.")
+    .optional()
+    .trim()
+    .escape(),
 
   body("date"),
 ];

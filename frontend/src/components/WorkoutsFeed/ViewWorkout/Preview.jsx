@@ -75,11 +75,9 @@ const Preview = () => {
                         </p>
                       </span>
                       <div className="flex flex-col">
-                        {workout.description && (
-                          <p className="line-clamp-2">
-                            Description: {workout.description}
-                          </p>
-                        )}
+                        <p className="line-clamp-2">
+                          Description: {workout.description}
+                        </p>
                         <p>Tags: {workout.tags}</p>
                         <p>Location: {workout.location}</p>
                         <p>
