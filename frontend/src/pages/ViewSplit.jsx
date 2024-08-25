@@ -87,7 +87,7 @@ const ViewSplit = () => {
                 return (
                   <li
                     key={program._id}
-                    className="push shadow-md p-4 border-solid border-[1px] rounded-md relative pb-24"
+                    className="push shadow-md p-4 border-solid border rounded-md relative pb-24"
                   >
                     <p className="font-bold text-xl text-red-400">
                       {program.programName}

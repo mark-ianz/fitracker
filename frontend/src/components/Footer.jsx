@@ -6,16 +6,16 @@ const Footer = () => {
     <>
       <footer className="flex flex-col justify-center items-center gap-4 mt-40 text-gray-600">
         {/* <div className="flex flex-row gap-4 mb-6">
-        <Link to="/" className="p-2 border-solid rounded-full border-[1px]">
+        <Link to="/" className="p-2 border-solid rounded-full border">
           <img src="/logo192.png" alt="logo" className="w-7" />
           </Link>
-        <Link to="/" className="p-2 border-solid rounded-full border-[1px]">
+        <Link to="/" className="p-2 border-solid rounded-full border">
           <img src="/logo192.png" alt="logo" className="w-7" />
           </Link>
-          <Link to="/" className="p-2 border-solid rounded-full border-[1px]">
+          <Link to="/" className="p-2 border-solid rounded-full border">
           <img src="/logo192.png" alt="logo" className="w-7" />
           </Link>
-          <Link to="/" className="p-2 border-solid rounded-full border-[1px]">
+          <Link to="/" className="p-2 border-solid rounded-full border">
           <img src="/logo192.png" alt="logo" className="w-7" />
           </Link>
         </div> */}

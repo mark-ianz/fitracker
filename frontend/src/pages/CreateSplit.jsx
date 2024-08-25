@@ -1,43 +1,50 @@
-import React, { useState } from "react";
 import BackButton from "../components/BackButton";
+import Button from "../components/Button";
 import LineSeperator from "../components/LineSeperator";
-import AddMoreButton from "../components/WorkoutsFeed/Create/AddMoreButton";
+import Program from "../components/Splits/Program";
 
 const CreateSplit = () => {
-  const [programs, setPrograms] = useState(null);
-  const [isAddingProgram, setIsAddingProgram] = useState(false);
-
   return (
-    <main>
-      <div className="flex gap-2">
-        <BackButton />
-        <h1 className="text-xl font-bold">Create Split</h1>
-      </div>
-      <LineSeperator className={"my-4"} />
-      <form>
-        <div className="flex flex-col">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            className="text-input"
-            placeholder='(e.g, "PPL", "Bro Split", "Upper Lower")'
-          />
+    <main className="flex items-center justify-center">
+      <section
+        className="flex flex-col w-full max-w-screen-sm border
+        border-gray-100 rounded-xl p-10 bg-white shadow-md max-md:px-[5vw]"
+      >
+        <div className="flex gap-2">
+          <BackButton />
+          <h1 className="text-xl font-bold">Create Split</h1>
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            name="description"
-            className="text-input"
-            placeholder="(Optional)"
-          />
-        </div>
-        <div className="flex flex-col">
-          <p>Programs</p>
-          {!isAddingProgram && <AddMoreButton className={"py-6"}>Add Programs</AddMoreButton>}
-        </div>
-      </form>
+        <LineSeperator className={"my-4"} />
+        <form className="flex flex-col gap-4">
+          <div className="flex flex-col">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              className="text-input"
+              placeholder='(e.g, "PPL", "Bro Split", "Upper Lower")'
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="description">Description</label>
+            <input
+              type="text"
+              name="description"
+              className="text-input"
+              placeholder="(Optional)"
+            />
+          </div>
+          <Program />
+          <div className="flex gap-2 items-center justify-end">
+            <Button buttonType={"secondary"}>
+              Cancel
+            </Button>
+            <Button buttonType={"primary"}>
+              Submit
+            </Button>
+          </div>
+        </form>
+      </section>
     </main>
   );
 };

@@ -1,6 +1,6 @@
 const ImageBlurredBg = ({ imgUrl }) => {
   return (
-    <div className="border-solid border-[1px] border-black">
+    <div className="border-solid border border-black">
       <span
         style={{backgroundImage: `url(${imgUrl})`}}
         className="h-full w-full flex items-center justify-center bg-center bg-no-repeat bg-cover"

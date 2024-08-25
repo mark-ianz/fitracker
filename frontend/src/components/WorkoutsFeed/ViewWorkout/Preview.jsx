@@ -61,7 +61,7 @@ const Preview = () => {
               return (
                 <li
                   key={workout._id}
-                  className="shadow-md rounded-md border-gray border-solid border-[1px] hover:scale-105 transition-all"
+                  className="shadow-md rounded-md border-gray border-solid border hover:scale-105 transition-all"
                 >
                   <Link
                     to={`/workout/${workout._id}`}

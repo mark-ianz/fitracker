@@ -29,7 +29,7 @@ const ExercisesPerformed = ({
     return (
       <li
         key={exercise.id || index}
-        className="border-solid border-[1px] shadow-sm py-4 rounded-md relative pb-20 min-h-64"
+        className="border-solid border shadow-sm py-4 rounded-md relative pb-20 min-h-64"
       >
         <div className="flex flex-row justify-between px-6">
           <p className="font-bold text-lg break-words max-w-[65%]">
@@ -87,7 +87,7 @@ const ExercisesPerformed = ({
               <button
                 onClick={editClickFunction}
                 data-id={exercise.id}
-                className="border-solid border-[1px] border-red-400 text-red-400 rounded-md px-6 py-1"
+                className="border-solid border border-red-400 text-red-400 rounded-md px-6 py-1"
               >
                 Edit
               </button>

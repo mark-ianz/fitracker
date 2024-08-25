@@ -16,7 +16,7 @@ const Splits = () => {
         </div>
         <Link
           to={"recommended"}
-          className="w-full p-4 shadow-md border-gray-200 border-solid border-[1px] rounded-md hover:scale-105 transition-all"
+          className="w-full p-4 shadow-md border-gray-200 border-solid border rounded-md hover:scale-105 transition-all"
         >
           <p className="font-bold text-red-400 text-xl ">Recommended Splits</p>
           <p>
@@ -26,7 +26,7 @@ const Splits = () => {
         </Link>
         <Link
           to={"custom"}
-          className="w-full p-4 shadow-md border-gray-200 border-solid border-[1px] rounded-md hover:scale-105 transition-all"
+          className="w-full p-4 shadow-md border-gray-200 border-solid border rounded-md hover:scale-105 transition-all"
         >
           <p className="font-bold text-red-400 text-xl ">Custom Splits</p>
           <p>View the list that you created.</p>

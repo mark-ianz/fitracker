@@ -1,72 +1,133 @@
-import { useEffect } from "react";
-import usersAPI from "../utils/api/users";
+import React, { useState } from "react";
 
-const Test = () => {
+const SplitExerciseForm = () => {
+  const [formData] = useState({
+    title: "Push/Pull/Leg Split",
+    description: "A three-day split focusing on major muscle groups.",
+    programs: [
+      {
+        programName: "Push Day",
+        muscleTargets: "Chest, Shoulders, Triceps",
+        programDescription: "Focus on pushing movements.",
+        exercises: [
+          { exerciseName: "Bench Press" },
+          { exerciseName: "Overhead Press" },
+        ],
+      },
+      {
+        programName: "Pull Day",
+        muscleTargets: "Back, Biceps",
+        programDescription: "Focus on pulling movements.",
+        exercises: [
+          { exerciseName: "Pull-ups" },
+          { exerciseName: "Barbell Row" },
+        ],
+      },
+    ],
+  });
+
   return (
-    <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-          Features
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Workout Session Logging
-            </h2>
-            <p className="text-gray-600">
-              Easily log your workout sessions by entering details such as the
-              session name, description, location, date, and tags.
-            </p>
+    <div className="p-6 max-w-xl mx-auto bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Split Exercise Form</h2>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Title
+        </label>
+        <input
+          type="text"
+          value={formData.title}
+          readOnly
+          className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Description
+        </label>
+        <textarea
+          value={formData.description}
+          readOnly
+          className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+        />
+      </div>
+
+      <h3 className="text-xl font-semibold mb-4">Programs</h3>
+
+      {formData.programs.map((program, index) => (
+        <div key={index} className="mb-6 p-4 border rounded-lg bg-gray-50">
+          <div className="mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Program Name
+            </label>
+            <input
+              type="text"
+              value={program.programName}
+              readOnly
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Exercise Input
-            </h2>
-            <p className="text-gray-600">
-              Input the exercises you performed during your session, including
-              sets, reps, and weights.
-            </p>
+
+          <div className="mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Muscle Targets
+            </label>
+            <input
+              type="text"
+              value={program.muscleTargets}
+              readOnly
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Account-Based Access
-            </h2>
-            <p className="text-gray-600">
-              Each user has their own account, ensuring that you can only see
-              and manage your workout sessions.
-            </p>
+
+          <div className="mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Program Description
+            </label>
+            <textarea
+              value={program.programDescription}
+              readOnly
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Recommended Workout Splits
-            </h2>
-            <p className="text-gray-600">
-              Browse through a variety of recommended workout splits tailored to
-              different fitness goals.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              One-Click Split Logging
-            </h2>
-            <p className="text-gray-600">
-              Log a recommended workout split with a single click, automatically
-              filling in the exercises with adjustable sets and reps.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Custom Workout Splits
-            </h2>
-            <p className="text-gray-600">
-              Create and save your own workout splits, tailored to your unique
-              fitness goals and preferences.
-            </p>
-          </div>
+
+          <h4 className="text-lg font-semibold mb-2">Exercises</h4>
+
+          {program.exercises.map((exercise, i) => (
+            <div key={i} className="mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Exercise Name
+              </label>
+              <input
+                type="text"
+                value={exercise.exerciseName}
+                readOnly
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+              />
+            </div>
+          ))}
+
+          <button className="mt-3 w-full bg-foo-red-400 text-white py-2 rounded-lg shadow-sm hover:bg-red-600 transition duration-200">
+            + Add Exercise
+          </button>
         </div>
+      ))}
+
+      <button className="w-full mb-4 bg-foo-red-400 text-white py-2 rounded-lg shadow-sm hover:bg-red-600 transition duration-200">
+        + Add Program
+      </button>
+
+      <div className="flex justify-between">
+        <button className="w-full mr-2 bg-gray-300 text-gray-700 py-2 rounded-lg shadow-sm hover:bg-gray-400 transition duration-200">
+          Cancel
+        </button>
+        <button className="w-full ml-2 bg-foo-red-400 text-white py-2 rounded-lg shadow-sm hover:bg-red-600 transition duration-200">
+          Submit
+        </button>
       </div>
     </div>
   );
 };
 
-export default Test;
+export default SplitExerciseForm;

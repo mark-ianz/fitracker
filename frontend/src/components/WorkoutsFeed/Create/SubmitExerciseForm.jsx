@@ -114,7 +114,7 @@ const SubmitExerciseForm = ({ exerciseId }) => {
           type="text"
           name="exerciseName"
           id="exerciseName"
-          className="py-1 px-2 border-solid border-[1px] rounded-md outline-[#9d9d9d]"
+          className="py-1 px-2 border-solid border rounded-md outline-[#9d9d9d]"
         />
       </div>
       <table className="grow mt-4">
@@ -137,7 +137,7 @@ const SubmitExerciseForm = ({ exerciseId }) => {
                     type="number"
                     name="reps"
                     data-index={index}
-                    className="p-1 rounded-md outline-[#9d9d9d] w-1/2 border-solid border-[1px] text-center"
+                    className="p-1 rounded-md outline-[#9d9d9d] w-1/2 border-solid border text-center"
                   />
                 </td>
                 <td className="text-center w-1/3">
@@ -147,7 +147,7 @@ const SubmitExerciseForm = ({ exerciseId }) => {
                     type="number"
                     name="weight"
                     data-index={index}
-                    className="p-1 rounded-md outline-[#9d9d9d] w-2/3 border-solid border-[1px] text-center"
+                    className="p-1 rounded-md outline-[#9d9d9d] w-2/3 border-solid border text-center"
                   />
                 </td>
                 <td>
