@@ -2,6 +2,15 @@ import { createContext, useReducer } from "react";
 
 const ExercisesFormContext = createContext();
 
+const initialState = {
+  programName: "",
+  programDescription: "",
+  exercises: [],
+  isAddingExercise: false,
+  isEditing: false,
+  editing: null, // Editing object value
+};
+
 const ExerciseFormReducer = (state, action) => {
   switch (action.type) {
     case "SET_ADDING_EXERCISE": {
@@ -51,21 +60,15 @@ const ExerciseFormReducer = (state, action) => {
         isEditing: false,
         editing: null,
       };
+    case "RESET_EXERCISES":
+      return initialState;
     default:
       return state;
   }
 };
 
 const ExercisesFormContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(ExerciseFormReducer, {
-    programName: "",
-    programDescription: "",
-    exercises: [],
-    isAddingExercise: false,
-    isEditing: false,
-    editing: null, // Editing object value
-  });
-
+  const [state, dispatch] = useReducer(ExerciseFormReducer, initialState);
 
   return (
     <ExercisesFormContext.Provider value={{ ...state, dispatch }}>

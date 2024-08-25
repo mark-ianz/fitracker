@@ -10,8 +10,10 @@ const WorkoutSessionForm = () => {
   // Form states
   const {
     state: { sessionName, description, tags, location, dateTime },
-    dispatch,
+    dispatch: sessionFormDispatch,
   } = useWorkoutSessionFormContext();
+
+  const { dispatch: exercisesDispatch } = useExercisesFormContext();
 
   // Check if current workout session is from split
   const { fromSplit, programName, programDescription } =
@@ -20,8 +22,11 @@ const WorkoutSessionForm = () => {
   // If true, set the name and description to the split info
   useEffect(() => {
     if (fromSplit) {
-      dispatch({ type: "SET_SESSION_NAME", payload: programName });
-      dispatch({ type: "SET_DESCRIPTION", payload: programDescription });
+      sessionFormDispatch({ type: "SET_SESSION_NAME", payload: programName });
+      sessionFormDispatch({
+        type: "SET_DESCRIPTION",
+        payload: programDescription,
+      });
     }
   }, [fromSplit]);
 
@@ -50,7 +55,8 @@ const WorkoutSessionForm = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      sessionFormDispatch({ type: "RESET_FORM" });
+      exercisesDispatch({ type: "RESET_EXERCISES" });
       navigate("/");
     } catch (error) {
       if (error.response) {
@@ -71,7 +77,10 @@ const WorkoutSessionForm = () => {
               type="text"
               value={sessionName}
               onChange={(e) =>
-                dispatch({ type: "SET_SESSION_NAME", payload: e.target.value })
+                sessionFormDispatch({
+                  type: "SET_SESSION_NAME",
+                  payload: e.target.value,
+                })
               }
               name="sessionName"
               id="sessionName"
@@ -85,7 +94,10 @@ const WorkoutSessionForm = () => {
               value={description}
               placeholder="(Optional)"
               onChange={(e) =>
-                dispatch({ type: "SET_DESCRIPTION", payload: e.target.value })
+                sessionFormDispatch({
+                  type: "SET_DESCRIPTION",
+                  payload: e.target.value,
+                })
               }
               name="description"
               id="description"
@@ -99,7 +111,10 @@ const WorkoutSessionForm = () => {
               type="text"
               value={tags}
               onChange={(e) =>
-                dispatch({ type: "SET_TAGS", payload: e.target.value })
+                sessionFormDispatch({
+                  type: "SET_TAGS",
+                  payload: e.target.value,
+                })
               }
               name="tags"
               id="tags"
@@ -112,7 +127,10 @@ const WorkoutSessionForm = () => {
               type="text"
               value={location}
               onChange={(e) =>
-                dispatch({ type: "SET_LOCATION", payload: e.target.value })
+                sessionFormDispatch({
+                  type: "SET_LOCATION",
+                  payload: e.target.value,
+                })
               }
               name="location"
               id="location"
@@ -125,7 +143,10 @@ const WorkoutSessionForm = () => {
               type="datetime-local"
               value={dateTime}
               onChange={(e) =>
-                dispatch({ type: "SET_DATE_TIME", payload: e.target.value })
+                sessionFormDispatch({
+                  type: "SET_DATE_TIME",
+                  payload: e.target.value,
+                })
               }
               name="date"
               id="date"
