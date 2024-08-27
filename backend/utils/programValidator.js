@@ -8,9 +8,9 @@ const programValidator = [
     .withMessage("Program name cannot be empty")
     .trim(),
 
-  body("muscleTargets").optional().trim(),
+  body("muscleTargets").trim().default("N/A"),
 
-  body("programDescription").optional().trim(),
+  body("programDescription").trim().default("N/A"),
 
   body("exercises")
     .isArray()

@@ -38,22 +38,9 @@ const Preview = () => {
     fetchWorkout();
   }, [token, dispatch, sort]);
 
-  useEffect(() => {
-    if (workouts && workouts.length <= 0) {
-      return (
-        <p className="mt-6">
-          No workout session yet.{" "}
-          <Link className="underline text-[#f87171]" to="/create">
-            Upload now.
-          </Link>
-        </p>
-      );
-    }
-  }, [workouts]);
-
   return (
     <section className="max-w-screen-md w-full">
-      {workouts && (
+      {workouts && workouts.length > 0 && (
         <>
           <SortButton setSort={setSort} />
           <ul className="flex flex-col gap-4">
@@ -92,6 +79,15 @@ const Preview = () => {
             })}
           </ul>
         </>
+      )}
+
+      {workouts && workouts.length <= 0 && (
+        <p className="mt-6">
+          No workout session yet.{" "}
+          <Link className="underline text-[#f87171]" to="/create">
+            Upload now.
+          </Link>
+        </p>
       )}
       {loading && <p>Loading..</p>}
       {error && <p>{error}</p>}

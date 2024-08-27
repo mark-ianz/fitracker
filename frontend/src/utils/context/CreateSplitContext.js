@@ -1,16 +1,16 @@
 import { createContext, useReducer } from "react";
-import { v4 as generate_uuid } from "uuid";
+import { ObjectId } from "bson";
 
 export const CreateSplitContext = createContext();
 
 const initialState = {
-  title: "a",
+  title: "",
   description: "",
   programs: [],
 };
 
 const generateEmptyProgram = () => ({
-  _id: generate_uuid(),
+  _id: new ObjectId().toHexString(),
   programName: "",
   muscleTargets: "",
   programDescription: "",
@@ -23,7 +23,7 @@ const generateEmptyProgram = () => ({
 
 const generateEmptyExercise = () => ({
   exerciseName: "",
-  id: generate_uuid(),
+  id: new ObjectId().toHexString(),
 });
 
 const createSplitReducer = (state, action) => {
@@ -97,7 +97,7 @@ const createSplitReducer = (state, action) => {
             ? {
                 ...program,
                 exercises: program.exercises.filter(
-                  (exercise) => exercise.id != action.payload.exerciseId
+                  (exercise) => exercise.id !== action.payload.exerciseId
                 ),
               }
             : program

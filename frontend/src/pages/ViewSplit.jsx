@@ -93,10 +93,10 @@ const ViewSplit = () => {
                       {program.programName}
                     </p>
                     <p className="text-sm text-gray-600">
-                      Target: {program.muscleTargets}
+                      Target: {program.muscleTargets || "N/A"}
                     </p>
                     <p className="text-gray-600 my-4">
-                      {program.programDescription}
+                      {program.programDescription || "No description provided"}
                     </p>
                     <p className="font-bold">Exercises:</p>
                     <ul className="list-disc list-inside text-gray-600">

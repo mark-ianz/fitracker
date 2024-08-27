@@ -5,7 +5,9 @@ const splitValidator = [
 
   body("title").notEmpty().withMessage("Split title cannot be empty").trim(),
 
-  body("description").optional().trim(),
+  body("description")
+    .trim()
+    .default("No split description provided"),
 
   body("programs")
     .notEmpty()

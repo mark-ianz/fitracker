@@ -41,6 +41,7 @@ const Program = () => {
                   type="text"
                   name="muscleTargets"
                   className="text-input"
+                  placeholder="(Optional)"
                   value={program.muscleTargets}
                   onChange={(e) =>
                     dispatch({
@@ -59,6 +60,7 @@ const Program = () => {
                   name="programDescription"
                   rows="4"
                   className="text-input"
+                  placeholder="(Optional)"
                   value={program.programDescription}
                   onChange={(e) =>
                     dispatch({

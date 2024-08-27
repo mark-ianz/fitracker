@@ -34,25 +34,28 @@ const exercisesSchema = new Schema(
   { _id: false }
 );
 
-const programSchema = new Schema({
-  user: {
-    type: ObjectId,
-    required: true
+const programSchema = new Schema(
+  {
+    user: {
+      type: ObjectId,
+      required: true,
+    },
+    programName: {
+      type: String,
+      required: true,
+    },
+    muscleTargets: {
+      type: String,
+      default: "N/A",
+    },
+    programDescription: {
+      type: String,
+      default: "N/A",
+    },
+    exercises: [exercisesSchema],
   },
-  programName: {
-    type: String,
-    required: true,
-  },
-  muscleTargets: {
-    type: String,
-    default: "No muscle targets provided"
-  },
-  programDescription: {
-    type: String,
-    default: "No program description provided"
-  },
-  exercises: [exercisesSchema],
-}, {timestamps: true});
+  { timestamps: true }
+);
 
 /* programSchema.statics.saveProgramsAndGetIds = async (programs, user)=> {
   const result = await programSchema.insertMany (programs);
