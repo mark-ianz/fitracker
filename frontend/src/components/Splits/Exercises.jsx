@@ -45,7 +45,14 @@ const Exercises = ({ exercises, programId }) => {
             >
               Add Exercises
             </Button>
-            <Button buttonType={"secondary"}>Delete Program</Button>
+            <Button
+              buttonType={"secondary"}
+              onClick={() =>
+                dispatch({ type: "DELETE_PROGRAM", payload: programId })
+              }
+            >
+              Delete Program
+            </Button>
           </div>
         </ul>
       )}

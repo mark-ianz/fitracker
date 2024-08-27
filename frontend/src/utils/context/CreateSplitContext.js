@@ -43,6 +43,13 @@ const createSplitReducer = (state, action) => {
         ...state,
         programs: [...state.programs, generateEmptyProgram()],
       };
+    case "DELETE_PROGRAM":
+      return {
+        ...state,
+        programs: state.programs.filter(
+          (program) => program._id !== action.payload
+        ),
+      };
     case "UPDATE_PROGRAM_NAME":
       return {
         ...state,
@@ -105,28 +112,9 @@ const createSplitReducer = (state, action) => {
 
 export const CreateSplitContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(createSplitReducer, initialState);
-  console.log(state);
   return (
     <CreateSplitContext.Provider value={{ ...state, dispatch }}>
       {children}
     </CreateSplitContext.Provider>
   );
 };
-
-/* [
-  {
-    id: 1,
-    programName: "Push Day",
-    muscleTargets: "Chest, Shoulders, Triceps",
-    programDescription:
-      "Focuses on pushing movements to develop the chest, shoulders, and triceps with a mix of compound and isolation exercises.",
-    exercises: [
-      { exerciseName: "Bench Press", id: 2323 },
-      { exerciseName: "Incline Dumbbell Press", id: 512 },
-      { exerciseName: "Overhead Press", id: 6121 },
-      { exerciseName: "Lateral Raise", id: 12512 },
-      { exerciseName: "Tricep Dips", id: 555 },
-      { exerciseName: "Tricep Pushdown", id: 111 },
-    ],
-  },
-], */
