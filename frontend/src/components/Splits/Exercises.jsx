@@ -32,7 +32,18 @@ const Exercises = ({ exercises, programId }) => {
                     })
                   }
                 />
-                <Trash width={"2em"} onClick={() => console.log("a")} />
+                <Trash
+                  width={"2em"}
+                  onClick={() =>
+                    dispatch({
+                      type: "DELETE_EXERCISE",
+                      payload: {
+                        programId,
+                        exerciseId: exercise.id,
+                      },
+                    })
+                  }
+                />
               </div>
             </li>
           ))}

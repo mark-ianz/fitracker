@@ -89,6 +89,20 @@ const createSplitReducer = (state, action) => {
             : program
         ),
       };
+    case "DELETE_EXERCISE":
+      return {
+        ...state,
+        programs: state.programs.map((program) =>
+          program._id === action.payload.programId
+            ? {
+                ...program,
+                exercises: program.exercises.filter(
+                  (exercise) => exercise.id != action.payload.exerciseId
+                ),
+              }
+            : program
+        ),
+      };
     case "UPDATE_EXERCISE_NAME":
       return {
         ...state,
