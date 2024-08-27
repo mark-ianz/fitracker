@@ -2,8 +2,10 @@ import BackButton from "../components/BackButton";
 import Button from "../components/Button";
 import LineSeperator from "../components/LineSeperator";
 import Program from "../components/Splits/Program";
+import useCreateSplitContext from "../utils/hooks/useCreateSplitContext";
 
 const CreateSplit = () => {
+  const { title, description, dispatch } = useCreateSplitContext();
   return (
     <main className="flex items-center justify-center">
       <section
@@ -21,6 +23,10 @@ const CreateSplit = () => {
             <input
               type="text"
               name="title"
+              value={title}
+              onChange={(e) =>
+                dispatch({ type: "SET_TITLE", payload: e.target.value })
+              }
               className="text-input"
               placeholder='(e.g, "PPL", "Bro Split", "Upper Lower")'
             />
@@ -30,18 +36,18 @@ const CreateSplit = () => {
             <input
               type="text"
               name="description"
+              value={description}
+              onChange={(e) =>
+                dispatch({ type: "SET_DESCRIPTION", payload: e.target.value })
+              }
               className="text-input"
               placeholder="(Optional)"
             />
           </div>
           <Program />
           <div className="flex gap-2 items-center justify-end">
-            <Button buttonType={"secondary"}>
-              Cancel
-            </Button>
-            <Button buttonType={"primary"}>
-              Submit
-            </Button>
+            <Button buttonType={"secondary"}>Cancel</Button>
+            <Button buttonType={"primary"}>Submit</Button>
           </div>
         </form>
       </section>
