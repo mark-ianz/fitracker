@@ -1,12 +1,9 @@
-import { useState } from "react";
 import AddMoreButton from "../WorkoutsFeed/Create/AddMoreButton";
 import Exercises from "./Exercises";
 import useCreateSplitContext from "../../utils/hooks/useCreateSplitContext";
 
 const Program = () => {
   const { programs, dispatch } = useCreateSplitContext();
-  const [isAddingProgram, setIsAddingProgram] = useState(false);
-
   return (
     <div className="flex flex-col gap-4">
       <p className="font-bold text-xl">Programs</p>

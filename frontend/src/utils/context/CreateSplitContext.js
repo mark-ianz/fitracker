@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { ObjectId } from "bson";
+import ObjectId from "bson-objectid";
 
 export const CreateSplitContext = createContext();
 

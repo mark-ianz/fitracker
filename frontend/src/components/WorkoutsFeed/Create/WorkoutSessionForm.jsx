@@ -28,7 +28,7 @@ const WorkoutSessionForm = () => {
         payload: programDescription,
       });
     }
-  }, [fromSplit]);
+  }, [fromSplit, programDescription, programName, sessionFormDispatch]);
 
   // Dependencies
   const navigate = useNavigate();

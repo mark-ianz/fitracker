@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Button from "../Button";
 import Trash from "../Icons/Trash";
 import useCreateSplitContext from "../../utils/hooks/useCreateSplitContext";
