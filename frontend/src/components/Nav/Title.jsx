@@ -6,7 +6,7 @@ const Title = () => {
       <Link
         to={"/"}
         id="title"
-        className="font-lalezar text-4xl text-black"
+        className="font-lalezar text-4xl text-red-400"
       >
         FITRACKER
       </Link>

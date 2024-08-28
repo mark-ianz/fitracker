@@ -13,6 +13,9 @@ module.exports = {
       },
       fontFamily: {
         'lalezar': ['Lalezar', 'sans-serif']
+      },
+      backgroundImage: {
+        'landingPage': "url('./img/landing_image.png')"
       }
     },
   },

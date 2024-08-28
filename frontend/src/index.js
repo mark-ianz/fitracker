@@ -25,22 +25,22 @@ import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
 import UnderConstruction from "./pages/UnderConstruction";
 import CreateSplit from "./pages/CreateSplit";
-import 'react-loading-skeleton/dist/skeleton.css'
+import "react-loading-skeleton/dist/skeleton.css";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <NotForAuth>
+        <LandingPage />
+      </NotForAuth>
+    ),
+  },
   {
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "/",
-        element: (
-          <NotForAuth>
-            <LandingPage />
-          </NotForAuth>
-        ),
-      },
       {
         path: "home",
         element: (

@@ -17,7 +17,7 @@ const NavLinks = () => {
   return (
     <ul
       className={`nav-links grid grid-cols-6 
-      items-center text-gray-600 gap-4 min-w-fit
+      items-center text-inherit gap-4 min-w-fit
       max-sm:grid-cols-3 
       max-[345px]:gap-0
       border-solid
@@ -69,7 +69,7 @@ const NavLinks = () => {
         <>
           <Button
             buttonType="plain"
-            className={"grow"}
+            className={"grow text-inherit"}
             onClick={() => {
               openModal(<LoginForm />);
             }}
@@ -78,7 +78,7 @@ const NavLinks = () => {
           </Button>
           <Button
             buttonType="plain"
-            className={"grow"}
+            className={"grow text-inherit"}
             onClick={() => {
               openModal(<Signup />);
             }}
