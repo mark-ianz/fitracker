@@ -5,7 +5,7 @@ const About = () => {
         About FITRACKER
       </h1>
       <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-semibold text-red-400 mb-6">
+        <h2 className="text-3xl font-semibold text-red-400 mb-2">
           Our Mission
         </h2>
         <p className="text-gray-600 mb-6">
@@ -14,7 +14,7 @@ const About = () => {
           athlete, our goal is to provide a seamless and user-friendly platform
           where you can log and manage all your workout sessions in one place.
         </p>
-        <h2 className="text-3xl font-semibold text-red-400 mb-6">
+        <h2 className="text-3xl font-semibold text-red-400 mb-2">
           Why FITRACKER?
         </h2>
         <p className="text-gray-600 mb-6">
@@ -22,7 +22,7 @@ const About = () => {
           That’s why FITRACKER offers a comprehensive solution for logging your
           sessions, tracking your progress, and staying on top of your routines.
         </p>
-        <h2 className="text-3xl font-semibold text-red-400 mb-6">Our Story</h2>
+        <h2 className="text-3xl font-semibold text-red-400 mb-2">Our Story</h2>
         <p className="text-gray-600">
           FITRACKER was created out of a passion for fitness and a desire to
           make tracking workouts easier. As fitness enthusiasts, we often found
