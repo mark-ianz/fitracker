@@ -18,6 +18,10 @@ const splitSchema = new Schema(
       type: ObjectId,
       required: true,
     },
+    recommended: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timeStamps: true }
 );

@@ -7,9 +7,11 @@ const {
   get_all_splits,
   get_one_split,
   get_user_splits,
+  get_all_recommended,
 } = require("../controller/splitController");
 
 router.get("/all", get_all_splits);
+router.get ("/recommended", get_all_recommended)
 router.get("/one/:id", get_one_split);
 router.use(requireAuth);
 router.get("/user", get_user_splits);

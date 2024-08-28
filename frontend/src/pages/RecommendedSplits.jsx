@@ -13,11 +13,7 @@ const RecommendedSplits = () => {
   useEffect(() => {
     const fetchSplits = async () => {
       try {
-        const { data } = await splitsAPI.get("/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const { data } = await splitsAPI.get("/recommended");
 
         setSplits(data.splits);
       } catch (error) {
@@ -38,7 +34,7 @@ const RecommendedSplits = () => {
         <BackButton />
         <h1 className="text-xl font-bold">Recommended Splits</h1>
       </div>
-      <LineSeperator className={"my-4"}/>
+      <LineSeperator className={"my-4"} />
       {splits && <SplitsList splits={splits} />}
       {error && <p>{error}</p>}
     </section>

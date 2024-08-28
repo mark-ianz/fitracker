@@ -29,7 +29,7 @@ const get_array_program = async (req, res) => {
   }
 
   const programs = await Program.find({ _id: { $in: ids } });
-  res.json ({programs})
+  res.json({ programs });
 };
 
 const post_program = async (req, res) => {

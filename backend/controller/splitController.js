@@ -41,6 +41,17 @@ const get_user_splits = async (req, res) => {
   }
 };
 
+const get_all_recommended = async (req, res) => {
+  try {
+    const splits = await Split.find({ recommended: true });
+    return res.status(200).json({ splits });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: "Server error. Please try again later" });
+  }
+};
+
 const get_all_splits = async (req, res) => {
   try {
     const splits = await Split.find();
@@ -72,6 +83,7 @@ const get_one_split = async (req, res) => {
 
 module.exports = {
   new_split,
+  get_all_recommended,
   get_all_splits,
   get_one_split,
   get_user_splits,

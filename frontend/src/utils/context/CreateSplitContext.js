@@ -119,6 +119,8 @@ const createSplitReducer = (state, action) => {
             : program
         ),
       };
+    case "CLEAR_ALL":
+      return initialState;
     default:
       return state;
   }

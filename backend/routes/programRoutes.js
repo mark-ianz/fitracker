@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   get_one_program,
   post_program,
-  get_array_program
+  get_array_program,
 } = require("../controller/programController");
 const programValidator = require ("../utils/programValidator");
 const requireAuth = require("../middlewares/requireAuth");

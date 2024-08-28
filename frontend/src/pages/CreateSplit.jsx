@@ -70,6 +70,8 @@ const CreateSplit = () => {
           },
         }
       );
+      dispatch({ type: "CLEAR_ALL" });
+      navigate("/splits/custom");
     } catch (error) {
       if (error.response) {
         setError(error.response.data.error);
