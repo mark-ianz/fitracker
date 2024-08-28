@@ -1,3 +1,3 @@
-const BACKEND_BASE_URL = "http://localhost:8080";
+const BACKEND_BASE_URL = "https://fitracker-api.vercel.app";
 
 export { BACKEND_BASE_URL };
