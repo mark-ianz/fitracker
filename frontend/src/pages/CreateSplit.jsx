@@ -90,7 +90,6 @@ const CreateSplit = () => {
         <div className="flex gap-2">
           <BackButton />
           <h1 className="text-xl font-bold">Create Split</h1>
-          <p>{error}</p>
         </div>
         <LineSeperator className={"my-4"} />
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -121,6 +120,7 @@ const CreateSplit = () => {
             />
           </div>
           <Program />
+          <p className="text-gray-600 text-sm text-end">{error}</p>
           <div className="flex gap-2 items-center justify-end">
             <Button buttonType={"secondary"} onClick={() => navigate(-1)}>
               Cancel
@@ -136,35 +136,3 @@ const CreateSplit = () => {
 };
 
 export default CreateSplit;
-
-/* {
-  "title": "PPL x Arnold Split",
-  "description": "A hybrid of the Push/Pull/Legs split and Arnold Schwarzenegger's high-volume training principles. This split focuses on comprehensive muscle development with high volume and intensity.",
-  "programs": [
-    {
-        "programName": "Push Day",
-        "muscleTargets": "Chest, Shoulders, Triceps",
-        "programDescription": "Focuses on pushing movements to develop the chest, shoulders, and triceps with a mix of compound and isolation exercises.",
-        "exercises": [
-            {
-                "exerciseName": "Bench Press"
-            },
-            {
-                "exerciseName": "Incline Dumbbell Press"
-            },
-            {
-                "exerciseName": "Overhead Press"
-            },
-            {
-                "exerciseName": "Lateral Raise"
-            },
-            {
-                "exerciseName": "Tricep Dips"
-            },
-            {
-                "exerciseName": "Tricep Pushdown"
-            }
-        ]
-    },
-  ]
-} */

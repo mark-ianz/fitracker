@@ -21,20 +21,19 @@ const Preview = () => {
       try {
         setError("");
         setLoading(true);
-        setTimeout(async () => {
-          const { data } = await workoutsAPI.get("/all", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            params: {
-              sort,
-            },
-          });
-          dispatch({ type: "SET_WORKOUTS", payload: data });
-          setLoading(false);
-        }, 3000);
+        const { data } = await workoutsAPI.get("/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            sort,
+          },
+        });
+        dispatch({ type: "SET_WORKOUTS", payload: data });
       } catch (error) {
         setError("Server error. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     };
     fetchWorkout();
@@ -91,7 +90,7 @@ const Preview = () => {
           </Link>
         </p>
       )}
-      {loading && <HomeSkeleton size={5}/>}
+      {loading && <HomeSkeleton size={5} />}
       {error && <p>{error}</p>}
     </section>
   );

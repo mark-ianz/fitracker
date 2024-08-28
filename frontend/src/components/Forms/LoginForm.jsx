@@ -3,13 +3,13 @@ import { useState } from "react";
 
 // Components
 import Button from "../Button";
-import Spinner from "../Spinner";
 
 // Hooks
 import useModalContext from "../../utils/hooks/useModalContext";
 import useLogin from "../../utils/hooks/useLogin";
 import Signup from "./SignupForm";
 import CloseModalButton from "../CloseModalButton";
+import Loading from "../Icons/Loading";
 
 const LoginForm = () => {
   const { login, error, loading } = useLogin();
@@ -80,13 +80,13 @@ const LoginForm = () => {
           />
         </div>
       </div>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Button buttonType="primary" className={"w-full mt-10"} toSubmit={true}>
-          Login
-        </Button>
-      )}
+      <Button
+        className={"w-full mt-10 flex items-center justify-center"}
+        buttonType="primary"
+        toSubmit={true}
+      >
+        {loading ? <Loading /> : "Login"}
+      </Button>
       <div className="text-gray-600 items-center text-sm mt-4 flex flex-col">
         <button
           onClick={() => {
