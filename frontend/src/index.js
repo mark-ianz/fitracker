@@ -25,6 +25,7 @@ import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
 import UnderConstruction from "./pages/UnderConstruction";
 import CreateSplit from "./pages/CreateSplit";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const router = createBrowserRouter([
   {

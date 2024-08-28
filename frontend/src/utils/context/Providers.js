@@ -18,7 +18,7 @@ const Providers = ({ children }) => {
               <SidebarProvider>
                 <AuthContextProvider>
                   <ModalProvider>
-                    <SkeletonTheme baseColor="#E4E7ED" highlightColor="#F6F8FA">
+                    <SkeletonTheme baseColor="#E0E0E0" highlightColor="#F5F5F5">
                       <>
                         {children}
                         <Modal />

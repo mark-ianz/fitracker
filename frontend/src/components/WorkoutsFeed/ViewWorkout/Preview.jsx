@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import SortButton from "./SortButton";
 import workoutsAPI from "../../../utils/api/workouts";
+import HomeSkeleton from "../../Skeletons/HomeSkeleton";
 
 // Hooks
 
@@ -20,19 +21,20 @@ const Preview = () => {
       try {
         setError("");
         setLoading(true);
-        const { data } = await workoutsAPI.get("/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          params: {
-            sort,
-          },
-        });
-        dispatch({ type: "SET_WORKOUTS", payload: data });
+        setTimeout(async () => {
+          const { data } = await workoutsAPI.get("/all", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            params: {
+              sort,
+            },
+          });
+          dispatch({ type: "SET_WORKOUTS", payload: data });
+          setLoading(false);
+        }, 3000);
       } catch (error) {
         setError("Server error. Please try again later.");
-      } finally {
-        setLoading(false);
       }
     };
     fetchWorkout();
@@ -40,9 +42,9 @@ const Preview = () => {
 
   return (
     <section className="max-w-screen-md w-full">
+      <SortButton setSort={setSort} />
       {workouts && workouts.length > 0 && (
         <>
-          <SortButton setSort={setSort} />
           <ul className="flex flex-col gap-4">
             {workouts.map((workout) => {
               return (
@@ -89,7 +91,7 @@ const Preview = () => {
           </Link>
         </p>
       )}
-      {loading && <p>Loading..</p>}
+      {loading && <HomeSkeleton size={5}/>}
       {error && <p>{error}</p>}
     </section>
   );

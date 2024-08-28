@@ -29,7 +29,7 @@ const ExercisesPerformed = ({
     return (
       <li
         key={exercise.id || index}
-        className="border-solid border shadow-sm py-4 rounded-md relative pb-20 min-h-64"
+        className="border-solid border border-gray-100 py-4 relative pb-20 min-h-64 rounded-md bg-white shadow-md"
       >
         <div className="flex flex-row justify-between px-6">
           <p className="font-bold text-lg break-words max-w-[65%]">

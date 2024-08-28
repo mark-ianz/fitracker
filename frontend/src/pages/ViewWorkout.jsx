@@ -11,6 +11,7 @@ import useWorkoutContext from "../utils/hooks/useWorkoutContext";
 import { useEffect, useState } from "react";
 import BackButton from "../components/BackButton";
 import workoutsAPI from "../utils/api/workouts";
+import ViewWorkoutSkeleton from "../components/Splits/ViewWorkoutSkeleton";
 
 const ViewWorkout = () => {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const ViewWorkout = () => {
 
   return (
     <main className="w-full flex items-center justify-center">
-      <section className="w-full max-w-screen-md">
+      <section className="w-full max-w-screen-md p-6 rounded-md bg-white shadow-md">
         {workout && (
           <>
             <div className="flex flex-row items-center justify-center mb-4 gap-2">
@@ -104,7 +105,7 @@ const ViewWorkout = () => {
             </div>
             <p className="mb-2">{workout.description}</p>
             <div className="mt-4">
-              <p className="font-bold text-xl">Exercises Performed</p>
+              <p className="font-bold text-xl mb-2">Exercises Performed</p>
               <ul className="grid grid-cols-3 gap-4 max-md:grid-cols-2 max-[470px]:grid-cols-1">
                 <ExercisesPerformed
                   exercisesPerformed={workout.exercisesPerformed}
@@ -113,7 +114,7 @@ const ViewWorkout = () => {
             </div>
           </>
         )}
-        {loading && <p>Loading...</p>}
+        {loading && <ViewWorkoutSkeleton />}
         {error && (
           <p>
             {error}.{" "}

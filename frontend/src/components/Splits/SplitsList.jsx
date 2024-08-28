@@ -12,7 +12,7 @@ const SplitsList = ({ splits, canAddSplits }) => {
           <AddMoreButton
             onClick={()=> navigate ("/splits/create")}
             className={
-              "w-full py-12 max-md:col-span-2 max-md:py-6 max-[470px]:col-span-1 "
+              "w-full py-12 max-md:col-span-2 max-md:py-6 max-[470px]:col-span-1 min-h-52"
             }
           >
             Add Custom Splits
