@@ -25,7 +25,7 @@ const NavLinks = () => {
     >
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
-          to="/home"
+          to="/"
           className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
         >
           Home
@@ -43,26 +43,18 @@ const NavLinks = () => {
       )}
       <li className="min-w-fit flex align-middle justify-center grow">
         <NavLink
+          to="/history"
+          className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
+        >
+          History
+        </NavLink>
+      </li>
+      <li className="min-w-fit flex align-middle justify-center grow">
+        <NavLink
           to="/splits"
           className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
         >
           Splits
-        </NavLink>
-      </li>
-      <li className="min-w-fit flex align-middle justify-center grow">
-        <NavLink
-          to="/features"
-          className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
-        >
-          Features
-        </NavLink>
-      </li>
-      <li className="min-w-fit flex align-middle justify-center grow">
-        <NavLink
-          to="/about"
-          className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
-        >
-          About
         </NavLink>
       </li>
       {!isAuth ? (
@@ -87,7 +79,11 @@ const NavLinks = () => {
           </Button>
         </>
       ) : (
-        <Button buttonType="plain" className={"grow"} onClick={logout}>
+        <Button
+          buttonType="plain"
+          className={"grow text-inherit"}
+          onClick={logout}
+        >
           Logout
         </Button>
       )}

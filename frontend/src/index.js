@@ -6,7 +6,7 @@ import "./index.css";
 
 // Pages
 import Layout from "./Layout";
-import Home from "./pages/Home";
+import History from "./pages/History";
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import ErrorPage from "./pages/ErrorPage";
@@ -30,11 +30,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <NotForAuth>
-        <LandingPage />
-      </NotForAuth>
-    ),
+    element: <LandingPage />,
   },
   {
     path: "/",
@@ -42,10 +38,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "home",
+        path: "history",
         element: (
           <ProtectedRoute>
-            <Home />
+            <History />
           </ProtectedRoute>
         ),
       },
@@ -84,18 +80,6 @@ const router = createBrowserRouter([
       {
         path: "splits/:id",
         element: <ViewSplit />,
-      },
-      {
-        path: "features",
-        element: <Features />,
-      },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "forgot",
-        element: <UnderConstruction />,
       },
     ],
   },

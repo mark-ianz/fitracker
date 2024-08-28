@@ -8,7 +8,7 @@ const NotForAuth = ({ children }) => {
 
   useEffect(() => {
     if (isAuth) {
-      navigate("/home");
+      navigate("/");
     }
   }, [isAuth, navigate]);
 

@@ -5,7 +5,7 @@ import Preview from "../components/WorkoutsFeed/ViewWorkout/Preview";
 
 // Provider
 
-const Home = () => {
+const History = () => {
   return (
     <main className="flex flex-col items-center">
       <Preview />
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default History;
