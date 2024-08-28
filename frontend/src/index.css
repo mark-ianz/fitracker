@@ -79,3 +79,8 @@ input::-webkit-inner-spin-button {
   outline: #9d9d9d;
   border-radius: 0.375rem;
 }
+
+.filter-secondary {
+  filter: invert(11%) sepia(96%) saturate(6400%) hue-rotate(2deg)
+    brightness(100%) contrast(60%);
+}
