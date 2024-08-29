@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Title from "./Title";
 import NavLinks from "./NavLinks";
 import HamburgerMenu from "../Icons/HamburgerMenu";
-import Close from "../Icons/Close";
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);

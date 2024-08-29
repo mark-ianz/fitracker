@@ -11,7 +11,6 @@ import useModalContext from "../utils/hooks/useModalContext";
 import Signup from "../components/Forms/SignupForm";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
-import MobileNavbar from "../components/Nav/MobileNavbar";
 
 const LandingPage = () => {
   const { openModal } = useModalContext();
