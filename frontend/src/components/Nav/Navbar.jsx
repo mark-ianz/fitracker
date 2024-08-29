@@ -26,8 +26,8 @@ const Navbar = ({ isLandingPage }) => {
         {/* Navlinks */}
         <ul
           className={`nav-links flex items-center max-md:justify-between max-md:mt-4 z-50
-          max-sm:text-gray-600 max-sm:bg-gray-100 max-sm:mt-0 max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:right-0 max-sm:bottom-0 max-sm:flex-col max-sm:max-w-96 max-sm:justify-start max-sm:gap-4 max-sm:pt-16 max-sm:transition-all max-sm:${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          max-sm:text-gray-600 max-sm:bg-gray-100 max-sm:mt-0 max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:right-0 max-sm:bottom-0 max-sm:flex-col max-sm:max-w-96 max-sm:justify-start max-sm:gap-4 max-sm:pt-16 max-sm:transition-all max-sm:-translate-x-full ${
+            sidebarOpen && "max-sm:translate-x-0"
           }`}
         >
           <Close
@@ -45,7 +45,7 @@ const Navbar = ({ isLandingPage }) => {
           onClick={() => setSidebarOpen(false)}
           className={`${
             sidebarOpen ? "block" : "hidden"
-          } fixed top-0 right-0 left-0 bottom-0 bg-black opacity-15`}
+          } fixed top-0 right-0 left-0 bottom-0 bg-black opacity-10`}
         ></div>
       </nav>
     </>
