@@ -20,6 +20,9 @@ const Footer = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li>
+            <Link to="/create">Create</Link>
+          </li>
+          <li>
             <Link to="/history">History</Link>
           </li>
           <li>
@@ -49,7 +52,7 @@ const Footer = () => {
           ) : (
             <Button
               buttonType="plain"
-              className={"grow text-inherit"}
+              className={"w-fit text-inherit"}
               onClick={logout}
             >
               Logout

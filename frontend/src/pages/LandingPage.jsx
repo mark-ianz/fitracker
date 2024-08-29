@@ -9,20 +9,29 @@ import { features } from "../utils/constants";
 // Hooks
 import useModalContext from "../utils/hooks/useModalContext";
 import Signup from "../components/Forms/SignupForm";
+import useAuthContext from "../utils/hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
+import MobileNavbar from "../components/Nav/MobileNavbar";
 
 const LandingPage = () => {
   const { openModal } = useModalContext();
+  const { isAuth } = useAuthContext();
+  const navigate = useNavigate();
   return (
     <div className="wrapper flex flex-col pb-20">
       <main className="w-full flex flex-col">
-        <section className="bg-image-wrapper bg-landingPage bg-no-repeat bg-cover bg-center">
+        <section className="bg-image-wrapper bg-landingPage bg-no-repeat bg-cover bg-center h-auto min-h-dvh">
           <Navbar isLandingPage={true} />
-          <div className="h-full p-10 pb-36">
+          <div className="pt-10 px-10 pb-10 max-sm:px-6">
             <p className="text-7xl font-bold text-white max-w-[60%] max-lg:max-w-[100%] max-sm:max-w-max max-sm:text-5xl">
               Track workout session for{" "}
               <span className="text-red-400">progressive overload</span> method
             </p>
-            <p className="mt-10 text-lg text-white max-w-[55%] max-lg:max-w-[100%]">
+            <p
+              className="mt-10 text-lg text-white 
+              max-sm:text-base max-sm:mt-6
+              max-w-[55%] max-lg:max-w-[100%] "
+            >
               Elevate your fitness journey by precisely tracking each workout
               session. Our platform empowers you to progressively overload and
               reach new heights in strength and performance, ensuring consistent
@@ -31,9 +40,9 @@ const LandingPage = () => {
             <Button
               className="mt-[5vh] w-fit"
               buttonType="primary"
-              onClick={() => {
-                openModal(<Signup />);
-              }}
+              onClick={() =>
+                isAuth ? navigate("/history") : openModal(<Signup />)
+              }
             >
               Get Started
             </Button>
@@ -63,7 +72,7 @@ const LandingPage = () => {
         </section>
 
         <section className="mt-10">
-          <div className="p-8 rounded-lg shadow-sm bg-[#f4f4f4]">
+          <div className="p-8 rounded-lg shadow-sm bg-[#f0f0f0]">
             <h2 className="text-2xl font-semibold text-red-400 mb-2">
               Our Mission
             </h2>
@@ -97,8 +106,8 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section className="px-4 sm:px-6 lg:px-8 mt-10">
-          <div className="bg-white p-8 rounded-lg shadow-md flex justify-center">
+        <section className=" px-4 sm:px-6 lg:px-8 mt-10">
+          <div className="min-h-64 bg-white p-8 rounded-lg shadow-md flex items-center justify-center">
             <div className="max-w-screen-xsm">
               <div className="text-center flex flex-col gap-4">
                 <p className="font-semibold text-xl text-red-400">
@@ -106,16 +115,16 @@ const LandingPage = () => {
                 </p>
                 <p>
                   Track, analyze, and optimize your workouts with ease. Join our
-                  community and transform your workout routine. Get started now!
+                  community to access more of the features. Get started now!
                 </p>
               </div>
               <div className="flex justify-center mt-4">
                 <Button
                   className="w-fit"
                   buttonType="primary"
-                  onClick={() => {
-                    openModal(<Signup />);
-                  }}
+                  onClick={() =>
+                    isAuth ? navigate("/history") : openModal(<Signup />)
+                  }
                 >
                   Get Started
                 </Button>

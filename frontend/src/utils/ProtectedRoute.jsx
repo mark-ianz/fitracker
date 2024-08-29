@@ -1,5 +1,5 @@
 // Dependencies
-import { useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 // Context
@@ -10,8 +10,8 @@ import useModalContext from "./hooks/useModalContext";
 import LoginForm from "../components/Forms/LoginForm";
 
 const ProtectedRoute = ({ children }) => {
-  const navigate = useNavigate();
   const { isAuth } = useAuthContext();
+  /* const navigate = useNavigate();
   const { openModal } = useModalContext();
 
   useEffect(() => {
@@ -19,11 +19,12 @@ const ProtectedRoute = ({ children }) => {
       openModal(<LoginForm />);
       navigate("/");
     }
-  }, [isAuth, openModal, navigate]);
+  }, [isAuth, openModal]);
 
   if (!isAuth) return null;
 
-  return children;
+  return <Outlet />; */
+  return isAuth ? children : <Navigate to={"/"} />;
 };
 
 export default ProtectedRoute;

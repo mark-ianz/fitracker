@@ -17,13 +17,12 @@ const authReducer = (state, action) => {
   }
 };
 
-const initialState = JSON.parse(localStorage.getItem("user")) || null;
+const initialState = JSON.parse(localStorage.getItem("user")) || {
+  isAuth: false,
+};
 
 const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, {
-    isAuth: false,
-    ...initialState,
-  });
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

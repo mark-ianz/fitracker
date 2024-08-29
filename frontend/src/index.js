@@ -8,55 +8,33 @@ import "./index.css";
 import Layout from "./Layout";
 import History from "./pages/History";
 import LandingPage from "./pages/LandingPage";
-import About from "./pages/About";
 import ErrorPage from "./pages/ErrorPage";
 import ViewWorkout from "./pages/ViewWorkout";
 import RecommendedSplits from "./pages/RecommendedSplits";
-import Features from "./pages/Features";
 import Splits from "./pages/Splits";
 
 // Provider
 import Providers from "./utils/context/Providers";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateWorkout from "./pages/CreateWorkout";
-import NotForAuth from "./utils/NotForAuth";
 import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
-import UnderConstruction from "./pages/UnderConstruction";
 import CreateSplit from "./pages/CreateSplit";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const router = createBrowserRouter([
+  /* Landing Page */
   {
     path: "/",
     element: <LandingPage />,
   },
+  /* Public Routes */
   {
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "history",
-        element: (
-          <ProtectedRoute>
-            <History />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "workout/:workout_id",
-        element: <ViewWorkout />,
-      },
-      {
-        path: "create",
-        element: (
-          <ProtectedRoute>
-            <CreateWorkout />
-          </ProtectedRoute>
-        ),
-      },
       {
         path: "splits",
         element: <Splits />,
@@ -66,20 +44,40 @@ const router = createBrowserRouter([
         element: <RecommendedSplits />,
       },
       {
+        path: "splits/:id",
+        element: <ViewSplit />,
+      },
+    ],
+  },
+  /* Private Routes */
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "history",
+        element: <History />,
+      },
+      {
+        path: "create",
+        element: <CreateWorkout />,
+      },
+      {
+        path: "workout/:workout_id",
+        element: <ViewWorkout />,
+      },
+      {
         path: "splits/custom",
-        element: (
-          <ProtectedRoute>
-            <CustomSplits />
-          </ProtectedRoute>
-        ),
+        element: <CustomSplits />,
       },
       {
         path: "splits/create",
         element: <CreateSplit />,
-      },
-      {
-        path: "splits/:id",
-        element: <ViewSplit />,
       },
     ],
   },

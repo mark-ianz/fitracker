@@ -15,15 +15,8 @@ const NavLinks = () => {
   const logout = useLogout();
 
   return (
-    <ul
-      className={`nav-links grid grid-cols-6 
-      items-center text-inherit gap-4 min-w-fit
-      max-sm:grid-cols-3 
-      max-[345px]:gap-0
-      border-solid
-      `}
-    >
-      <li className="min-w-fit flex align-middle justify-center grow">
+    <>
+      <li className="min-w-fit flex align-middle justify-center px-4">
         <NavLink
           to="/"
           className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
@@ -32,24 +25,27 @@ const NavLinks = () => {
         </NavLink>
       </li>
       {isAuth && (
-        <li className="min-w-fit flex align-middle justify-center grow">
-          <NavLink
-            to="/create"
-            className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
-          >
-            Create
-          </NavLink>
-        </li>
+        <>
+          <li className="min-w-fit flex align-middle justify-center px-4">
+            <NavLink
+              to="/history"
+              className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
+            >
+              History
+            </NavLink>
+          </li>
+          <li className="min-w-fit flex align-middle justify-center px-4">
+            <NavLink
+              to="/create"
+              className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
+            >
+              Create
+            </NavLink>
+          </li>
+        </>
       )}
-      <li className="min-w-fit flex align-middle justify-center grow">
-        <NavLink
-          to="/history"
-          className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
-        >
-          History
-        </NavLink>
-      </li>
-      <li className="min-w-fit flex align-middle justify-center grow">
+
+      <li className="min-w-fit flex align-middle justify-center px-4">
         <NavLink
           to="/splits"
           className="px-3 py-1 border-b-[1px] border-transparent text-center hover:text-red-400 transition-all max-[320px]:p-1"
@@ -61,7 +57,7 @@ const NavLinks = () => {
         <>
           <Button
             buttonType="plain"
-            className={"grow text-inherit"}
+            className={"text-inherit px-4"}
             onClick={() => {
               openModal(<LoginForm />);
             }}
@@ -70,7 +66,7 @@ const NavLinks = () => {
           </Button>
           <Button
             buttonType="plain"
-            className={"grow text-inherit"}
+            className={"text-inherit px-4"}
             onClick={() => {
               openModal(<Signup />);
             }}
@@ -81,13 +77,13 @@ const NavLinks = () => {
       ) : (
         <Button
           buttonType="plain"
-          className={"grow text-inherit"}
+          className={"text-inherit px-4"}
           onClick={logout}
         >
           Logout
         </Button>
       )}
-    </ul>
+    </>
   );
 };
 

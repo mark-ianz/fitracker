@@ -2,7 +2,6 @@
 
 // Components
 import Preview from "../components/WorkoutsFeed/ViewWorkout/Preview";
-
 // Provider
 
 const History = () => {

@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 
-const Title = () => {
+const Title = ({ className }) => {
   return (
-    <div className="left-container flex flex-row align-middle justify-center">
-      <Link
-        to={"/"}
-        id="title"
-        className="font-lalezar text-4xl text-red-400"
-      >
+    <div
+      className={`text-4xl text-red-400 left-container flex flex-row align-middle justify-center pt-[.2em] ${className}`}
+    >
+      <Link to={"/"} id="title" className="font-lalezar">
         FITRACKER
       </Link>
     </div>
