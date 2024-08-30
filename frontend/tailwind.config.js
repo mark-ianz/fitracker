@@ -15,7 +15,7 @@ module.exports = {
         'lalezar': ['Lalezar', 'sans-serif']
       },
       backgroundImage: {
-        'landingPage': "url('./img/landing_image.png')"
+        'landingPage': "url('./img/landing_image.webp')"
       }
     },
   },
