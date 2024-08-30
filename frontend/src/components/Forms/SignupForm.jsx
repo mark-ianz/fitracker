@@ -3,16 +3,16 @@ import Button from "../Button";
 import useSignup from "../../utils/hooks/useSignup";
 import useModalContext from "../../utils/hooks/useModalContext";
 import LoginForm from "./LoginForm";
-import CloseModalButton from "../CloseModalButton";
 import Loading from "../Icons/Loading";
+import Close from "../Icons/Close";
 
-const Signup = () => {
+const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { openModal } = useModalContext();
+  const { openModal, closeModal } = useModalContext();
 
   const { signup, loading, error } = useSignup();
 
@@ -29,7 +29,11 @@ const Signup = () => {
       onSubmit={handleSubmit}
       className="relative shadow-md p-6 pt-12 rounded-md flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
     >
-      <CloseModalButton className={"absolute right-4 top-4"} />
+      <Close
+        fill={"#bbbbbb"}
+        className={"cursor-pointer absolute top-4 right-4"}
+        onClick={closeModal}
+      />
       <h1 className="text-3xl mb-10">Signup</h1>
       <div className="flex flex-col w-full mb-6">
         <label htmlFor="username">Username</label>
@@ -110,4 +114,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupForm;

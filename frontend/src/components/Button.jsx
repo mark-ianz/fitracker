@@ -1,3 +1,7 @@
+import useAuthContext from "../utils/hooks/useAuthContext";
+import useModalContext from "../utils/hooks/useModalContext";
+import LoginForm from "../components/Forms/LoginForm";
+
 const Button = ({
   children,
   className,
@@ -5,9 +9,17 @@ const Button = ({
   buttonType,
   toSubmit,
   isDisabled,
+  requiresAuth,
 }) => {
+  const { isAuth } = useAuthContext();
+  const { openModal } = useModalContext();
+
   const handleClick = () => {
-    if (onClick) onClick();
+    if (requiresAuth && !isAuth) {
+      openModal(<LoginForm />);
+    } else {
+      if (onClick) onClick();
+    }
   };
 
   const types = {

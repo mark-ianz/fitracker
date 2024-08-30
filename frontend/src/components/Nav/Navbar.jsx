@@ -19,7 +19,7 @@ const Navbar = ({ isLandingPage }) => {
         <HamburgerMenu
           className={`w-8 mr-2 sm:hidden`}
           stroke={!isLandingPage && "#b1b1b1"}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
+          onClick={() => setSidebarOpen(true)}
         />
         <Title className={"max-sm:grow"} />
 

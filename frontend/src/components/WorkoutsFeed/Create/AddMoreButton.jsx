@@ -1,12 +1,18 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import useAuthContext from "../../../utils/hooks/useAuthContext";
+import useModalContext from "../../../utils/hooks/useModalContext";
+import LoginForm from "../../Forms/LoginForm";
 
-const AddMoreButton = ({ onClick, children, redirect, className }) => {
-  const navigate = useNavigate();
+const AddMoreButton = ({ onClick, children, className, requiresAuth }) => {
+  const { isAuth } = useAuthContext();
+  const { openModal } = useModalContext();
 
   const handleOnClick = () => {
-    if (redirect) navigate(redirect);
-    if (onClick) onClick();
+    if (requiresAuth && !isAuth) {
+      openModal(<LoginForm />);
+    } else {
+      if (onClick) onClick();
+    }
   };
   return (
     <button

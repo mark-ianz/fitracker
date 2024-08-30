@@ -8,12 +8,12 @@ import Button from "../Button";
 import useModalContext from "../../utils/hooks/useModalContext";
 import useLogin from "../../utils/hooks/useLogin";
 import Signup from "./SignupForm";
-import CloseModalButton from "../CloseModalButton";
 import Loading from "../Icons/Loading";
+import Close from "../Icons/Close";
 
 const LoginForm = () => {
   const { login, error, loading } = useLogin();
-  const { openModal } = useModalContext();
+  const { openModal, closeModal } = useModalContext();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +40,11 @@ const LoginForm = () => {
       action="/"
       className="shadow-md p-8 pb-6 relative pt-12 rounded-md flex flex-col items-center justify-center w-10/12 max-w-screen-xsm bg-white z-10"
     >
-      <CloseModalButton className={"absolute right-4 top-4"} />
+      <Close
+        fill={"#bbbbbb"}
+        className={"cursor-pointer absolute top-4 right-4"}
+        onClick={closeModal}
+      />
       <h1 className="text-3xl mb-10">Login</h1>
       <div className="flex flex-col w-full mb-6">
         <label htmlFor="email">Email</label>

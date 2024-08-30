@@ -115,6 +115,7 @@ const ViewSplit = () => {
                       <Button
                         className={"absolute bottom-4 right-4"}
                         buttonType={"primary"}
+                        requiresAuth={true}
                         onClick={() => {
                           const payload = {
                             exercises: [...program.exercises],
