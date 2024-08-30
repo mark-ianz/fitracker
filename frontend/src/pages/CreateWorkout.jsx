@@ -15,18 +15,13 @@ const CreateWorkout = () => {
               <BackButton />
               <h1 className="text-xl font-bold">Log workout session</h1>
             </div>
-            <div className="flex gap-2">
-              <Button buttonType={"secondary"} className={"!px-4 !py-1"}>
-                Cancel
-              </Button>
-              <Button
-                buttonType={"primary"}
-                className={"!px-4 !py-1"}
-                onClick={() => openModal(<WorkoutSessionForm />)}
-              >
-                Save
-              </Button>
-            </div>
+            <Button
+              buttonType={"primary"}
+              className={"!px-4 !py-1"}
+              onClick={() => openModal(<WorkoutSessionForm />)}
+            >
+              Save
+            </Button>
           </div>
         </div>
         <ExercisesPerfomedForm />
