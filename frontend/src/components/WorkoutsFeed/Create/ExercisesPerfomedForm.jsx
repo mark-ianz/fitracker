@@ -22,30 +22,30 @@ const ExercisesPerfomedForm = () => {
     <>
       <h2 className="text-xl mb-4">Exercises Performed</h2>
       {/* If exercises has a value v */}
-      {exercises.length > 0 && (
-        <ul className="mb-4 grid gap-4 max-md:grid-cols-2 max-[550px]:grid-cols-1">
+      <ul className="mb-4 grid gap-4 grid-cols-2 max-[550px]:grid-cols-1 exercises-performed">
+        {exercises.length > 0 && (
           <ExercisesPerformed
             exercisesPerformed={exercises}
             canEdit={true}
             editClickFunction={handleEditClick}
           />
-        </ul>
-      )}
+        )}
 
-      {/* Adding Post Form v */}
-      {isAddingExercise && <SubmitExerciseForm />}
+        {/* Adding Post Form v */}
+        {isAddingExercise && <SubmitExerciseForm />}
 
-      {/* Add Exercises Button, show only if not adding exercise and not editing */}
-      {!isAddingExercise && !isEditing && (
-        <AddMoreButton
-          className={"w-full h-64"}
-          onClick={() =>
-            dispatch({ type: "SET_ADDING_EXERCISE", payload: true })
-          }
-        >
-          Add exercises
-        </AddMoreButton>
-      )}
+        {/* Add Exercises Button, show only if not adding exercise and not editing */}
+        {!isAddingExercise && !isEditing && (
+          <AddMoreButton
+            className={"w-full h-64"}
+            onClick={() =>
+              dispatch({ type: "SET_ADDING_EXERCISE", payload: true })
+            }
+          >
+            Add Exercises
+          </AddMoreButton>
+        )}
+      </ul>
     </>
   );
 };

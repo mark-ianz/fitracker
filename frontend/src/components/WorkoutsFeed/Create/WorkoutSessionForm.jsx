@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useAuthContext from "../../../utils/hooks/useAuthContext";
 import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext";
 import Button from "../../Button";
 import workoutsAPI from "../../../utils/api/workouts";
 import useWorkoutSessionFormContext from "../../../utils/hooks/createSession/useWorkoutSessionFormContext";
+import useModalContext from "../../../utils/hooks/useModalContext";
 
 const WorkoutSessionForm = () => {
   // Form states
@@ -12,6 +12,8 @@ const WorkoutSessionForm = () => {
     state: { sessionName, description, tags, location, dateTime },
     dispatch: sessionFormDispatch,
   } = useWorkoutSessionFormContext();
+
+  const { closeModal } = useModalContext();
 
   const { dispatch: exercisesDispatch } = useExercisesFormContext();
 
@@ -31,7 +33,6 @@ const WorkoutSessionForm = () => {
   }, [fromSplit, programDescription, programName, sessionFormDispatch]);
 
   // Dependencies
-  const navigate = useNavigate();
   const { token, _id } = useAuthContext();
   const { exercises } = useExercisesFormContext();
   const [error, setError] = useState("");
@@ -57,7 +58,6 @@ const WorkoutSessionForm = () => {
       });
       sessionFormDispatch({ type: "RESET_FORM" });
       exercisesDispatch({ type: "RESET_EXERCISES" });
-      navigate("/");
     } catch (error) {
       if (error.response) {
         setError(error.response.data.error);
@@ -69,7 +69,11 @@ const WorkoutSessionForm = () => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
+      <form
+        onSubmit={handleFormSubmit}
+        className="bg-white z-40 p-6 rounded-md shadow-md grow max-w-lg"
+      >
+        <h1 className="text-xl font-semibold mb-4">Save Workout Session</h1>
         <div className="input-container gap-4 flex flex-col">
           <div className="input-wrapper flex flex-col">
             <label htmlFor="sessionName">Session Name</label>
@@ -157,11 +161,11 @@ const WorkoutSessionForm = () => {
         <div className="flex flex-col items-end mt-4 gap-4">
           <p className="text-gray-600 text-sm">{error}</p>
           <div className="flex flex-row items-center gap-2">
-            <Button buttonType="secondary" onClick={() => navigate(-1)}>
+            <Button buttonType="secondary" onClick={closeModal}>
               Cancel
             </Button>
             <Button buttonType="primary" toSubmit={true}>
-              Save
+              Submit
             </Button>
           </div>
         </div>
