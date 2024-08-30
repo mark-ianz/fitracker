@@ -7,10 +7,10 @@ import LineSeperator from "../components/LineSeperator";
 import SplitCardSkeleton from "../components/Skeletons/SplitCardSkeleton";
 
 const CustomSplits = () => {
-  const { token } = useAuthContext();
+  const { token, isAuth } = useAuthContext();
   const [splits, setSplits] = useState([]);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchSplits = async () => {
@@ -33,8 +33,9 @@ const CustomSplits = () => {
       }
     };
 
-    fetchSplits();
-  }, [token]);
+    if (isAuth) fetchSplits();
+
+  }, [token, isAuth]);
 
   return (
     <>

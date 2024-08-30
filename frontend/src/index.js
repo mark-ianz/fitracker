@@ -47,6 +47,10 @@ const router = createBrowserRouter([
         path: "splits/:id",
         element: <ViewSplit />,
       },
+      {
+        path: "splits/custom",
+        element: <CustomSplits />,
+      },
     ],
   },
   /* Private Routes */
@@ -70,10 +74,6 @@ const router = createBrowserRouter([
       {
         path: "workout/:workout_id",
         element: <ViewWorkout />,
-      },
-      {
-        path: "splits/custom",
-        element: <CustomSplits />,
       },
       {
         path: "splits/create",

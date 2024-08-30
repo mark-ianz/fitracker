@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <>
       <footer className="flex flex-col justify-center items-center gap-4 mt-40 text-gray-600">
-        <ul className="flex flex-row justify-between w-full max-w-[400px] max-xsm:flex-col max-xsm:items-center max-xsm:gap-2">
+        <ul className="flex flex-row justify-between w-full max-w-[400px] flex-wrap max-xsm:flex-col max-xsm:items-center max-xsm:gap-2">
           <li>
             <Link to={"/"}>Home</Link>
           </li>
