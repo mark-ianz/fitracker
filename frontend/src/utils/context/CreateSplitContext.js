@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
-import ObjectId from "bson-objectid";
+import { generateEmptyExercise } from "../helper";
+import ObjectID from "bson-objectid";
 
 export const CreateSplitContext = createContext();
 
@@ -10,7 +11,7 @@ const initialState = {
 };
 
 const generateEmptyProgram = () => ({
-  _id: new ObjectId().toHexString(),
+  _id: new ObjectID().toHexString(),
   programName: "",
   muscleTargets: "",
   programDescription: "",
@@ -19,11 +20,6 @@ const generateEmptyProgram = () => ({
     generateEmptyExercise(),
     generateEmptyExercise(),
   ],
-});
-
-const generateEmptyExercise = () => ({
-  exerciseName: "",
-  id: new ObjectId().toHexString(),
 });
 
 const createSplitReducer = (state, action) => {

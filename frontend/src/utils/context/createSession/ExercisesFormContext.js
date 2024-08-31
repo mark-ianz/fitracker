@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { generateEmptyExercise, generateEmptySet } from "../../helper";
 
 const ExercisesFormContext = createContext();
 
@@ -6,42 +7,99 @@ const initialState = {
   programName: "",
   programDescription: "",
   exercises: [],
-  isAddingExercise: false,
-  isEditing: false,
-  editing: null, // Editing object value
 };
 
 const ExerciseFormReducer = (state, action) => {
   switch (action.type) {
-    case "SET_ADDING_EXERCISE": {
+    case "ADD_EMPTY_EXERCISE":
       return {
         ...state,
-        isAddingExercise: action.payload,
+        exercises: [...state.exercises, generateEmptyExercise()],
       };
-    }
-    case "ADD_EXERCISE":
+    case "SET_EXERCISE_NAME":
       return {
         ...state,
-        exercises: [...state.exercises, action.payload],
-        isAddingExercise: false,
+        exercises: state.exercises.map((exercise) =>
+          exercise.id === action.payload.exerciseId
+            ? { ...exercise, exerciseName: action.payload.input }
+            : exercise
+        ),
+      };
+    case "SET_EXERCISE_REPS":
+      return {
+        ...state,
+        exercises: state.exercises.map((exercise) =>
+          exercise.id === action.payload.exerciseId
+            ? {
+                ...exercise,
+                sets: exercise.sets.map((set, index) =>
+                  index === action.payload.index
+                    ? { ...set, reps: action.payload.input }
+                    : set
+                ),
+              }
+            : exercise
+        ),
+      };
+    case "SET_EXERCISE_WEIGHT":
+      return {
+        ...state,
+        exercises: state.exercises.map((exercise) =>
+          exercise.id === action.payload.exerciseId
+            ? {
+                ...exercise,
+                sets: exercise.sets.map((set, index) =>
+                  index === action.payload.index
+                    ? { ...set, weight: action.payload.input }
+                    : set
+                ),
+              }
+            : exercise
+        ),
+      };
+    case "ADD_SET":
+      return {
+        ...state,
+        exercises: state.exercises.map((exercise) =>
+          exercise.id === action.payload.exerciseId
+            ? {
+                ...exercise,
+                sets: [
+                  ...exercise.sets,
+                  exercise.sets.length > 0
+                    ? { ...exercise.sets[exercise.sets.length - 1] }
+                    : generateEmptySet(),
+                ],
+              }
+            : exercise
+        ),
+      };
+    case "DELETE_SET":
+      return {
+        ...state,
+        exercises: state.exercises.map((exercise) =>
+          exercise.id === action.payload.exerciseId
+            ? {
+                ...exercise,
+                sets: exercise.sets.filter(
+                  (set, index) => index !== action.payload.index
+                ),
+              }
+            : exercise
+        ),
+      };
+    case "DELETE_EXERCISE":
+      return {
+        ...state,
+        exercises: state.exercises.filter(
+          (exercise) => exercise.id !== action.payload.exerciseId
+        ),
       };
     case "ADD_EXERCISES_FROM_SPLIT":
       return {
         ...state,
         ...action.payload,
         fromSplit: true,
-      };
-    case "SET_EDITING":
-      return {
-        ...state,
-        editing: { ...action.payload },
-        isEditing: true,
-      };
-    case "DISCARD_EDITING":
-      return {
-        ...state,
-        isEditing: false,
-        editing: null,
       };
     case "DELETE_EXERCISE":
       return {
@@ -50,18 +108,6 @@ const ExerciseFormReducer = (state, action) => {
           (exercise) => exercise.id !== action.payload
         ),
       };
-    case "SAVE_EDIT":
-      return {
-        ...state,
-        exercises: state.exercises.map((exercise) => {
-          return exercise.id === action.payload.id ? action.payload : exercise;
-        }),
-        isAddingExercise: false,
-        isEditing: false,
-        editing: null,
-      };
-    case "RESET_EXERCISES":
-      return initialState;
     default:
       return state;
   }

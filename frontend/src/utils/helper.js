@@ -1,3 +1,4 @@
+import ObjectID from "bson-objectid";
 import { v4 as uuidv4 } from "uuid";
 
 export const getDateNow = () => {
@@ -51,3 +52,14 @@ export const formatPosessive = (string) => {
     return string + "'s";
   }
 };
+
+export const generateEmptyExercise = () => ({
+  exerciseName: "",
+  id: new ObjectID().toHexString(),
+  sets: [generateEmptySet()],
+});
+
+export const generateEmptySet = () => ({
+  reps: 0,
+  weight: 0,
+});

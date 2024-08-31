@@ -10,10 +10,10 @@ const CreateWorkout = () => {
     <main className="flex flex-row items-center justify-center gap-10">
       <section className="w-full max-w-screen-md gap-10 max-md:flex-col">
         <div className="p-4 sticky top-6 z-40">
-          <div className="flex items-center justify-between gap-2 p-4 rounded-md shadow-md border mb-4 bg-white max-xsm:flex-col max-xsm:items-start max-xsm:gap-4">
+          <div className="flex items-center justify-between gap-2 p-4 rounded-md shadow-md border mb-4 bg-white flex-wrap">
             <div className="flex gap-2">
               <BackButton />
-              <h1 className="text-xl font-bold">Log workout session</h1>
+              <h1 className="text-xl font-bold">Log Session</h1>
             </div>
             <Button
               buttonType={"primary"}

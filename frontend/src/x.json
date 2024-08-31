@@ -1,0 +1,44 @@
+{
+  "_id": { "$oid": "66ce725d8e28b400cd705d6a" },
+  "user": { "$oid": "66b98f051a5e751f7db04d2b" },
+  "programName": "Push Day",
+  "muscleTargets": "Chest, Shoulders, Triceps",
+  "programDescription": "Focuses on pushing movements to develop the chest, shoulders, and triceps with a mix of compound and isolation exercises.",
+  "exercises": [
+    {
+      "exerciseName": "Bench Press",
+      "id": { "$oid": "66ce725d8e28b400cd705d6b" },
+      "sets": [
+        { "reps": { "$numberInt": "0" }, "weight": { "$numberInt": "0" } }
+      ]
+    },
+    {
+      "exerciseName": "Incline Dumbbell Press",
+      "id": { "$oid": "66ce725d8e28b400cd705d6c" },
+      "sets": []
+    },
+    {
+      "exerciseName": "Overhead Press",
+      "id": { "$oid": "66ce725d8e28b400cd705d6d" },
+      "sets": []
+    },
+    {
+      "exerciseName": "Lateral Raise",
+      "id": { "$oid": "66ce725d8e28b400cd705d6e" },
+      "sets": []
+    },
+    {
+      "exerciseName": "Tricep Dips",
+      "id": { "$oid": "66ce725d8e28b400cd705d6f" },
+      "sets": []
+    },
+    {
+      "exerciseName": "Tricep Pushdown",
+      "id": { "$oid": "66ce725d8e28b400cd705d70" },
+      "sets": []
+    }
+  ],
+  "__v": { "$numberInt": "0" },
+  "createdAt": { "$date": { "$numberLong": "1724805725932" } },
+  "updatedAt": { "$date": { "$numberLong": "1724805725932" } }
+}
