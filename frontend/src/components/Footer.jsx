@@ -19,12 +19,16 @@ const Footer = () => {
           <li>
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
-            <Link to="/create">Create</Link>
-          </li>
-          <li>
-            <Link to="/history">History</Link>
-          </li>
+          {isAuth && (
+            <>
+              <li>
+                <Link to="/create">Create</Link>
+              </li>
+              <li>
+                <Link to="/history">History</Link>
+              </li>
+            </>
+          )}
           <li>
             <Link to={"/splits"}>Splits</Link>
           </li>

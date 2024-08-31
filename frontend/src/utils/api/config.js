@@ -1,1 +1,1 @@
-export const BACKEND_BASE_URL = "https://fitracker-api.vercel.app";
+export const BACKEND_BASE_URL = "http://localhost:6969";
