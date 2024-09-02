@@ -9,9 +9,11 @@ export const WorkoutSessionFormProvider = ({ children }) => {
     tags: "Workout",
     location: "Gym",
     dateTime: getDateNow(),
+    error: null,
   };
 
   const workoutSessionFormReducer = (state, action) => {
+    console.log('Reducer action:', action);
     switch (action.type) {
       case "SET_SESSION_NAME":
         return {
@@ -38,6 +40,11 @@ export const WorkoutSessionFormProvider = ({ children }) => {
           ...state,
           dateTime: action.payload,
         };
+      case "SET_ERROR":
+        return {
+          ...state,
+          error: action.payload.error,
+        };
       case "RESET_FORM":
         return initialState;
       default:
@@ -48,7 +55,7 @@ export const WorkoutSessionFormProvider = ({ children }) => {
   const [state, dispatch] = useReducer(workoutSessionFormReducer, initialState);
 
   return (
-    <WorkoutSessionFormContext.Provider value={{ state, dispatch }}>
+    <WorkoutSessionFormContext.Provider value={{ ...state, dispatch }}>
       {children}
     </WorkoutSessionFormContext.Provider>
   );

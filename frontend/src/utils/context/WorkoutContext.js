@@ -10,16 +10,16 @@ const workoutReducer = (state, action) => {
       };
     case "CLEAR_WOROKOUTS":
       return {
-        workouts: null,
+        workouts: [],
       };
     default:
-      return null;
+      return state;
   }
 };
 
 const WorkoutContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(workoutReducer, {
-    workouts: null,
+    workouts: [],
   });
 
   return (

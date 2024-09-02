@@ -42,47 +42,45 @@ const Preview = () => {
   return (
     <section className="max-w-screen-md w-full">
       <SortButton setSort={setSort} />
-      {workouts && workouts.length > 0 && (
-        <>
-          <ul className="flex flex-col gap-4">
-            {workouts.map((workout) => {
-              return (
-                <li
-                  key={workout._id}
-                  className="shadow-md rounded-md border-gray border-solid border hover:scale-105 transition-all"
-                >
-                  <Link
-                    to={`/workout/${workout._id}`}
-                    className="flex flex-row items-center gap-4 justify-start p-6"
-                  >
-                    <div className="flex flex-col flex-grow w-full">
-                      <span className="flex flex-row items-center mb-4 flex-wrap">
-                        <p className="text-2xl mr-auto">{workout.name}</p>
-                        <p className="text-gray-600">
-                          {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
-                        </p>
-                      </span>
-                      <div className="flex flex-col">
-                        <p className="line-clamp-2">
-                          Description: {workout.description}
-                        </p>
-                        <p>Tags: {workout.tags}</p>
-                        <p>Location: {workout.location}</p>
-                        <p>
-                          Exercises Performed:{" "}
-                          {workout.exercisesPerformed.length}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </>
-      )}
 
-      {workouts && workouts.length <= 0 && (
+      {loading && !error ? (
+        <HomeSkeleton size={5} />
+      ) : workouts.length > 0 ? (
+        <ul className="flex flex-col gap-4">
+          {workouts.map((workout) => {
+            return (
+              <li
+                key={workout._id}
+                className="shadow-md rounded-md border-gray border-solid border hover:scale-105 transition-all"
+              >
+                <Link
+                  to={`/workout/${workout._id}`}
+                  className="flex flex-row items-center gap-4 justify-start p-6"
+                >
+                  <div className="flex flex-col flex-grow w-full">
+                    <span className="flex flex-row items-center mb-4 flex-wrap">
+                      <p className="text-2xl mr-auto">{workout.name}</p>
+                      <p className="text-gray-600">
+                        {format(workout.date, "iiii, dd MMMM yyyy, hh:mm a")}
+                      </p>
+                    </span>
+                    <div className="flex flex-col">
+                      <p className="line-clamp-2">
+                        Description: {workout.description}
+                      </p>
+                      <p>Tags: {workout.tags}</p>
+                      <p>Location: {workout.location}</p>
+                      <p>
+                        Exercises Performed: {workout.exercisesPerformed.length}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
         <p className="mt-6">
           No workout session yet.{" "}
           <Link className="underline text-[#f87171]" to="/create">
@@ -90,7 +88,6 @@ const Preview = () => {
           </Link>
         </p>
       )}
-      {loading && <HomeSkeleton size={5} />}
       {error && <p>{error}</p>}
     </section>
   );

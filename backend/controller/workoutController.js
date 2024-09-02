@@ -94,8 +94,8 @@ const post_workout = async (req, res) => {
 
   try {
     const workout = new Workout(data);
-    await workout.save();
-    res.status(202).json({ error: "Workout successfully posted!" });
+    const uploaded = await workout.save();
+    res.status(202).json(uploaded);
   } catch (error) {
     console.log(error);
     res

@@ -22,6 +22,7 @@ import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
 import CreateSplit from "./pages/CreateSplit";
 import "react-loading-skeleton/dist/skeleton.css";
+import WorkoutSessionForm from "./components/WorkoutsFeed/Create/WorkoutSessionForm";
 
 const router = createBrowserRouter([
   /* Landing Page */
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "splits/custom",
         element: <CustomSplits />,
+      },
+      {
+        path: "fuck",
+        element: <WorkoutSessionForm />,
       },
     ],
   },

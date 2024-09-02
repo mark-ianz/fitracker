@@ -24,8 +24,6 @@ const NavLinks = () => {
           Home
         </NavLink>
       </li>
-      {isAuth && (
-        <>
           <li className="min-w-fit flex align-middle justify-center px-4">
             <NavLink
               to="/history"
@@ -42,8 +40,6 @@ const NavLinks = () => {
               Create
             </NavLink>
           </li>
-        </>
-      )}
 
       <li className="min-w-fit flex align-middle justify-center px-4">
         <NavLink

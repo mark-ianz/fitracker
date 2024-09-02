@@ -11,12 +11,12 @@ import { CreateSplitContextProvider } from "./CreateSplitContext";
 const Providers = ({ children }) => {
   return (
     <>
-      <CreateSplitContextProvider>
-        <WorkoutSessionFormProvider>
-          <ExercisesFormContextProvider>
-            <WorkoutContextProvider>
-              <SidebarProvider>
-                <AuthContextProvider>
+      <AuthContextProvider>
+        <CreateSplitContextProvider>
+          <WorkoutSessionFormProvider>
+            <ExercisesFormContextProvider>
+              <WorkoutContextProvider>
+                <SidebarProvider>
                   <ModalProvider>
                     <SkeletonTheme baseColor="#E0E0E0" highlightColor="#F5F5F5">
                       <>
@@ -25,12 +25,12 @@ const Providers = ({ children }) => {
                       </>
                     </SkeletonTheme>
                   </ModalProvider>
-                </AuthContextProvider>
-              </SidebarProvider>
-            </WorkoutContextProvider>
-          </ExercisesFormContextProvider>
-        </WorkoutSessionFormProvider>
-      </CreateSplitContextProvider>
+                </SidebarProvider>
+              </WorkoutContextProvider>
+            </ExercisesFormContextProvider>
+          </WorkoutSessionFormProvider>
+        </CreateSplitContextProvider>
+      </AuthContextProvider>
     </>
   );
 };
