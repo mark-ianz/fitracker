@@ -5,15 +5,15 @@ import BackButton from "../components/BackButton";
 import Button from "../components/Button";
 import splitsAPI from "../utils/api/splits";
 import programsAPI from "../utils/api/programs";
-import useExercisesFormContext from "../utils/hooks/createSession/useExercisesFormContext";
 import LineSeperator from "../components/LineSeperator";
 import ViewSplitSkeleton from "../components/Skeletons/ViewSplitSkeleton";
+import useCreateSessionContext from "../utils/hooks/useCreateSessionContext";
 
 const ViewSplit = () => {
   // Dependencies
   const navigate = useNavigate();
   const { token } = useAuthContext();
-  const { dispatch } = useExercisesFormContext();
+  const { dispatch } = useCreateSessionContext();
 
   // Fetch the split data with the id parameter
   const { id } = useParams();
@@ -117,14 +117,13 @@ const ViewSplit = () => {
                         buttonType={"primary"}
                         requiresAuth={true}
                         onClick={() => {
-                          const payload = {
-                            exercises: [...program.exercises],
-                            programName: program.programName,
-                            programDescription: program.programDescription,
-                          };
                           dispatch({
                             type: "ADD_EXERCISES_FROM_SPLIT",
-                            payload,
+                            payload: {
+                              exercises: [...program.exercises],
+                              sessionName: program.programName,
+                              description: program.programDescription,
+                            },
                           });
                           navigate("/create");
                         }}

@@ -1,10 +1,10 @@
-import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext";
+import useCreateSessionContext from "../../../utils/hooks/useCreateSessionContext";
 import AddMoreButton from "./AddMoreButton";
 import SubmitExerciseForm from "./SubmitExerciseForm";
 
 const ExercisesPerfomedForm = () => {
   // Dependencies
-  const { exercises, dispatch } = useExercisesFormContext();
+  const { exercises, dispatch } = useCreateSessionContext();
 
   return (
     <>

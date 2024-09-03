@@ -1,16 +1,55 @@
 import { createContext, useReducer } from "react";
-import { generateEmptyExercise, generateEmptySet } from "../../helper";
+import { generateEmptyExercise, generateEmptySet, getDateNow } from "../helper";
 
-const ExercisesFormContext = createContext();
+const CreateSessionContext = createContext();
 
 const initialState = {
-  programName: "",
-  programDescription: "",
+  sessionName: "",
+  description: "",
+  tags: "Workout",
+  location: "Gym",
+  dateTime: getDateNow(),
   exercises: [],
+  error: null,
 };
 
-const ExerciseFormReducer = (state, action) => {
+const createSessionReducer = (state, action) => {
   switch (action.type) {
+    // Session
+    case "SET_SESSION_NAME":
+      return {
+        ...state,
+        sessionName: action.payload,
+      };
+    case "SET_DESCRIPTION":
+      return {
+        ...state,
+        description: action.payload,
+      };
+    case "SET_TAGS":
+      return {
+        ...state,
+        tags: action.payload,
+      };
+    case "SET_LOCATION":
+      return {
+        ...state,
+        location: action.payload,
+      };
+    case "SET_DATE_TIME":
+      return {
+        ...state,
+        dateTime: action.payload,
+      };
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: action.payload.error,
+      };
+    case "RESET_FORM":
+      return initialState;
+
+    // Exercises
     case "ADD_EMPTY_EXERCISE":
       return {
         ...state,
@@ -99,28 +138,21 @@ const ExerciseFormReducer = (state, action) => {
       return {
         ...state,
         ...action.payload,
-        fromSplit: true,
-      };
-    case "DELETE_EXERCISE":
-      return {
-        ...state,
-        exercises: state.exercises.filter(
-          (exercise) => exercise.id !== action.payload
-        ),
       };
     default:
       return state;
   }
 };
 
-const ExercisesFormContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(ExerciseFormReducer, initialState);
+const CreateSessionContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(createSessionReducer, initialState);
 
+  console.log(state);
   return (
-    <ExercisesFormContext.Provider value={{ ...state, dispatch }}>
+    <CreateSessionContext.Provider value={{ ...state, dispatch }}>
       {children}
-    </ExercisesFormContext.Provider>
+    </CreateSessionContext.Provider>
   );
 };
 
-export { ExercisesFormContext, ExercisesFormContextProvider };
+export { CreateSessionContextProvider, CreateSessionContext };

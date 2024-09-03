@@ -1,9 +1,9 @@
-import useExercisesFormContext from "../../../utils/hooks/createSession/useExercisesFormContext";
+import useCreateSessionContext from "../../../utils/hooks/useCreateSessionContext";
 import Button from "../../Button";
 import Trash from "../../Icons/Trash";
 
 const SubmitExerciseForm = ({ exercise }) => {
-  const { dispatch } = useExercisesFormContext();
+  const { dispatch } = useCreateSessionContext();
   return (
     <li className="p-4 border-solid border-2 rounded-md outline-[#9d9d9d] flex flex-col align-center">
       <div className="input-wrapper flex flex-col">
