@@ -57,7 +57,7 @@ const ViewWorkout = () => {
       },
     });
     dispatch({ type: "CLEAR_WOROKUTS" });
-    navigate("/");
+    navigate("/history");
   };
 
   return (

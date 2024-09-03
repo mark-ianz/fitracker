@@ -16,7 +16,7 @@ import Splits from "./pages/Splits";
 // Provider
 import Providers from "./utils/context/Providers";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import CreateWorkout from "./pages/CreateWorkout";
+import CreateSession from "./pages/CreateSession";
 import ViewSplit from "./pages/ViewSplit";
 import Test from "./pages/Test";
 import CustomSplits from "./pages/CustomSplits";
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: "create",
-        element: <CreateWorkout />,
+        element: <CreateSession />,
       },
       {
         path: "workout/:workout_id",

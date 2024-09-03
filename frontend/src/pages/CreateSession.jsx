@@ -5,10 +5,12 @@ import useCreateSessionContext from "../utils/hooks/useCreateSessionContext";
 import useAuthContext from "../utils/hooks/useAuthContext";
 import useUploadSession from "../utils/hooks/useUploadSession";
 import { useState } from "react";
+import useCreateSessionValidator from "../utils/validators/useCreateSessionValidator";
 
-const CreateWorkout = () => {
+const CreateSession = () => {
   const uploadSession = useUploadSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isValid = useCreateSessionValidator();
 
   // Dependencies
   const { _id } = useAuthContext();
@@ -37,7 +39,8 @@ const CreateWorkout = () => {
       date: dateTime,
     };
 
-    await uploadSession(workout);
+    console.log(isValid ());
+    /* await uploadSession(workout); */
   };
   return (
     <main className="flex flex-row items-center justify-center gap-10">
@@ -181,4 +184,4 @@ const CreateWorkout = () => {
   );
 };
 
-export default CreateWorkout;
+export default CreateSession;
