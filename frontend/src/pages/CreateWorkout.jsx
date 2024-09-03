@@ -1,29 +1,27 @@
-import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Button from "../components/Button";
 import ExercisesPerfomedForm from "../components/WorkoutsFeed/Create/ExercisesPerfomedForm";
-import WorkoutSessionForm from "../components/WorkoutsFeed/Create/WorkoutSessionForm";
-import useModalContext from "../utils/hooks/useModalContext";
-import workoutsAPI from "../utils/api/workouts";
-import useWorkoutSessionFormContext from "../utils/hooks/createSession/useWorkoutSessionFormContext";
+import useCreateSessionContext from "../utils/hooks/useCreateSessionContext";
 import useAuthContext from "../utils/hooks/useAuthContext";
-import useExercisesFormContext from "../utils/hooks/createSession/useExercisesFormContext";
+import useUploadSession from "../utils/hooks/useUploadSession";
+import { useState } from "react";
 
 const CreateWorkout = () => {
-  const { openModal, closeModal } = useModalContext();
-  const navigate = useNavigate();
+  const uploadSession = useUploadSession();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Dependencies
-  const { token, _id } = useAuthContext();
-  const { exercises, dispatch: exercisesDispatch } = useExercisesFormContext();
+  const { _id } = useAuthContext();
   const {
     sessionName,
     description,
     tags,
     location,
     dateTime,
-    dispatch: sessionFormDispatch,
-  } = useWorkoutSessionFormContext();
+    error,
+    exercises,
+    dispatch,
+  } = useCreateSessionContext();
 
   const handleFormSubmit = async (e) => {
     // Add validations
@@ -38,31 +36,8 @@ const CreateWorkout = () => {
       location,
       date: dateTime,
     };
-    console.log("Workout object:", workout);
 
-    try {
-      const { data } = await workoutsAPI.post("/new", workout, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      sessionFormDispatch({ type: "RESET_FORM" });
-      exercisesDispatch({ type: "RESET_EXERCISES" });
-      closeModal();
-      navigate("/workout/" + data._id);
-    } catch (error) {
-      if (error.response) {
-        sessionFormDispatch({
-          type: "SET_ERROR",
-          payload: { error: error.response.data.error },
-        });
-      } else {
-        sessionFormDispatch({
-          type: "SET_ERROR",
-          payload: { error: error.message },
-        });
-      }
-    }
+    await uploadSession(workout);
   };
   return (
     <main className="flex flex-row items-center justify-center gap-10">
@@ -76,17 +51,131 @@ const CreateWorkout = () => {
             <Button
               buttonType={"primary"}
               className={"!px-4 !py-1"}
-              onClick={() =>
-                openModal(
-                  <WorkoutSessionForm onSubmit={(e) => handleFormSubmit(e)} />
-                )
-              }
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
             >
               Save
             </Button>
           </div>
         </div>
         <ExercisesPerfomedForm />
+
+        {/* DIY MODAL PARA MA NAVIGATE */}
+        <div
+          className={`${
+            isModalOpen ? "flex" : "hidden"
+          } fixed inset-0 z-50 items-center justify-center`}
+        >
+          <form
+            onSubmit={handleFormSubmit}
+            className="bg-white z-40 p-6 rounded-md shadow-md grow max-w-lg"
+          >
+            <h1 className="text-xl font-semibold mb-4">Save Workout Session</h1>
+            <div className="input-container gap-4 flex flex-col">
+              <div className="input-wrapper flex flex-col">
+                <label htmlFor="sessionName">Session Name</label>
+                <input
+                  type="text"
+                  value={sessionName}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "SET_SESSION_NAME",
+                      payload: e.target.value,
+                    })
+                  }
+                  name="sessionName"
+                  id="sessionName"
+                  className="text-input"
+                />
+              </div>
+              <div className="input-wrapper flex flex-col">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  type="text"
+                  value={description}
+                  placeholder="(Optional)"
+                  onChange={(e) =>
+                    dispatch({
+                      type: "SET_DESCRIPTION",
+                      payload: e.target.value,
+                    })
+                  }
+                  name="description"
+                  id="description"
+                  className="text-input"
+                  rows={4}
+                />
+              </div>
+              <div className="input-wrapper flex flex-col">
+                <label htmlFor="tags">Tags</label>
+                <input
+                  type="text"
+                  value={tags}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "SET_TAGS",
+                      payload: e.target.value,
+                    })
+                  }
+                  name="tags"
+                  id="tags"
+                  className="text-input"
+                />
+              </div>
+              <div className="input-wrapper flex flex-col">
+                <label htmlFor="location">Location</label>
+                <input
+                  type="text"
+                  value={location}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "SET_LOCATION",
+                      payload: e.target.value,
+                    })
+                  }
+                  name="location"
+                  id="location"
+                  className="text-input"
+                />
+              </div>
+              <div className="input-wrapper flex flex-col">
+                <label htmlFor="date">Date</label>
+                <input
+                  type="datetime-local"
+                  value={dateTime}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "SET_DATE_TIME",
+                      payload: e.target.value,
+                    })
+                  }
+                  name="date"
+                  id="date"
+                  className="text-input"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-end mt-4 gap-4">
+              {error && <p className="text-gray-600 text-sm">{error}</p>}
+              <div className="flex flex-row items-center gap-2">
+                <Button
+                  buttonType="secondary"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button buttonType="primary" toSubmit={true}>
+                  Submit
+                </Button>
+              </div>
+            </div>
+          </form>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-20"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+        </div>
       </section>
     </main>
   );
