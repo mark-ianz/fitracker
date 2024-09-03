@@ -19,7 +19,7 @@ const useUploadSession = () => {
       });
       dispatch({ type: "RESET_FORM" });
       dispatch({ type: "RESET_EXERCISES" });
-      navigate("/workout/" + data._id);
+      navigate(`/workout/${data._id}`);
       closeModal();
       return data;
     } catch (error) {
