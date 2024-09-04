@@ -30,12 +30,12 @@ const useCreateSessionValidator = () => {
     while (i < exercises.length) {
       const total = getTotalVolume(exercises[i]);
 
-      if (!total.reps && !total.weight) {
+      if (!total.reps || !total.weight) {
         validationError.add("Exercise reps and weight cannot be 0");
       }
 
       if (!exercises[i].exerciseName) {
-        validationError.add("Exercise name is required for exercise #" + (i + 1));
+        validationError.add("Exercise name is required for Exercise #" + (i + 1));
       }
       if (exercises[i].sets.length === 0) {
         validationError.add("Add at least one set in your exercise");

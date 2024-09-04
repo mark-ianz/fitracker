@@ -16,7 +16,7 @@ const ExercisesPerfomedForm = () => {
           className={"text-red-400"}
           onClick={() => dispatch({ type: "RESET_FORM" })}
         >
-          Clear Session
+          Clear
         </Button>
       </div>
       {error && (
