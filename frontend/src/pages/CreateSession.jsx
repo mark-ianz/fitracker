@@ -29,18 +29,18 @@ const CreateSession = () => {
     // Add validations
     e.preventDefault();
 
-    const workout = {
-      user: _id,
-      name: sessionName,
-      exercisesPerformed: exercises,
-      description,
-      tags,
-      location,
-      date: dateTime,
-    };
-
-    console.log(isValid ());
-    /* await uploadSession(workout); */
+    if (isValid()) {
+      const workout = {
+        user: _id,
+        name: sessionName,
+        exercisesPerformed: exercises,
+        description,
+        tags,
+        location,
+        date: dateTime,
+      };
+      await uploadSession(workout);
+    }
   };
   return (
     <main className="flex flex-row items-center justify-center gap-10">
@@ -160,7 +160,15 @@ const CreateSession = () => {
               </div>
             </div>
             <div className="flex flex-col items-end mt-4 gap-4">
-              {error && <p className="text-gray-600 text-sm">{error}</p>}
+              {error && (
+                <div>
+                  {error.map((error, index) => (
+                    <p key={index} className="text-gray-600 text-sm">
+                      {error}
+                    </p>
+                  ))}
+                </div>
+              )}
               <div className="flex flex-row items-center gap-2">
                 <Button
                   buttonType="secondary"

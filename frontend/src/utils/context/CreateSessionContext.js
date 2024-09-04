@@ -147,7 +147,6 @@ const createSessionReducer = (state, action) => {
 const CreateSessionContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(createSessionReducer, initialState);
 
-  console.log(state);
   return (
     <CreateSessionContext.Provider value={{ ...state, dispatch }}>
       {children}
