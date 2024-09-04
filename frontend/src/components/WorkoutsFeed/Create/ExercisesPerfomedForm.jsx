@@ -1,4 +1,5 @@
 import useCreateSessionContext from "../../../utils/hooks/useCreateSessionContext";
+import Button from "../../Button";
 import AddMoreButton from "./AddMoreButton";
 import SubmitExerciseForm from "./SubmitExerciseForm";
 
@@ -8,7 +9,16 @@ const ExercisesPerfomedForm = () => {
 
   return (
     <>
-      <h2 className="text-xl mb-4">Exercises Performed</h2>
+      <div className="flex flex-wrap items-center justify-between mb-4">
+        <h2 className="text-xl">Exercises Performed</h2>
+        <Button
+          buttonType={"plain"}
+          className={"text-red-400"}
+          onClick={() => dispatch({ type: "RESET_FORM" })}
+        >
+          Clear Session
+        </Button>
+      </div>
       {error && (
         <ul className="list-disc pl-5 mb-4 text-red-400">
           {error.map((error, index) => (
