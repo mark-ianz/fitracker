@@ -138,6 +138,7 @@ const createSessionReducer = (state, action) => {
       return {
         ...state,
         ...action.payload,
+        error: null,
       };
     default:
       return state;

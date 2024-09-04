@@ -63,3 +63,17 @@ export const generateEmptySet = () => ({
   reps: 0,
   weight: 0,
 });
+
+export const getTotalVolume = (exercise)=> {
+  const total = exercise.sets.reduce(
+    (acc, set) => {
+      acc.reps += set.reps;
+      acc.weight += set.weight;
+      acc.volume = acc.weight * acc.reps;
+      return acc;
+    },
+    { reps: 0, weight: 0, volume: 0 }
+  );
+  
+  return total;
+}

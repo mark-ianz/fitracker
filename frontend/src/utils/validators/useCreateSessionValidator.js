@@ -1,3 +1,4 @@
+import { getTotalVolume } from "../helper";
 import useCreateSessionContext from "../hooks/useCreateSessionContext";
 
 const useCreateSessionValidator = () => {
@@ -12,31 +13,39 @@ const useCreateSessionValidator = () => {
   };
 
   const validateCreateSession = () => {
-    let validationError = [];
+    let validationError = new Set();
+    let i = 0;
 
     if (!sessionName) {
-      validationError.push("Session name is required");
+      validationError.add("Session name is required");
     }
     if (exercises.length === 0) {
-      validationError.push("Add at least one exercise");
+      validationError.add("Add at least one exercise");
     }
 
     if (!dateTime) {
-      validationError.push("Date and time are required");
+      validationError.add("Date and time are required");
     }
 
-    for (const exercise of exercises) {
-      if (!exercise.exerciseName) {
-        validationError.push("Exercise name is required");
+    while (i < exercises.length) {
+      const total = getTotalVolume(exercises[i]);
+
+      if (!total.reps && !total.weight) {
+        validationError.add("Exercise reps and weight cannot be 0");
       }
-      if (exercise.sets.length === 0) {
-        validationError.push("Add at least one set in your exercise");
+
+      if (!exercises[i].exerciseName) {
+        validationError.add("Exercise name is required for exercise #" + (i + 1));
       }
+      if (exercises[i].sets.length === 0) {
+        validationError.add("Add at least one set in your exercise");
+      }
+      i++;
     }
 
-    setError(validationError);
+    setError(Array.from(validationError));
 
-    return validationError.length === 0;
+    return Array.from(validationError).length === 0;
   };
 
   return validateCreateSession;

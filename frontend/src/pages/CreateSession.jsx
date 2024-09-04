@@ -6,11 +6,13 @@ import useAuthContext from "../utils/hooks/useAuthContext";
 import useUploadSession from "../utils/hooks/useUploadSession";
 import { useState } from "react";
 import useCreateSessionValidator from "../utils/validators/useCreateSessionValidator";
+import { useNavigate } from "react-router-dom";
 
 const CreateSession = () => {
   const uploadSession = useUploadSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isValid = useCreateSessionValidator();
+  const navigate = useNavigate();
 
   // Dependencies
   const { _id } = useAuthContext();
@@ -40,6 +42,9 @@ const CreateSession = () => {
         date: dateTime,
       };
       await uploadSession(workout);
+    } else {
+      setIsModalOpen(false);
+      navigate("#");
     }
   };
   return (
@@ -68,7 +73,7 @@ const CreateSession = () => {
         <div
           className={`${
             isModalOpen ? "flex" : "hidden"
-          } fixed inset-0 z-50 items-center justify-center`}
+          } fixed inset-0 z-50 items-center justify-center p-4`}
         >
           <form
             onSubmit={handleFormSubmit}
@@ -160,15 +165,6 @@ const CreateSession = () => {
               </div>
             </div>
             <div className="flex flex-col items-end mt-4 gap-4">
-              {error && (
-                <div>
-                  {error.map((error, index) => (
-                    <p key={index} className="text-gray-600 text-sm">
-                      {error}
-                    </p>
-                  ))}
-                </div>
-              )}
               <div className="flex flex-row items-center gap-2">
                 <Button
                   buttonType="secondary"

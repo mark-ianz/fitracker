@@ -2,10 +2,11 @@ import useCreateSessionContext from "../../../utils/hooks/useCreateSessionContex
 import Button from "../../Button";
 import Trash from "../../Icons/Trash";
 
-const SubmitExerciseForm = ({ exercise }) => {
+const SubmitExerciseForm = ({ exercise, index }) => {
   const { dispatch } = useCreateSessionContext();
   return (
     <li className="p-4 border-solid border-2 rounded-md outline-[#9d9d9d] flex flex-col align-center">
+      <p className="font-semibold mb-2 text-lg">Exercise #{index + 1}</p>
       <div className="input-wrapper flex flex-col">
         <label htmlFor="exerciseName">Exercise Name</label>
         <input

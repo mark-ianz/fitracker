@@ -1,15 +1,8 @@
+import { getTotalVolume } from "../../../utils/helper";
+
 const ExercisesPerformed = ({ exercisesPerformed }) => {
   return exercisesPerformed.map((exercise, index) => {
-    // Get the total reps, weight and volume.
-    const total = exercise.sets.reduce(
-      (acc, set) => {
-        acc.reps += set.reps;
-        acc.weight += set.weight;
-        acc.volume = acc.weight * acc.reps;
-        return acc;
-      },
-      { reps: 0, weight: 0, volume: 0 }
-    );
+    const total = getTotalVolume(exercise);
 
     return (
       <li
