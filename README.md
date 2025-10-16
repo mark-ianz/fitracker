@@ -94,6 +94,8 @@ Create a `.env` file in the backend root with the following:
   ```
 The frontend will be available at http://localhost:3000 (or as defined in your React setup).
 
+---
+
 ### Backend:
 1. Navigate to the backend folder:
   ```bash
