@@ -67,11 +67,20 @@ Create a `.env` file in the backend root with the following:
 
 ## Installation
 
-### Frontend
-
-1. Clone the repo:
+1. Clone the repository:
   ```bash
-  git clone https://github.com/your-username/fitracker-frontend.git
+  git clone https://github.com/mark-ianz/fitracker.git
+  ```
+
+2. Navigate to the project folder:
+  ```bash
+  cd fitracker
+  ```
+
+**Frontend:**
+1. Navigate to the frontend folder:
+  ```bash
+  cd frontend
   ```
 
 2. Install dependencies:
@@ -79,17 +88,16 @@ Create a `.env` file in the backend root with the following:
   npm install
   ```
 
-3. Start the development server:
+3. Run the development server:
   ```
   npm start
   ```
+The frontend will be available at http://localhost:3000 (or as defined in your React setup).
 
----
-
-### Backend
-1. Clone the repo:
+**Backend:**
+1. Navigate to the backend folder:
   ```bash
-  git clone https://github.com/your-username/fitracker-backend.git
+  cd backend
   ```
 
 2. Install dependencies:
@@ -97,7 +105,7 @@ Create a `.env` file in the backend root with the following:
   npm install
   ```
 
-3. Start the development server:
+3. Start the server (development mode):
   ```
   npm run dev
   ```
