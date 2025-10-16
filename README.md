@@ -77,7 +77,7 @@ Create a `.env` file in the backend root with the following:
   cd fitracker
   ```
 
-**Frontend:**
+###Frontend:###
 1. Navigate to the frontend folder:
   ```bash
   cd frontend
@@ -94,7 +94,7 @@ Create a `.env` file in the backend root with the following:
   ```
 The frontend will be available at http://localhost:3000 (or as defined in your React setup).
 
-**Backend:**
+###Backend:###
 1. Navigate to the backend folder:
   ```bash
   cd backend
